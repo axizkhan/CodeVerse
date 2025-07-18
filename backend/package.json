@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "v22.14.0"
+  },
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
@@ -9,7 +12,7 @@
   "keywords": [],
   "author": "Taher Bohra",
   "license": "ISC",
-  "description": "",
+  "description": " Backend for Code Verse application which is a tutorial website using Node.js, Express, and MongoDB for data management. It includes user authentication, session management, and email notifications. The backend is designed to handle user registrations, logins, and profile management, ensuring secure and efficient data handling. It also supports file uploads and uses MongoDB for storing user data and session information.",
   "dependencies": {
     "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
