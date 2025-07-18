@@ -1,0 +1,115 @@
+.membership-container {
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: #121212;
+  min-height: 100vh;
+}
+
+h2 {
+  color: cyan;
+  margin-bottom: 20px;
+}
+
+.membership-search {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid cyan;
+  outline: none;
+}
+
+.membership-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.membership-table th,
+.membership-table td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.membership-table th {
+  background-color: #222;
+  color: cyan;
+}
+
+.membership-table td ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.action-btn {
+  background: cyan;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+.action-btn.danger {
+  background: #ff4d4d;
+  color: white;
+}
+
+.edit-form-container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid cyan;
+  max-width: 700px;
+  margin: auto;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid cyan;
+  background-color: #1e1e1e;
+  color: white;
+  outline: none;
+}
+
+
+.perks-edit input {
+  margin-bottom: 8px;
+  display: block;
+  width: 100%;
+}
+
+.perks-edit button {
+  margin-bottom: 15px;
+  padding: 6px 10px;
+  background-color: #333;
+  border: 1px solid cyan;
+  color: cyan;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 5px cyan;
+}
+.perk-input {
+  width: 45%; /* or any fixed value like 300px */
+  max-width: 300px;
+  min-width: 200px;
+}

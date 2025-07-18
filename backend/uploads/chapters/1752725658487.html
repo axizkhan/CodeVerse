@@ -1,0 +1,48 @@
+
+                <h2>Loops in C++</h2>
+                <p>Loops are used to execute a block of code repeatedly until a certain condition is met.</p>
+
+                <h3>1. <code>while</code> Loop</h3>
+                <p>The <code>while</code> loop checks the condition before executing the block.</p>
+                <pre><code>int i = 1;
+            while (i &lt;= 5) {
+            cout &lt;&lt; i &lt;&lt; " ";
+            i++;
+            }</code></pre>
+
+                <h3>2. <code>do-while</code> Loop</h3>
+                <p>The <code>do-while</code> loop executes the block at least once before checking the condition.</p>
+                <pre><code>int i = 1;
+            do {
+            cout &lt;&lt; i &lt;&lt; " ";
+            i++;
+            } while (i &lt;= 5);</code></pre>
+
+                <h3>3. <code>for</code> Loop</h3>
+                <p>The <code>for</code> loop includes initialization, condition, and update in a single line.</p>
+                <pre><code>for (int i = 1; i &lt;= 5; i++) {
+            cout &lt;&lt; i &lt;&lt; " ";
+            }</code></pre>
+
+                <h3>4. Nested Loops</h3>
+                <p>You can use loops inside other loops. Common in pattern printing and matrix traversal.</p>
+                <pre><code>for (int i = 1; i &lt;= 3; i++) {
+            for (int j = 1; j &lt;= 3; j++) {
+                cout &lt;&lt; "* ";
+            }
+            cout &lt;&lt; endl;
+            }</code></pre>
+
+                <h3>5. Loop Control Statements</h3>
+                <ul>
+                <li><code>break</code>: Exits the loop prematurely</li>
+                <li><code>continue</code>: Skips the current iteration and continues with the next one</li>
+                </ul>
+
+                <h3>Example: Sum of First 10 Numbers</h3>
+                <pre><code>int sum = 0;
+            for (int i = 1; i &lt;= 10; i++) {
+            sum += i;
+            }
+            cout &lt;&lt; "Sum: " &lt;&lt; sum;</code></pre>
+            

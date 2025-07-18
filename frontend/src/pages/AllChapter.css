@@ -1,0 +1,135 @@
+.all-chapters-container {
+  padding: 40px;
+  background: #121212;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.page-heading {
+  color: cyan;
+  margin-bottom: 20px;
+}
+
+.chapter-search {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.chapter-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.chapter-table th,
+.chapter-table td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.chapter-table th {
+  background-color: #222;
+  color: cyan;
+}
+
+.download-btn,
+.action-btn {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn {
+  background: #0ff;
+  color: black;
+}
+
+.action-btn {
+  background: cyan;
+  color: black;
+  margin-right: 8px;
+  margin-bottom: 5px;
+}
+
+.action-btn.danger {
+  background: #ff4d4d;
+  color: white;
+}
+
+.edit-form {
+  justify-content: center;
+  align-content: center;
+
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  color: white;
+
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.edit-form input {
+  border: 1px solid #333;
+  border-radius: 5px;
+  background: #222;
+  color: white;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+}
+
+.edit-form-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.edit-form-box {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 30px;
+  border: 2px solid cyan;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Segoe UI', sans-serif;
+  backdrop-filter: blur(10px);
+  background-color: rgba(30, 30, 30, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.edit-form-box h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.edit-form-box label {
+  display: block;
+  margin: 10px 0 4px;
+  font-weight: 500;
+}
+
+.edit-form-box input[type="text"],
+.edit-form-box input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+

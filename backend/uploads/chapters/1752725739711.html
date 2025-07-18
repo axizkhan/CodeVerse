@@ -1,0 +1,106 @@
+
+                <h2>Inheritance in C++</h2>
+                <p>Inheritance is one of the key features of Object-Oriented Programming in C++. It allows a class (derived class) to inherit the properties and behavior (data members and member functions) of another class (base class).</p>
+
+                <h3>Why Use Inheritance?</h3>
+                <ul>
+                <li>Code reusability</li>
+                <li>Establish a relationship between classes</li>
+                <li>Extensibility</li>
+                <li>Improved code structure and readability</li>
+                </ul>
+
+                <h3>Types of Inheritance</h3>
+                <ul>
+                <li><strong>Single Inheritance:</strong> One derived class inherits from one base class.</li>
+                <li><strong>Multiple Inheritance:</strong> One derived class inherits from more than one base class.</li>
+                <li><strong>Multilevel Inheritance:</strong> A class is derived from another derived class.</li>
+                <li><strong>Hierarchical Inheritance:</strong> Multiple classes inherit from a single base class.</li>
+                <li><strong>Hybrid Inheritance:</strong> Combination of two or more types of inheritance.</li>
+                </ul>
+
+                <h3>Syntax</h3>
+                <pre><code>class Base {
+            public:
+                void display() {
+                cout << "Base class" << endl;
+                }
+            };
+
+            class Derived : public Base {
+            public:
+                void show() {
+                cout << "Derived class" << endl;
+                }
+            };
+
+            int main() {
+            Derived d;
+            d.display();  // inherited method
+            d.show();     // own method
+            return 0;
+            }</code></pre>
+
+                <h3>Access Specifiers in Inheritance</h3>
+                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                <thead>
+                    <tr>
+                    <th>Base Class Access</th>
+                    <th>Public Inheritance</th>
+                    <th>Protected Inheritance</th>
+                    <th>Private Inheritance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>public members</td>
+                    <td>public</td>
+                    <td>protected</td>
+                    <td>private</td>
+                    </tr>
+                    <tr>
+                    <td>protected members</td>
+                    <td>protected</td>
+                    <td>protected</td>
+                    <td>private</td>
+                    </tr>
+                    <tr>
+                    <td>private members</td>
+                    <td colspan="3">Not accessible directly</td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <h3>Multilevel Inheritance Example</h3>
+                <pre><code>class A {
+            public:
+                void aFunc() {
+                cout << "Class A" << endl;
+                }
+            };
+
+            class B : public A {
+            public:
+                void bFunc() {
+                cout << "Class B" << endl;
+                }
+            };
+
+            class C : public B {
+            public:
+                void cFunc() {
+                cout << "Class C" << endl;
+                }
+            };
+
+            int main() {
+            C obj;
+            obj.aFunc();
+            obj.bFunc();
+            obj.cFunc();
+            return 0;
+            }</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Inheritance enables code reusability and hierarchical classification. It’s a core principle that makes C++ powerful for building large applications.</p>
+            

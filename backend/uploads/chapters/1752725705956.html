@@ -1,0 +1,65 @@
+
+                <h2>Pointers in C++</h2>
+                <p>Pointers are variables that store the memory address of another variable. They are powerful but must be used with care.</p>
+
+                <h3>Declaring a Pointer</h3>
+                <pre><code>int a = 10;
+            int* ptr = &a;  // ptr holds the address of a</code></pre>
+
+                <h3>Accessing Value with Pointer (Dereferencing)</h3>
+                <p>Use <code>*</code> to get the value at the memory address:</p>
+                <pre><code>cout << *ptr;  // Outputs 10</code></pre>
+
+                <h3>Pointer Operators</h3>
+                <ul>
+                <li><code>&</code> – Address-of operator</li>
+                <li><code>*</code> – Dereference operator</li>
+                </ul>
+
+                <h3>Example</h3>
+                <pre><code>#include &lt;iostream&gt;
+            using namespace std;
+
+            int main() {
+            int var = 42;
+            int* p = &var;
+            cout << "Address: " << p << endl;
+            cout << "Value: " << *p << endl;
+            return 0;
+            }</code></pre>
+
+                <h3>Pointer to Pointer</h3>
+                <pre><code>int x = 5;
+            int* p = &x;
+            int** pp = &p;
+
+            cout << **pp;  // Outputs 5</code></pre>
+
+                <h3>Null Pointer</h3>
+                <pre><code>int* ptr = nullptr;  // Points to nothing</code></pre>
+
+                <h3>Pointer Arithmetic</h3>
+                <pre><code>int arr[] = {10, 20, 30};
+            int* p = arr;
+            cout << *(p + 1);  // Outputs 20</code></pre>
+
+                <h3>Pointers and Arrays</h3>
+                <p>Array name is itself a pointer to the first element.</p>
+                <pre><code>int arr[3] = {1, 2, 3};
+            cout << *arr;  // Outputs 1</code></pre>
+
+                <h3>Dynamic Memory with Pointers</h3>
+                <pre><code>int* a = new int;  // allocate memory
+            *a = 100;
+            delete a;         // free memory</code></pre>
+
+                <h3>Best Practices</h3>
+                <ul>
+                <li>Always initialize pointers</li>
+                <li>Use <code>delete</code> to avoid memory leaks</li>
+                <li>Use <code>nullptr</code> instead of NULL</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>Pointers give you direct control over memory and are essential in systems programming, dynamic memory, and data structures.</p>
+            

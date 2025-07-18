@@ -1,0 +1,104 @@
+
+                <h2>Operators in C</h2>
+                <p>Operators are special symbols used to perform operations on variables and values. C supports a wide range of operators for different purposes.</p>
+
+                <h3>1. Arithmetic Operators</h3>
+                <p>Used to perform basic mathematical operations:</p>
+                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                <thead>
+                    <tr style="background-color: #1a1a1a; color: cyan;">
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>+</td><td>Addition</td><td><code>a + b</code></td></tr>
+                    <tr><td>-</td><td>Subtraction</td><td><code>a - b</code></td></tr>
+                    <tr><td>*</td><td>Multiplication</td><td><code>a * b</code></td></tr>
+                    <tr><td>/</td><td>Division</td><td><code>a / b</code></td></tr>
+                    <tr><td>%</td><td>Modulus (remainder)</td><td><code>a % b</code></td></tr>
+                </tbody>
+                </table>
+
+                <h3>2. Relational Operators</h3>
+                <p>Used to compare two values and return true (1) or false (0).</p>
+                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                <thead>
+                    <tr style="background-color: #1a1a1a; color: cyan;">
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>==</td><td>Equal to</td><td><code>a == b</code></td></tr>
+                    <tr><td>!=</td><td>Not equal to</td><td><code>a != b</code></td></tr>
+                    <tr><td>&gt;</td><td>Greater than</td><td><code>a &gt; b</code></td></tr>
+                    <tr><td>&lt;</td><td>Less than</td><td><code>a &lt; b</code></td></tr>
+                    <tr><td>&gt;=</td><td>Greater than or equal to</td><td><code>a &gt;= b</code></td></tr>
+                    <tr><td>&lt;=</td><td>Less than or equal to</td><td><code>a &lt;= b</code></td></tr>
+                </tbody>
+                </table>
+
+                <h3>3. Logical Operators</h3>
+                <p>Used to combine conditional statements:</p>
+                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                <thead>
+                    <tr style="background-color: #1a1a1a; color: cyan;">
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>&&</td><td>Logical AND</td><td><code>(a &gt; 0 && b &gt; 0)</code></td></tr>
+                    <tr><td>||</td><td>Logical OR</td><td><code>(a &gt; 0 || b &gt; 0)</code></td></tr>
+                    <tr><td>!</td><td>Logical NOT</td><td><code>!(a &gt; 0)</code></td></tr>
+                </tbody>
+                </table>
+
+                <h3>4. Assignment Operators</h3>
+                <p>Used to assign values to variables:</p>
+                <ul>
+                <li><code>=</code> : Assign <code>a = 10;</code></li>
+                <li><code>+=</code> : Add and assign <code>a += 5;</code> (same as <code>a = a + 5;</code>)</li>
+                <li><code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code> : Similar for other operations</li>
+                </ul>
+
+                <h3>5. Increment and Decrement Operators</h3>
+                <ul>
+                <li><code>++a</code> or <code>a++</code> — Increments <code>a</code> by 1</li>
+                <li><code>--a</code> or <code>a--</code> — Decrements <code>a</code> by 1</li>
+                </ul>
+
+                <h3>6. Bitwise Operators</h3>
+                <p>Used for bit-level operations (advanced):</p>
+                <ul>
+                <li><code>&</code>, <code>|</code>, <code>^</code>, <code>~</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code></li>
+                </ul>
+
+                <h3>Example Program</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+
+            int main() {
+            int a = 10, b = 5;
+
+            printf("a + b = %d\\n", a + b);
+            printf("a == b = %d\\n", a == b);
+            printf("a && b = %d\\n", a && b);
+
+            return 0;
+            }</code></pre>
+
+                <h3>Summary Table</h3>
+                <ul>
+                <li><strong>Arithmetic:</strong> +, -, *, /, %</li>
+                <li><strong>Relational:</strong> ==, !=, &gt;, &lt;, &gt;=, &lt;=</li>
+                <li><strong>Logical:</strong> &&, ||, !</li>
+                <li><strong>Assignment:</strong> =, +=, -=, *=, etc.</li>
+                <li><strong>Bitwise:</strong> &, |, ^, ~, &lt;&lt;, &gt;&gt;</li>
+                </ul>
+
+                <p><em>Operators are essential tools for building logic and functionality in any C program.</em></p>
+            

@@ -1,0 +1,73 @@
+.add-language-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 40px 20px;
+}
+
+.add-language-form {
+  background-color: #121212;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.form-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: cyan;
+  text-align: center;
+}
+
+.form-input,
+.form-textarea,
+.form-file {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-message {
+  margin-top: 15px;
+  text-align: center;
+  color: #00ffff;
+  font-weight: bold;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #00ffff; /* Your custom color */
+  color: #000; /* Text color */
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #00cccc;
+}

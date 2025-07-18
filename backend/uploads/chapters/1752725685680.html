@@ -1,0 +1,57 @@
+
+                <h2>Arrays in C++</h2>
+                <p>An array is a collection of elements of the same type placed in contiguous memory locations. It allows storing multiple values using a single variable name.</p>
+
+                <h3>Declaring an Array</h3>
+                <pre><code>type arrayName[size];</code></pre>
+                <p>Example:</p>
+                <pre><code>int numbers[5];</code></pre>
+
+                <h3>Initializing an Array</h3>
+                <pre><code>int numbers[5] = {1, 2, 3, 4, 5};</code></pre>
+                <p>You can also let the compiler determine the size:</p>
+                <pre><code>int numbers[] = {1, 2, 3};</code></pre>
+
+                <h3>Accessing Elements</h3>
+                <p>Array elements are accessed using their index (starting from 0):</p>
+                <pre><code>cout &lt;&lt; numbers[0]; // prints 1</code></pre>
+
+                <h3>Modifying Elements</h3>
+                <pre><code>numbers[2] = 99; // changes 3rd element to 99</code></pre>
+
+                <h3>Input and Output of Array</h3>
+                <pre><code>int arr[5];
+            cout &lt;&lt; "Enter 5 numbers: ";
+            for(int i = 0; i &lt; 5; i++) {
+            cin &gt;&gt; arr[i];
+            }
+
+            cout &lt;&lt; "You entered: ";
+            for(int i = 0; i &lt; 5; i++) {
+            cout &lt;&lt; arr[i] &lt;&lt; " ";
+            }</code></pre>
+
+                <h3>Multidimensional Arrays</h3>
+                <p>Used to store tables or matrices:</p>
+                <pre><code>int matrix[2][3] = {
+            {1, 2, 3},
+            {4, 5, 6}
+            };</code></pre>
+                <p>Accessing an element:</p>
+                <pre><code>cout &lt;&lt; matrix[1][2]; // prints 6</code></pre>
+
+                <h3>Common Mistakes</h3>
+                <ul>
+                <li>Accessing out-of-bound indices causes undefined behavior.</li>
+                <li>Uninitialized arrays contain garbage values.</li>
+                </ul>
+
+                <h3>Limitations</h3>
+                <ul>
+                <li>Fixed size — cannot change during runtime.</li>
+                <li>To overcome this, C++ offers vectors (dynamic arrays).</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>Arrays are simple and efficient for storing multiple values, but require careful index management and fixed sizes.</p>
+            

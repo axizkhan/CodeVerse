@@ -1,0 +1,79 @@
+
+    <h2>Variables in C</h2>
+    <p>In C, a <strong>variable</strong> is a name given to a memory location that stores a value. Variables are used to hold data that can be modified during program execution.</p>
+
+    <h3>Why Use Variables?</h3>
+    <ul>
+      <li>To store user input or temporary values</li>
+      <li>To perform calculations and store results</li>
+      <li>To improve code readability and reusability</li>
+    </ul>
+
+    <h3>Variable Declaration</h3>
+    <p>A variable must be declared before it is used in the program.</p>
+    <pre><code>datatype variableName;</code></pre>
+    <p>You can also assign an initial value at the time of declaration:</p>
+    <pre><code>int age = 25;</code></pre>
+
+    <h3>Declaration Rules</h3>
+    <ul>
+      <li>Variable names must start with a letter (A-Z, a-z) or underscore (_)</li>
+      <li>They can contain letters, digits, and underscores (e.g., <code>total_1</code>)</li>
+      <li>They must not be any of the C reserved keywords (e.g., <code>int</code>, <code>return</code>)</li>
+      <li>They are case-sensitive (e.g., <code>Age</code> and <code>age</code> are different)</li>
+    </ul>
+
+    <h3>Common Data Types</h3>
+    <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+      <thead>
+        <tr style="background-color: #1a1a1a; color: cyan;">
+          <th>Type</th>
+          <th>Example</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>int</code></td>
+          <td><code>int age = 30;</code></td>
+          <td>Integer values</td>
+        </tr>
+        <tr>
+          <td><code>float</code></td>
+          <td><code>float pi = 3.14;</code></td>
+          <td>Decimal numbers</td>
+        </tr>
+        <tr>
+          <td><code>char</code></td>
+          <td><code>char grade = 'A';</code></td>
+          <td>Single characters</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Multiple Declarations</h3>
+    <p>You can declare multiple variables of the same type in one line:</p>
+    <pre><code>int a = 1, b = 2, c = 3;</code></pre>
+
+    <h3>Example Program</h3>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+  int age = 21;
+  float weight = 60.5;
+  char grade = 'A';
+
+  printf("Age: %d\\n", age);
+  printf("Weight: %.1f\\n", weight);
+  printf("Grade: %c\\n", grade);
+
+  return 0;
+}</code></pre>
+
+    <h3>Summary</h3>
+    <ul>
+      <li>Variables store data in memory for use in your program</li>
+      <li>Must be declared with a valid type and optional initial value</li>
+      <li>Follow naming rules to avoid errors</li>
+    </ul>
+  

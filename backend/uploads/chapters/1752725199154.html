@@ -1,0 +1,76 @@
+
+            <h2>Functions in C</h2>
+            <p>A <strong>function</strong> is a block of code that performs a specific task. Functions help in modularizing code and make it reusable and easier to maintain.</p>
+
+            <h3>Types of Functions:</h3>
+            <ul>
+            <li><strong>Library Functions</strong> – Built-in, like <code>printf()</code>, <code>scanf()</code>, etc.</li>
+            <li><strong>User-defined Functions</strong> – Created by the programmer.</li>
+            </ul>
+
+            <h3>Advantages of Using Functions:</h3>
+            <ul>
+            <li>Code Reusability</li>
+            <li>Modular Programming</li>
+            <li>Improved Debugging and Maintenance</li>
+            </ul>
+
+            <h3>Function Syntax:</h3>
+            <pre><code>return_type function_name(parameter1, parameter2, ...) {
+        // code block
+        }</code></pre>
+
+            <h3>Function Declaration:</h3>
+            <pre><code>return_type function_name(parameter list);</code></pre>
+
+            <h3>Function Call:</h3>
+            <pre><code>function_name(arguments);</code></pre>
+
+            <h3>Example: Function to Add Two Numbers</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+        // Function Declaration
+        int add(int a, int b);
+
+        int main() {
+        int sum = add(5, 3);  // Function Call
+        printf("Sum: %d", sum);
+        return 0;
+        }
+
+        // Function Definition
+        int add(int a, int b) {
+        return a + b;
+        }</code></pre>
+
+            <h3>Function Components:</h3>
+            <ul>
+            <li><strong>Return Type</strong>: Data type the function returns (e.g., <code>int</code>, <code>void</code>).</li>
+            <li><strong>Function Name</strong>: Valid identifier (e.g., <code>add</code>).</li>
+            <li><strong>Parameters</strong>: Inputs to the function (optional).</li>
+            <li><strong>Body</strong>: Code block that defines what the function does.</li>
+            </ul>
+
+            <h3>Void Function Example (No Return Value):</h3>
+            <pre><code>void greet() {
+        printf("Welcome to C programming!\\n");
+        }</code></pre>
+
+            <h3>Returning Multiple Values:</h3>
+            <p>C does not return multiple values directly, but we can use pointers or structures for that.</p>
+
+            <h3>Recursion Example (Function Calling Itself):</h3>
+            <pre><code>int factorial(int n) {
+        if (n == 0) return 1;
+        else return n * factorial(n - 1);
+        }</code></pre>
+
+            <h3>Key Rules:</h3>
+            <ul>
+            <li>Declare the function before using it (unless it's defined above).</li>
+            <li>Return type must match the returned data.</li>
+            <li>Parameters must match in type and count during function call.</li>
+            </ul>
+
+            <p><em>Functions improve structure, reuse, and readability of code. Every good C program makes extensive use of them!</em></p>
+        

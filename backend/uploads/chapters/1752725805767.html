@@ -1,0 +1,84 @@
+
+                <h2>Virtual Functions in C++</h2>
+                <p>Virtual functions allow derived classes to override methods from a base class and support <strong>runtime polymorphism</strong>.</p>
+
+                <h3>Key Characteristics</h3>
+                <ul>
+                <li>Declared using the <code>virtual</code> keyword in the base class</li>
+                <li>Implemented (overridden) in the derived class</li>
+                <li>Called through a base class pointer or reference</li>
+                <li>Supports dynamic binding (late binding)</li>
+                </ul>
+
+                <h3>Basic Example</h3>
+                <pre><code>class Base {
+            public:
+                virtual void display() {
+                cout << "Display from Base class" << endl;
+                }
+            };
+
+            class Derived : public Base {
+            public:
+                void display() override {
+                cout << "Display from Derived class" << endl;
+                }
+            };
+
+            int main() {
+            Base* ptr;
+            Derived d;
+            ptr = &d;
+            ptr->display(); // Output: Display from Derived class
+            return 0;
+            }</code></pre>
+
+                <h3>Why Use Virtual Functions?</h3>
+                <ul>
+                <li>To achieve polymorphism</li>
+                <li>To allow flexibility and extensibility in object-oriented design</li>
+                <li>Useful when working with base class pointers to derived objects</li>
+                </ul>
+
+                <h3>Virtual Function Table (V-Table)</h3>
+                <p>C++ maintains a table (V-Table) internally which stores addresses of virtual functions. Each class with virtual functions has a V-Table, and each object has a pointer to it.</p>
+
+                <h3>Pure Virtual Functions and Abstract Classes</h3>
+                <p>A pure virtual function forces a derived class to override the function. A class containing at least one pure virtual function becomes an abstract class.</p>
+
+                <pre><code>class Animal {
+            public:
+                virtual void makeSound() = 0; // Pure virtual
+            };
+
+            class Dog : public Animal {
+            public:
+                void makeSound() override {
+                cout << "Woof!" << endl;
+                }
+            };</code></pre>
+
+                <h3>Notes</h3>
+                <ul>
+                <li>Virtual functions must be accessed via pointers or references for polymorphism to work.</li>
+                <li>Destructors in base classes should also be virtual if the class is intended to be inherited.</li>
+                </ul>
+
+                <h3>Virtual Destructor Example</h3>
+                <pre><code>class Base {
+            public:
+                virtual ~Base() {
+                cout << "Base destructor" << endl;
+                }
+            };
+
+            class Derived : public Base {
+            public:
+                ~Derived() {
+                cout << "Derived destructor" << endl;
+                }
+            };</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Virtual functions enable dynamic polymorphism in C++, allowing behavior to be determined at runtime, enhancing flexibility and reusability of code.</p>
+            

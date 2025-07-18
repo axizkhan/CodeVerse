@@ -1,0 +1,69 @@
+
+                <h2>Variables and Data Types in C++</h2>
+                <p>Variables in C++ are used to store data. Each variable must be declared with a specific <strong>data type</strong> that determines the size and layout of the variable's memory.</p>
+
+                <h3>Variable Declaration</h3>
+                <p>To declare a variable, you specify the type followed by the name:</p>
+                <pre><code>int age;
+            float price;
+            char grade;
+            </code></pre>
+
+                <h3>Initialization</h3>
+                <p>You can assign a value at the time of declaration:</p>
+                <pre><code>int age = 25;
+            float price = 19.99;
+            char grade = 'A';
+            </code></pre>
+
+                <h3>Common Data Types in C++</h3>
+                <table border="1" cellpadding="6" style="border-collapse: collapse;">
+                <thead>
+                    <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>int</code></td><td>Stores integers</td><td><code>int count = 10;</code></td></tr>
+                    <tr><td><code>float</code></td><td>Stores floating-point numbers (6-7 digits)</td><td><code>float pi = 3.14;</code></td></tr>
+                    <tr><td><code>double</code></td><td>Stores double-precision floating-point numbers</td><td><code>double gravity = 9.80665;</code></td></tr>
+                    <tr><td><code>char</code></td><td>Stores a single character</td><td><code>char letter = 'A';</code></td></tr>
+                    <tr><td><code>bool</code></td><td>Stores boolean values (true or false)</td><td><code>bool isOpen = true;</code></td></tr>
+                </tbody>
+                </table>
+
+                <h3>Rules for Naming Variables</h3>
+                <ul>
+                <li>Must begin with a letter (A–Z, a–z) or underscore (_)</li>
+                <li>Can contain letters, digits (0–9), and underscores</li>
+                <li>Case-sensitive (e.g., <code>value</code> and <code>Value</code> are different)</li>
+                <li>Cannot use C++ keywords (like <code>int</code>, <code>class</code>, etc.)</li>
+                </ul>
+
+                <h3>Type Modifiers</h3>
+                <ul>
+                <li><code>short</code>, <code>long</code>, <code>signed</code>, <code>unsigned</code></li>
+                <li>Example: <code>unsigned int u = 42;</code></li>
+                </ul>
+
+                <h3>Type Inference (C++11)</h3>
+                <p>C++11 introduced the <code>auto</code> keyword to automatically deduce the data type:</p>
+                <pre><code>auto x = 42;     // int
+            auto y = 3.14;   // double</code></pre>
+
+                <h3>Example Program</h3>
+                <pre><code>#include &lt;iostream&gt;
+            using namespace std;
+
+            int main() {
+                int age = 20;
+                float height = 5.9;
+                char grade = 'A';
+                bool passed = true;
+
+                cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+                cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+                cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+                cout &lt;&lt; "Passed: " &lt;&lt; passed &lt;&lt; endl;
+
+                return 0;
+            }</code></pre>
+            

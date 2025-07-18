@@ -1,0 +1,73 @@
+
+            <h2>Loops in C</h2>
+            <p>Loops are used to execute a block of code multiple times until a specified condition is met. C supports three types of loops:</p>
+            <ul>
+            <li><strong>for loop</strong></li>
+            <li><strong>while loop</strong></li>
+            <li><strong>do...while loop</strong></li>
+            </ul>
+
+            <h3>1. for Loop</h3>
+            <p>The <code>for</code> loop is used when the number of iterations is known in advance.</p>
+            <pre><code>for (initialization; condition; increment) {
+        // code to be executed
+        }</code></pre>
+
+            <h4>Example:</h4>
+            <pre><code>for (int i = 1; i <= 5; i++) {
+        printf("%d\\n", i);
+        }</code></pre>
+
+            <h3>2. while Loop</h3>
+            <p>The <code>while</code> loop is used when the number of iterations is not known in advance. The condition is checked before each iteration.</p>
+            <pre><code>while (condition) {
+        // code to be executed
+        }</code></pre>
+
+            <h4>Example:</h4>
+            <pre><code>int i = 1;
+        while (i <= 5) {
+        printf("%d\\n", i);
+        i++;
+        }</code></pre>
+
+            <h3>3. do...while Loop</h3>
+            <p>The <code>do...while</code> loop is similar to the <code>while</code> loop, but the condition is checked after the execution of the loop body. This ensures the loop runs at least once.</p>
+            <pre><code>do {
+        // code to be executed
+        } while (condition);</code></pre>
+
+            <h4>Example:</h4>
+            <pre><code>int i = 1;
+        do {
+        printf("%d\\n", i);
+        i++;
+        } while (i <= 5);</code></pre>
+
+            <h3>4. break and continue</h3>
+            <ul>
+            <li><code>break</code>: Terminates the loop immediately.</li>
+            <li><code>continue</code>: Skips the current iteration and moves to the next.</li>
+            </ul>
+
+            <h4>Example with break:</h4>
+            <pre><code>for (int i = 1; i <= 10; i++) {
+        if (i == 6) break;
+        printf("%d\\n", i);
+        }</code></pre>
+
+            <h4>Example with continue:</h4>
+            <pre><code>for (int i = 1; i <= 5; i++) {
+        if (i == 3) continue;
+        printf("%d\\n", i);
+        }</code></pre>
+
+            <h3>5. Summary</h3>
+            <ul>
+            <li><strong>for</strong> – use when number of repetitions is known</li>
+            <li><strong>while</strong> – use when the condition needs checking before loop</li>
+            <li><strong>do...while</strong> – use when the loop should execute at least once</li>
+            </ul>
+
+            <p><em>Loops are essential for writing efficient, DRY (Don't Repeat Yourself) code in C.</em></p>
+        

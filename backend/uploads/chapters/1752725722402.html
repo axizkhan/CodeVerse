@@ -1,0 +1,83 @@
+
+                <h2>Object-Oriented Programming in C++</h2>
+                <p>C++ supports Object-Oriented Programming (OOP), which helps in designing modular, reusable, and maintainable code.</p>
+
+                <h3>Key Concepts of OOP</h3>
+                <ul>
+                <li><strong>Class:</strong> Blueprint for creating objects.</li>
+                <li><strong>Object:</strong> Instance of a class.</li>
+                <li><strong>Encapsulation:</strong> Binding data and functions together.</li>
+                <li><strong>Abstraction:</strong> Hiding internal details and showing only essential features.</li>
+                <li><strong>Inheritance:</strong> One class can inherit properties from another.</li>
+                <li><strong>Polymorphism:</strong> One interface, many implementations.</li>
+                </ul>
+
+                <h3>Creating a Class</h3>
+                <pre><code>class Student {
+            public:
+                string name;
+                int age;
+
+                void display() {
+                cout << "Name: " << name << ", Age: " << age << endl;
+                }
+            };</code></pre>
+
+                <h3>Creating an Object</h3>
+                <pre><code>int main() {
+            Student s1;
+            s1.name = "Alice";
+            s1.age = 20;
+            s1.display();
+            return 0;
+            }</code></pre>
+
+                <h3>Access Modifiers</h3>
+                <ul>
+                <li><code>public</code> – accessible everywhere</li>
+                <li><code>private</code> – accessible only within the class</li>
+                <li><code>protected</code> – accessible in the class and derived classes</li>
+                </ul>
+
+                <h3>Constructor</h3>
+                <p>Special method automatically called when an object is created.</p>
+                <pre><code>class Student {
+            public:
+                Student() {
+                cout << "Constructor Called" << endl;
+                }
+            };</code></pre>
+
+                <h3>Destructor</h3>
+                <p>Special method called when object is destroyed.</p>
+                <pre><code>~Student() {
+            cout << "Destructor Called" << endl;
+            }</code></pre>
+
+                <h3>Inheritance Example</h3>
+                <pre><code>class Person {
+            public:
+                string name;
+            };
+
+            class Student : public Person {
+            public:
+                int roll;
+            };</code></pre>
+
+                <h3>Polymorphism Example</h3>
+                <p>Function Overloading and Overriding</p>
+                <pre><code>class Print {
+            public:
+                void show(int a) {
+                cout << "Integer: " << a << endl;
+                }
+
+                void show(string s) {
+                cout << "String: " << s << endl;
+                }
+            };</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>OOP in C++ allows for building large, modular, and reusable code using real-world modeling and abstraction.</p>
+            

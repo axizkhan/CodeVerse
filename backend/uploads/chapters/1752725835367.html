@@ -1,0 +1,69 @@
+
+                <h2>Encapsulation in C++</h2>
+                <p><strong>Encapsulation</strong> is an object-oriented programming (OOP) principle that binds data and the functions that operate on that data into a single unit, usually a class. It also restricts direct access to some components, which is a means of preventing accidental interference and misuse.</p>
+
+                <h3>Why Encapsulation?</h3>
+                <ul>
+                <li>To protect data from unauthorized access</li>
+                <li>To improve code modularity and readability</li>
+                <li>To provide a controlled interface to the users of the class</li>
+                </ul>
+
+                <h3>How is Encapsulation Achieved in C++?</h3>
+                <ul>
+                <li>By using <code>private</code> and <code>protected</code> access modifiers to restrict access to class members</li>
+                <li>Providing <code>public</code> getter and setter methods for accessing private data</li>
+                </ul>
+
+                <h3>Example:</h3>
+                <pre><code>class Student {
+            private:
+                int age;
+                string name;
+
+            public:
+                void setAge(int a) {
+                if (a > 0) age = a;
+                }
+
+                void setName(string n) {
+                name = n;
+                }
+
+                int getAge() {
+                return age;
+                }
+
+                string getName() {
+                return name;
+                }
+            };
+
+            int main() {
+            Student s;
+            s.setName("John");
+            s.setAge(20);
+
+            cout << "Name: " << s.getName() << endl;
+            cout << "Age: " << s.getAge() << endl;
+            return 0;
+            }</code></pre>
+
+                <h3>Explanation:</h3>
+                <ul>
+                <li><code>name</code> and <code>age</code> are private, so they cannot be accessed directly from outside the class.</li>
+                <li><code>setName()</code> and <code>setAge()</code> allow safe and validated data input.</li>
+                <li><code>getName()</code> and <code>getAge()</code> provide controlled data access.</li>
+                </ul>
+
+                <h3>Advantages of Encapsulation</h3>
+                <ul>
+                <li>Protects internal state of the object</li>
+                <li>Makes the class easier to maintain and modify</li>
+                <li>Enhances security by restricting data access</li>
+                <li>Improves modularity by separating internal details from interface</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>Encapsulation is vital for protecting object integrity and maintaining clean, organized, and secure code in C++. It allows for safe data manipulation and reduces system complexity.</p>
+            

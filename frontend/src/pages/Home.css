@@ -1,0 +1,91 @@
+/* src/pages/Home.css */
+
+/* NEON GLOWING BACKGROUND BLOB EFFECT */
+.neon-blobs::before,
+.neon-blobs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  transform: scale(1.4);
+  opacity: 0.3;
+  animation: pulse 6s infinite alternate ease-in-out;
+}
+
+.neon-blobs::before {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: #00ffff;
+}
+
+.neon-blobs::after {
+  top: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: #ff00ff;
+}
+
+/* PULSE ANIMATION */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0.4;
+  }
+}
+
+/* TEXT ANIMATIONS */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-slow {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.6s ease-out forwards; }
+.animate-fade-in-slow { animation: fade-in-slow 1.2s ease-out forwards; }
+.animate-fade-in-slow2 { animation: fade-in-slow 1.6s ease-out forwards; }
+
+/* NEON BUTTON */
+.neon-button {
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  background: transparent;
+  z-index: 10;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  transition: all 0.3s ease;
+  animation: shine 2s infinite linear;
+}
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.neon-button:hover {
+  background-color: #00ffff;
+  color: black;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+}

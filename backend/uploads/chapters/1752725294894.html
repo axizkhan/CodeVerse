@@ -1,0 +1,55 @@
+
+            <h2>File Handling in C</h2>
+            <p>File handling in C allows you to store output or read input from files rather than using the terminal. This is useful for saving data permanently.</p>
+
+            <h3>File Operations:</h3>
+            <ul>
+            <li><code>fopen()</code> – Open a file</li>
+            <li><code>fprintf(), fscanf()</code> – Write/read formatted data</li>
+            <li><code>fputc(), fgetc()</code> – Write/read characters</li>
+            <li><code>fclose()</code> – Close the file</li>
+            </ul>
+
+            <h3>File Modes in <code>fopen()</code>:</h3>
+            <ul>
+            <li><code>"r"</code> – Open for reading (file must exist)</li>
+            <li><code>"w"</code> – Create an empty file for writing</li>
+            <li><code>"a"</code> – Append to file</li>
+            <li><code>"r+"</code> – Read and write</li>
+            </ul>
+
+            <h3>Example: Write to a File</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+        int main() {
+        FILE *fptr = fopen("output.txt", "w");
+        if (fptr == NULL) {
+            printf("Error opening file!");
+            return 1;
+        }
+        fprintf(fptr, "Hello, File!\n");
+        fclose(fptr);
+        return 0;
+        }</code></pre>
+
+            <h3>Example: Read from a File</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+        int main() {
+        char str[100];
+        FILE *fptr = fopen("output.txt", "r");
+        if (fptr == NULL) {
+            printf("File not found!");
+            return 1;
+        }
+        while (fgets(str, 100, fptr) != NULL)
+            printf("%s", str);
+        fclose(fptr);
+        return 0;
+        }</code></pre>
+
+            <h3>Important Notes:</h3>
+            <ul>
+            <li>Always check if <code>fptr == NULL</code> after opening a file.</li>
+            <li>Don't forget to <code>fclose()</code> after file operations to avoid memory leaks.</li>
+            <li>Use relative or absolute paths correctly when working with files.</li>
+            </ul>
+        

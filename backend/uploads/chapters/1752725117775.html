@@ -1,0 +1,67 @@
+
+            <h2>If-Else Statements in C</h2>
+            <p>The <code>if</code> and <code>else</code> statements are used to perform conditional execution of code blocks based on a condition.</p>
+
+            <h3>1. Basic Syntax of <code>if</code></h3>
+            <pre><code>if (condition) {
+        // code to execute if condition is true
+        }</code></pre>
+
+            <h3>Example:</h3>
+            <pre><code>int x = 10;
+        if (x > 5) {
+        printf("x is greater than 5");
+        }</code></pre>
+
+            <h3>2. <code>if-else</code> Statement</h3>
+            <p>Use <code>else</code> to run a block when the condition is false.</p>
+            <pre><code>int x = 3;
+        if (x > 5) {
+        printf("x is greater than 5");
+        } else {
+        printf("x is 5 or less");
+        }</code></pre>
+
+            <h3>3. <code>if-else if-else</code> Ladder</h3>
+            <p>Allows you to test multiple conditions.</p>
+            <pre><code>int x = 0;
+        if (x > 0) {
+        printf("Positive");
+        } else if (x < 0) {
+        printf("Negative");
+        } else {
+        printf("Zero");
+        }</code></pre>
+
+            <h3>4. Nested <code>if</code> Statements</h3>
+            <p>Place one <code>if</code> inside another:</p>
+            <pre><code>int x = 20;
+        if (x > 10) {
+        if (x < 30) {
+            printf("x is between 10 and 30");
+        }
+        }</code></pre>
+
+            <h3>5. Tips:</h3>
+            <ul>
+            <li>Conditions must return a value of 0 (false) or non-zero (true).</li>
+            <li>Curly braces <code>{ }</code> are optional for single-line blocks, but always recommended.</li>
+            <li>Be careful with <code>=</code> (assignment) vs <code>==</code> (comparison).</li>
+            </ul>
+
+            <h3>6. Real-World Example</h3>
+            <p>Check if a number is even or odd:</p>
+            <pre><code>#include &lt;stdio.h&gt;
+
+        int main() {
+        int num = 7;
+        if (num % 2 == 0) {
+            printf("Even");
+        } else {
+            printf("Odd");
+        }
+        return 0;
+        }</code></pre>
+
+            <p><em>Use <code>if-else</code> to add logic and decision-making power to your programs.</em></p>
+        

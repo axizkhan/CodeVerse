@@ -1,0 +1,66 @@
+.show-users-container {
+  padding: 30px;
+  background-color: #0d0d0d;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.show-users-container h2 {
+  margin-bottom: 20px;
+  color: cyan;
+}
+
+.user-search-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.users-table th, .users-table td {
+  border: 1px solid #333;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.users-table th {
+  background-color: #222;
+  color: cyan;
+}
+
+.users-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+.action-btn {
+  background-color: #00ffc3;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+.action-btn.danger {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.action-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}

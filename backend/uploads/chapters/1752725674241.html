@@ -1,0 +1,72 @@
+
+                <h2>Functions in C++</h2>
+                <p>A function is a block of code that performs a specific task. Functions help in modularizing code and avoiding repetition.</p>
+
+                <h3>Types of Functions</h3>
+                <ul>
+                <li><strong>Library Functions</strong> – Provided by C++ standard libraries (e.g., <code>sqrt()</code>, <code>pow()</code>)</li>
+                <li><strong>User-defined Functions</strong> – Created by the programmer</li>
+                </ul>
+
+                <h3>Function Syntax</h3>
+                <pre><code>returnType functionName(parameters) {
+            // body of function
+            }</code></pre>
+
+                <h3>Example: Function Without Parameters</h3>
+                <pre><code>void greet() {
+            cout &lt;&lt; "Hello from a function!" &lt;&lt; endl;
+            }</code></pre>
+
+                <h3>Example: Function With Parameters</h3>
+                <pre><code>int add(int a, int b) {
+            return a + b;
+            }</code></pre>
+
+                <h3>Calling a Function</h3>
+                <pre><code>int result = add(5, 3);</code></pre>
+
+                <h3>Function Prototypes</h3>
+                <p>Function declaration before main is called a prototype. Useful when defining function after main.</p>
+                <pre><code>int add(int, int); // prototype
+
+            int main() {
+            int sum = add(10, 20);
+            cout &lt;&lt; "Sum: " &lt;&lt; sum;
+            }
+
+            int add(int x, int y) {
+            return x + y;
+            }</code></pre>
+
+                <h3>Inline Functions</h3>
+                <p>Used to reduce function call overhead.</p>
+                <pre><code>inline int square(int x) {
+            return x * x;
+            }</code></pre>
+
+                <h3>Default Arguments</h3>
+                <p>You can provide default values to parameters.</p>
+                <pre><code>int power(int base, int exp = 2) {
+            int result = 1;
+            for (int i = 0; i &lt; exp; i++)
+                result *= base;
+            return result;
+            }</code></pre>
+
+                <h3>Function Overloading</h3>
+                <p>Same function name with different parameters.</p>
+                <pre><code>int multiply(int a, int b) {
+            return a * b;
+            }
+            float multiply(float a, float b) {
+            return a * b;
+            }</code></pre>
+
+                <h3>Benefits of Functions</h3>
+                <ul>
+                <li>Code reuse</li>
+                <li>Improved readability</li>
+                <li>Easier testing and debugging</li>
+                </ul>
+            

@@ -1,0 +1,59 @@
+
+                <h2>Control Statements in C++</h2>
+                <p>Control statements in C++ manage the flow of execution in a program. They allow the code to make decisions, repeat blocks, or jump between sections.</p>
+
+                <h3>1. <code>if</code> Statement</h3>
+                <p>Used to execute a block of code only if a specific condition is true.</p>
+                <pre><code>int age = 20;
+            if (age &gt;= 18) {
+            cout &lt;&lt; "You are eligible to vote.";
+            }</code></pre>
+
+                <h3>2. <code>if-else</code> Statement</h3>
+                <p>Provides an alternate block of code if the condition is false.</p>
+                <pre><code>int num = 10;
+            if (num % 2 == 0) {
+            cout &lt;&lt; "Even number";
+            } else {
+            cout &lt;&lt; "Odd number";
+            }</code></pre>
+
+                <h3>3. <code>else-if</code> Ladder</h3>
+                <p>Checks multiple conditions sequentially.</p>
+                <pre><code>int marks = 85;
+            if (marks &gt;= 90) {
+            cout &lt;&lt; "Grade A";
+            } else if (marks &gt;= 75) {
+            cout &lt;&lt; "Grade B";
+            } else {
+            cout &lt;&lt; "Grade C";
+            }</code></pre>
+
+                <h3>4. <code>switch</code> Statement</h3>
+                <p>The switch statement tests a variable against multiple values (cases).</p>
+                <pre><code>int day = 3;
+            switch (day) {
+            case 1:
+                cout &lt;&lt; "Monday";
+                break;
+            case 2:
+                cout &lt;&lt; "Tuesday";
+                break;
+            case 3:
+                cout &lt;&lt; "Wednesday";
+                break;
+            default:
+                cout &lt;&lt; "Invalid day";
+            }</code></pre>
+
+                <p><strong>Note:</strong> Always use <code>break</code> to prevent fall-through unless intentionally required.</p>
+
+                <h3>5. <code>Nested if</code></h3>
+                <p>You can place one if-else inside another.</p>
+                <pre><code>int a = 5, b = 10;
+            if (a &lt; b) {
+            if (a &gt; 0) {
+                cout &lt;&lt; "a is positive and less than b";
+            }
+            }</code></pre>
+            

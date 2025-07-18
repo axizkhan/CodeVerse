@@ -1,0 +1,126 @@
+.tutorial-container {
+  padding: 40px;
+  background: #1e1e1e;
+  min-height: 100vh;
+  color: white;
+}
+
+.tutorial-search {
+  padding: 10px;
+  width: 400px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid cyan;
+  outline: none;
+}
+
+.tutorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+.tutorial-table th,
+.tutorial-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: left;
+}
+
+.tutorial-table th {
+  background-color: #222;
+  color: cyan;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.btn {
+  padding: 6px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: cyan;
+  color: black;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.chapters-btn {
+  background-color: #8e44ad;
+  color: white;
+}
+
+.edit-form-container {
+  background: #2c2c2c;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid cyan;
+  max-width: 500px;
+  margin: auto;
+}
+
+.edit-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid cyan;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.save-btn {
+  background: cyan;
+  color: black;
+}
+
+.cancel-btn {
+  background: #555;
+  color: white;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: cyan;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #00e6e6;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}

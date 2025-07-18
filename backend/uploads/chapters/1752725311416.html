@@ -1,0 +1,45 @@
+
+            <h2>String Handling in C</h2>
+            <p>In C, a string is a 1D array of characters terminated by a null character <code>'\\0'</code>.</p>
+
+            <h3>Declaring Strings</h3>
+            <pre><code>char str1[] = "Hello";
+        char str2[10] = "World";</code></pre>
+
+            <h3>Common String Functions (from <code>&lt;string.h&gt;</code>):</h3>
+            <ul>
+            <li><code>strlen(str)</code> – Length of string</li>
+            <li><code>strcpy(dest, src)</code> – Copy string</li>
+            <li><code>strcat(dest, src)</code> – Concatenate strings</li>
+            <li><code>strcmp(s1, s2)</code> – Compare strings</li>
+            </ul>
+
+            <h3>Example: Using String Functions</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+        #include &lt;string.h&gt;
+
+        int main() {
+        char str1[20] = "Hello";
+        char str2[] = "World";
+
+        strcat(str1, str2);   // str1 becomes "HelloWorld"
+        printf("Concatenated: %s\\n", str1);
+        printf("Length: %lu\\n", strlen(str1));
+        return 0;
+        }</code></pre>
+
+            <h3>Reading Strings</h3>
+            <pre><code>char name[50];
+        printf("Enter name: ");
+        scanf("%s", name);</code></pre>
+
+            <p>Note: <code>scanf()</code> with <code>%s</code> reads only one word. Use <code>fgets()</code> to read full lines:</p>
+            <pre><code>fgets(name, sizeof(name), stdin);</code></pre>
+
+            <h3>Important Notes:</h3>
+            <ul>
+            <li>Always use <code>\\0</code> to mark end of strings.</li>
+            <li><code>string.h</code> must be included for using string functions.</li>
+            <li>Ensure your destination array is large enough when using <code>strcpy</code> or <code>strcat</code>.</li>
+            </ul>
+        

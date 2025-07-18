@@ -1,0 +1,89 @@
+
+    <h2>Data Types in C</h2>
+    <p>In C, a data type defines the type of data a variable can hold. It determines the size and layout of the variable's memory, the range of values it can store, and the operations that can be performed on it.</p>
+
+    <h3>1. Basic Data Types</h3>
+    <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+      <thead>
+        <tr style="background-color: #1a1a1a; color: cyan;">
+          <th>Data Type</th>
+          <th>Size</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>int</code></td>
+          <td>4 bytes</td>
+          <td>Stores integers</td>
+          <td><code>int x = 10;</code></td>
+        </tr>
+        <tr>
+          <td><code>float</code></td>
+          <td>4 bytes</td>
+          <td>Stores decimal numbers</td>
+          <td><code>float pi = 3.14;</code></td>
+        </tr>
+        <tr>
+          <td><code>double</code></td>
+          <td>8 bytes</td>
+          <td>Stores large/precise decimal numbers</td>
+          <td><code>double g = 9.81;</code></td>
+        </tr>
+        <tr>
+          <td><code>char</code></td>
+          <td>1 byte</td>
+          <td>Stores a single character</td>
+          <td><code>char ch = 'A';</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. Derived Data Types</h3>
+    <ul>
+      <li><strong>Array:</strong> Collection of similar data types <br><code>int marks[5];</code></li>
+      <li><strong>Pointer:</strong> Stores address of another variable <br><code>int *ptr;</code></li>
+      <li><strong>Structure:</strong> Combines different types <br><code>struct student { int id; char name[20]; };</code></li>
+      <li><strong>Union:</strong> Shares memory among members</li>
+      <li><strong>Enumeration (enum):</strong> Named integer constants</li>
+    </ul>
+
+    <h3>3. Type Modifiers</h3>
+    <p>These modifiers change the size and range of basic types:</p>
+    <ul>
+      <li><code>short</code> — e.g., <code>short int s;</code></li>
+      <li><code>long</code> — e.g., <code>long int l;</code></li>
+      <li><code>signed</code> and <code>unsigned</code> — e.g., <code>unsigned int u;</code></li>
+    </ul>
+
+    <h3>4. Rules for Declaring Variables</h3>
+    <ul>
+      <li>Variable name must begin with a letter (A–Z, a–z) or underscore (_)</li>
+      <li>Variable name can contain letters, digits (0–9), and underscore</li>
+      <li>Keywords like <code>int</code>, <code>float</code> cannot be used as variable names</li>
+      <li>Declaration syntax: <code>datatype variableName = value;</code></li>
+    </ul>
+
+    <h3>5. Example</h3>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+  int age = 25;
+  float weight = 65.5;
+  char grade = 'A';
+  
+  printf("Age: %d\\n", age);
+  printf("Weight: %.2f\\n", weight);
+  printf("Grade: %c\\n", grade);
+
+  return 0;
+}</code></pre>
+
+    <h3>6. Summary</h3>
+    <ul>
+      <li><strong>Choose the right data type</strong> based on value type and size.</li>
+      <li>Use <code>sizeof()</code> to find memory used by a variable.</li>
+      <li>Declare variables before using them.</li>
+    </ul>
+  

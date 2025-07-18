@@ -1,0 +1,63 @@
+
+            <h2>Recursion in C</h2>
+            <p><strong>Recursion</strong> is a programming technique where a function calls itself directly or indirectly to solve a problem.</p>
+
+            <h3>Why Use Recursion?</h3>
+            <ul>
+            <li>Breaks complex problems into simpler subproblems</li>
+            <li>Useful in algorithms like factorial, Fibonacci, searching, sorting, etc.</li>
+            <li>Makes code cleaner for tree/graph traversal</li>
+            </ul>
+
+            <h3>Basic Structure:</h3>
+            <pre><code>void recurse() {
+        // base condition
+        // recursive call
+        }</code></pre>
+
+            <h3>Key Concept: Base Case</h3>
+            <p>Every recursive function must have a <strong>base case</strong> to stop the recursion and prevent infinite calls.</p>
+
+            <h3>Example 1: Factorial of a Number</h3>
+            <pre><code>int factorial(int n) {
+        if (n == 0)
+            return 1;
+        else
+            return n * factorial(n - 1);
+        }</code></pre>
+
+            <h4>Calling:</h4>
+            <pre><code>int result = factorial(5);  // returns 120</code></pre>
+
+            <h3>Example 2: Fibonacci Series</h3>
+            <pre><code>int fibonacci(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+        }</code></pre>
+
+            <h3>Visualizing Recursion:</h3>
+            <p>Each function call goes on the stack until the base condition is reached, then the stack unwinds.</p>
+
+            <h3>Advantages:</h3>
+            <ul>
+            <li>Simplifies code for problems like tree traversal, backtracking</li>
+            <li>Reduces complexity in some cases</li>
+            </ul>
+
+            <h3>Disadvantages:</h3>
+            <ul>
+            <li>Can lead to stack overflow if base case is missing</li>
+            <li>Less efficient for problems with overlapping subproblems (e.g., naive Fibonacci)</li>
+            <li>More memory usage due to call stack</li>
+            </ul>
+
+            <h3>Tips:</h3>
+            <ul>
+            <li>Always define a base condition</li>
+            <li>Use recursion where iteration is less intuitive</li>
+            <li>Tail recursion (where recursive call is last) can be optimized by compilers</li>
+            </ul>
+
+            <p><em>Recursion is a fundamental concept in C and many other languages. Mastering it opens doors to elegant and powerful solutions to complex problems.</em></p>
+        

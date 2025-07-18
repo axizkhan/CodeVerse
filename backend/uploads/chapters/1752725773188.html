@@ -1,0 +1,84 @@
+
+                <h2>Constructor and Destructor in C++</h2>
+                <p>Constructors and destructors are special member functions in C++ used to initialize and clean up objects respectively.</p>
+
+                <h3>Constructor</h3>
+                <p>A constructor is a special method that is automatically called when an object is created.</p>
+                <ul>
+                <li>Has the same name as the class</li>
+                <li>Does not have a return type</li>
+                <li>Can be overloaded</li>
+                </ul>
+
+                <h4>Types of Constructors</h4>
+                <ul>
+                <li><strong>Default Constructor:</strong> No parameters</li>
+                <li><strong>Parameterized Constructor:</strong> Takes parameters</li>
+                <li><strong>Copy Constructor:</strong> Copies another object</li>
+                </ul>
+
+                <h4>Default Constructor Example</h4>
+                <pre><code>class Demo {
+            public:
+                Demo() {
+                cout << "Default Constructor called!" << endl;
+                }
+            };</code></pre>
+
+                <h4>Parameterized Constructor Example</h4>
+                <pre><code>class Demo {
+            int x;
+            public:
+                Demo(int val) {
+                x = val;
+                cout << "Value: " << x << endl;
+                }
+            };</code></pre>
+
+                <h4>Copy Constructor Example</h4>
+                <pre><code>class Demo {
+            int x;
+            public:
+                Demo(int val) { x = val; }
+                Demo(const Demo &obj) {
+                x = obj.x;
+                }
+            };</code></pre>
+
+                <h3>Destructor</h3>
+                <p>A destructor is a special method that is automatically called when the object goes out of scope or is deleted.</p>
+                <ul>
+                <li>Same name as class but prefixed with a tilde <code>~</code></li>
+                <li>Used to free resources</li>
+                <li>Cannot be overloaded</li>
+                </ul>
+
+                <h4>Destructor Example</h4>
+                <pre><code>class Demo {
+            public:
+                ~Demo() {
+                cout << "Destructor called!" << endl;
+                }
+            };</code></pre>
+
+                <h3>Full Example</h3>
+                <pre><code>class Test {
+            int a;
+            public:
+                Test() {
+                a = 0;
+                cout << "Constructor Called" << endl;
+                }
+                ~Test() {
+                cout << "Destructor Called" << endl;
+                }
+            };
+
+            int main() {
+            Test obj;
+            return 0;
+            }</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Constructors are essential for initializing objects, and destructors are crucial for cleaning up. They automate object lifecycle management and improve code reliability.</p>
+            

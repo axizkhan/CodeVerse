@@ -1,0 +1,66 @@
+
+                <h2>File Handling in C++</h2>
+                <p>File handling allows a C++ program to create, read, write, and modify files. C++ provides a set of classes in the <code>&lt;fstream&gt;</code> header to handle file operations.</p>
+
+                <h3>File Streams</h3>
+                <ul>
+                <li><code>ifstream</code> - For reading from a file</li>
+                <li><code>ofstream</code> - For writing to a file</li>
+                <li><code>fstream</code> - For both reading and writing</li>
+                </ul>
+
+                <h3>Including the Header</h3>
+                <pre><code>#include &lt;fstream&gt;</code></pre>
+
+                <h3>Writing to a File</h3>
+                <pre><code>#include &lt;fstream&gt;
+            using namespace std;
+
+            int main() {
+            ofstream file("example.txt");
+            if (file.is_open()) {
+                file &lt;&lt; "Hello, C++ file handling!";
+                file.close();
+            }
+            return 0;
+            }</code></pre>
+
+                <h3>Reading from a File</h3>
+                <pre><code>#include &lt;iostream&gt;
+            #include &lt;fstream&gt;
+            #include &lt;string&gt;
+            using namespace std;
+
+            int main() {
+            ifstream file("example.txt");
+            string line;
+            if (file.is_open()) {
+                while (getline(file, line)) {
+                cout &lt;&lt; line &lt;&lt; endl;
+                }
+                file.close();
+            }
+            return 0;
+            }</code></pre>
+
+                <h3>Appending to a File</h3>
+                <pre><code>ofstream file("example.txt", ios::app); // Append mode
+            file &lt;&lt; "\\nThis will be appended!";</code></pre>
+
+                <h3>Common File Modes</h3>
+                <ul>
+                <li><code>ios::in</code> – Read</li>
+                <li><code>ios::out</code> – Write</li>
+                <li><code>ios::app</code> – Append</li>
+                <li><code>ios::trunc</code> – Truncate (delete contents)</li>
+                <li><code>ios::binary</code> – Binary mode</li>
+                </ul>
+
+                <h3>Error Checking</h3>
+                <pre><code>if (!file) {
+            cout &lt;&lt; "File could not be opened!" &lt;&lt; endl;
+            }</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>File handling in C++ enables programs to interact with external files, making them more dynamic and useful. It is a powerful feature for creating logs, storing data, and persistent storage in general.</p>
+            

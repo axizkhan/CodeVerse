@@ -1,0 +1,79 @@
+
+            <h2>Structures in C</h2>
+            <p><strong>Structure</strong> (or <code>struct</code>) in C is a user-defined data type that groups related variables of different data types under one name.</p>
+
+            <h3>Why Use Structures?</h3>
+            <ul>
+            <li>To represent real-world entities like students, employees, etc.</li>
+            <li>To group related information into a single unit</li>
+            <li>Makes large codebases more manageable and readable</li>
+            </ul>
+
+            <h3>Defining a Structure:</h3>
+            <pre><code>struct Student {
+        int id;
+        char name[50];
+        float marks;
+        };</code></pre>
+
+            <h3>Declaring Structure Variables:</h3>
+            <pre><code>struct Student s1, s2;</code></pre>
+
+            <h3>Accessing Structure Members:</h3>
+            <pre><code>s1.id = 101;
+        strcpy(s1.name, "John");
+        s1.marks = 92.5;
+
+        printf("ID: %d\\n", s1.id);
+        printf("Name: %s\\n", s1.name);
+        printf("Marks: %.2f\\n", s1.marks);</code></pre>
+
+            <h3>Using <code>typedef</code> for Simplicity:</h3>
+            <pre><code>typedef struct {
+        int id;
+        char name[50];
+        } Employee;
+
+        Employee e1;
+        e1.id = 201;</code></pre>
+
+            <h3>Array of Structures:</h3>
+            <pre><code>struct Student students[3];
+
+        for (int i = 0; i < 3; i++) {
+        students[i].id = i + 1;
+        strcpy(students[i].name, "Student");
+        students[i].marks = 85.0;
+        }</code></pre>
+
+            <h3>Structures within Structures (Nested Structures):</h3>
+            <pre><code>struct Date {
+        int day, month, year;
+        };
+
+        struct Employee {
+        int id;
+        char name[50];
+        struct Date joinDate;
+        };</code></pre>
+
+            <h3>Passing Structure to Function:</h3>
+            <pre><code>void printStudent(struct Student s) {
+        printf("ID: %d, Name: %s, Marks: %.2f", s.id, s.name, s.marks);
+        }</code></pre>
+
+            <h3>Advantages of Structures:</h3>
+            <ul>
+            <li>Groups related data together</li>
+            <li>Used to create more complex data models</li>
+            <li>Essential for linked lists, trees, and other data structures</li>
+            </ul>
+
+            <h3>Limitations:</h3>
+            <ul>
+            <li>No direct support for functions inside structures (unlike classes in C++)</li>
+            <li>No access modifiers like public or private</li>
+            </ul>
+
+            <p><em>Structures are foundational in C programming and form the basis for advanced topics like file handling, data structures, and even OOP in C++.</em></p>
+        

@@ -1,0 +1,73 @@
+
+            <h2>Arrays in C</h2>
+            <p>An <strong>array</strong> is a collection of elements of the same data type stored in contiguous memory locations. Arrays make it easier to manage large sets of related data.</p>
+
+            <h3>Why Use Arrays?</h3>
+            <ul>
+            <li>Store multiple values in a single variable</li>
+            <li>Efficient memory usage</li>
+            <li>Useful for loops and repetitive tasks</li>
+            </ul>
+
+            <h3>Types of Arrays:</h3>
+            <ul>
+            <li><strong>One-dimensional array</strong> – A list of elements</li>
+            <li><strong>Two-dimensional array</strong> – Table or matrix-like data</li>
+            <li><strong>Multidimensional arrays</strong> – 3D or more dimensions</li>
+            </ul>
+
+            <h3>Declaration Syntax:</h3>
+            <pre><code>data_type array_name[size];</code></pre>
+            <p><strong>Example:</strong></p>
+            <pre><code>int marks[5];</code></pre>
+
+            <h3>Initialization:</h3>
+            <pre><code>int marks[5] = {90, 85, 78, 92, 88};</code></pre>
+            <p>or initialize later:</p>
+            <pre><code>marks[0] = 90;
+        marks[1] = 85;
+        // ...</code></pre>
+
+            <h3>Accessing Array Elements:</h3>
+            <pre><code>printf("%d", marks[2]); // Prints 78</code></pre>
+
+            <h3>Traversing an Array:</h3>
+            <pre><code>for(int i = 0; i < 5; i++) {
+        printf("%d\\n", marks[i]);
+        }</code></pre>
+
+            <h3>Two-Dimensional Array:</h3>
+            <pre><code>int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+        };</code></pre>
+
+            <h3>Traversing 2D Arrays:</h3>
+            <pre><code>for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\\n");
+        }</code></pre>
+
+            <h3>Memory Layout:</h3>
+            <p>Elements are stored in contiguous blocks. For example:</p>
+            <pre><code>int arr[3] = {10, 20, 30};</code></pre>
+            <p>This takes space at address: 1000, 1004, 1008 (assuming int = 4 bytes)</p>
+
+            <h3>Important Notes:</h3>
+            <ul>
+            <li>Array index starts from <strong>0</strong>.</li>
+            <li>Accessing out-of-bound index results in <strong>undefined behavior</strong>.</li>
+            <li>Array size must be known at compile time unless using dynamic memory.</li>
+            </ul>
+
+            <h3>Limitations of Arrays:</h3>
+            <ul>
+            <li>Fixed size once declared</li>
+            <li>Cannot store different data types in one array</li>
+            <li>Insertion and deletion operations are costly compared to linked lists</li>
+            </ul>
+
+            <p><em>Arrays are foundational in C and used in almost every real-world program — from storing user input to handling complex datasets.</em></p>
+        

@@ -1,0 +1,70 @@
+
+                <h2>Exception Handling in C++</h2>
+                <p><strong>Exception Handling</strong> is a mechanism to handle runtime errors in a graceful and controlled way without crashing the program.</p>
+                <p>C++ provides built-in support for exception handling using three main keywords: <code>try</code>, <code>catch</code>, and <code>throw</code>.</p>
+
+                <h3>Basic Syntax</h3>
+                <pre><code>try {
+            // Code that might throw an exception
+            throw exception_type;
+            } catch (exception_type e) {
+            // Code to handle the exception
+            }</code></pre>
+
+                <h3>Example:</h3>
+                <pre><code>#include &lt;iostream&gt;
+            using namespace std;
+
+            int main() {
+            int x = 10, y = 0;
+            try {
+                if (y == 0)
+                throw "Division by zero error!";
+                cout << "Result: " << x / y << endl;
+            } catch (const char* msg) {
+                cout << "Exception caught: " << msg << endl;
+            }
+            return 0;
+            }</code></pre>
+
+                <h3>Output:</h3>
+                <pre><code>Exception caught: Division by zero error!</code></pre>
+
+                <h3>Multiple Catch Blocks</h3>
+                <p>You can have multiple <code>catch</code> blocks for different exception types:</p>
+                <pre><code>try {
+            throw 10;
+            } catch (int e) {
+            cout << "Integer exception: " << e << endl;
+            } catch (...) {
+            cout << "Generic exception caught." << endl;
+            }</code></pre>
+
+                <h3>Standard Exceptions</h3>
+                <p>C++ provides a standard library of exception classes under <code>&lt;stdexcept&gt;</code> like:</p>
+                <ul>
+                <li><code>std::overflow_error</code></li>
+                <li><code>std::underflow_error</code></li>
+                <li><code>std::runtime_error</code></li>
+                <li><code>std::invalid_argument</code></li>
+                </ul>
+
+                <h3>Example with <code>std::exception</code>:</h3>
+                <pre><code>#include &lt;stdexcept&gt;
+
+            try {
+            throw runtime_error("Something went wrong!");
+            } catch (exception& e) {
+            cout << "Caught exception: " << e.what() << endl;
+            }</code></pre>
+
+                <h3>Best Practices</h3>
+                <ul>
+                <li>Throw exceptions only for exceptional cases.</li>
+                <li>Use specific exception types instead of generic ones.</li>
+                <li>Don’t catch exceptions you can’t handle.</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>Exception handling is crucial for building robust C++ applications. It allows you to separate normal code from error-handling code and ensures a smooth user experience during runtime issues.</p>
+            

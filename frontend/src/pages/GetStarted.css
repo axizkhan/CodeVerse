@@ -1,0 +1,501 @@
+/* Background & Layout */
+.get-started-container {
+  background-color: #0D0D0D;
+  min-height: 140vh;
+  padding: 40px 20px;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Neon Glow Background */
+.neon-blobs::before,
+.neon-blobs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  transform: scale(1.4);
+  opacity: 0.3;
+  animation: pulse 6s infinite alternate ease-in-out;
+}
+
+.neon-blobs::before {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: #00ffff;
+}
+
+.neon-blobs::after {
+  top: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: #ff00ff;
+}
+
+/* Header */
+.gs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 50px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: cyan;
+}
+.logo span {
+  color: white;
+}
+
+.gs-header nav {
+  display: flex;
+  gap: 20px;
+}
+.gs-header nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 16px;
+}
+.gs-header nav a:hover {
+  color: white;
+}
+
+/* Hero Section */
+.gs-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.gs-hero h2 {
+  font-size: 48px;
+  color: cyan;
+}
+.gs-hero p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #aaa;
+}
+
+/* Plans Grid */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+}
+
+.plan-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  background-color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+.plan-card:hover {
+  transform: scale(1.05);
+}
+
+.border-cyan {
+  border-color: cyan;
+}
+.border-purple {
+  border-color: violet;
+}
+.border-pink {
+  border-color: hotpink;
+}
+
+.plan-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.plan-card .price {
+  font-size: 16px;
+  color: #ddd;
+}
+.plan-card .desc {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Footer */
+.gs-footer {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid #333;
+}
+.footer-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Neon Button Reused */
+.neon-button {
+  padding: 12px 20px;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  background: transparent;
+  position: relative;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: shine 2s infinite linear;
+}
+.neon-button:hover {
+  background-color: #00ffff;
+  color: black;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+}
+
+/* Variants */
+.neon-button.purple {
+  border-color: violet;
+  color: violet;
+}
+.neon-button.pink {
+  border-color: hotpink;
+  color: hotpink;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  100% { transform: scale(1.3); opacity: 0.4; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-slow {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+.animate-fade-in-slow {
+  animation: fade-in-slow 1.2s ease-out forwards;
+}
+.animate-fade-in-slow2 {
+  animation: fade-in-slow 1.6s ease-out forwards;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+.neon-button::before {
+  animation: shine 2s infinite linear;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .gs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gs-header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+} 
+
+/* Force 3 cards in one row on larger screens */
+.plans-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Footer Contact Form */
+.footer-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: cyan;
+}
+.footer-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10px;
+}
+.footer-form input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  color: white;
+  outline: none;
+}
+.footer-form input:focus {
+  border-color: cyan;
+}
+.email-send-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+/* Small Button */
+.neon-button.small {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+/* Dialog Overlay */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.dialog-box {
+  background-color: #111;
+  padding: 30px 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid cyan;
+  box-shadow: 0 0 20px cyan;
+}
+.dialog-box p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #eee;
+}
+.plan-card {
+  /* border: 2px solid white; */
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05); /* Transparent glass effect */
+  backdrop-filter: blur(4px); /* Optional: adds glassmorphism blur */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card:hover {
+  transform: scale(1.06);
+}
+
+/* Glow on hover by border color */
+.border-cyan:hover {
+  box-shadow: 0 0 15px cyan, 0 0 30px cyan;
+}
+.border-purple:hover {
+  box-shadow: 0 0 15px violet, 0 0 30px violet;
+}
+.border-pink:hover {
+  box-shadow: 0 0 15px hotpink, 0 0 30px hotpink;
+}
+.neon-blobs::before,
+.neon-blobs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px); /* increased from 80px */
+  transform: scale(1.6); /* slightly bigger */
+  opacity: 0.5; /* stronger glow */
+  animation: pulse 6s infinite alternate ease-in-out;
+  box-shadow: 0 0 80px #00ffff, 0 0 120px #00ffff; /* stronger glow */
+}
+
+.neon-blobs::before {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: #00ffff;
+}
+
+.neon-blobs::after {
+  top: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: #ff00ff;
+  box-shadow: 0 0 80px #ff00ff, 0 0 120px #ff00ff; /* optional: separate color shadow */
+}
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0.6;
+  }
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* align at top */
+  padding-top: 80px; /* space from top */
+  z-index: 999;
+}
+
+.dialog-box {
+  width: 90%;
+  max-width: 500px; /* increased width */
+  background-color: #111;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid cyan;
+  box-shadow: 0 0 25px cyan;
+  animation: fadeInDialog 0.3s ease-out;
+}
+
+.dialog-box p {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #eee;
+}
+
+@keyframes fadeInDialog {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  .dialog-box button {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #00ffff;
+    background: transparent;
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dialog-box button:hover {
+    background-color: #00ffff;
+    color: black;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+  }
+
+/* Responsive Styles */
+@media (max-width: 768px) { 
+  .get-started-container {
+    padding: 20px;
+  }
+  .gs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gs-header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+  .plan-card {
+    padding: 15px;
+  }
+  .checkout-title {
+    font-size: 28px;
+  }
+} 
+
+@media(max-width:1024px) {
+  .dialog-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  .dialog-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .dialog-box button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  .dialog-overlay {
+    padding-top: 60px; /* adjust for smaller screens */
+  } 
+  .plan-card {
+    padding: 15px;
+    font-size: 14px;
+  }
+  .plan-card h3 {
+    font-size: 20px;
+  }
+  .plan-card .price {
+    font-size: 14px;
+  }
+  .plan-card .desc {
+    font-size: 12px;
+  }
+  .footer-title {
+    font-size: 18px;
+  }
+  .get-started-container {
+    padding: 20px;
+  }
+  .gs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gs-header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plan-card {
+    padding: 15px;
+  }
+  .checkout-title {
+    font-size: 28px;
+  }
+}
+
+.error-msg {
+  color: #ff4081;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}

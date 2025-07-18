@@ -1,0 +1,96 @@
+
+            <h2>Switch Case in C</h2>
+            <p>The <code>switch</code> statement allows a variable to be tested for equality against multiple values (called <code>case</code>s). It's a cleaner alternative to writing many <code>if...else</code> statements.</p>
+
+            <h3>Syntax:</h3>
+            <pre><code>switch (expression) {
+        case value1:
+            // code block
+            break;
+        case value2:
+            // code block
+            break;
+        ...
+        default:
+            // default code block
+        }</code></pre>
+
+            <h3>Key Components:</h3>
+            <ul>
+            <li><code>expression</code> should be an integer or character.</li>
+            <li><code>case</code> is followed by a constant value.</li>
+            <li><code>break</code> exits the switch block. Without it, execution will "fall through" to the next case.</li>
+            <li><code>default</code> is optional. It runs if no case matches.</li>
+            </ul>
+
+            <h3>Example 1: Weekday Name</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+        int main() {
+        int day = 3;
+
+        switch (day) {
+            case 1:
+            printf("Monday");
+            break;
+            case 2:
+            printf("Tuesday");
+            break;
+            case 3:
+            printf("Wednesday");
+            break;
+            case 4:
+            printf("Thursday");
+            break;
+            case 5:
+            printf("Friday");
+            break;
+            default:
+            printf("Weekend");
+        }
+
+        return 0;
+        }</code></pre>
+
+            <h3>Example 2: Calculator</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+        int main() {
+        char operator = '+';
+        int a = 5, b = 3;
+
+        switch (operator) {
+            case '+':
+            printf("%d", a + b);
+            break;
+            case '-':
+            printf("%d", a - b);
+            break;
+            case '*':
+            printf("%d", a * b);
+            break;
+            case '/':
+            printf("%d", a / b);
+            break;
+            default:
+            printf("Invalid operator");
+        }
+
+        return 0;
+        }</code></pre>
+
+            <h3>Important Notes:</h3>
+            <ul>
+            <li><strong>Only integer and char types</strong> are allowed in switch expressions.</li>
+            <li><strong>Break is important</strong> to avoid executing multiple cases unintentionally.</li>
+            <li><strong>Default is optional</strong> but recommended for error handling or unmatched cases.</li>
+            </ul>
+
+            <h3>When to Use:</h3>
+            <ul>
+            <li>When checking a variable against many constant values</li>
+            <li>To improve readability over long <code>if...else if</code> chains</li>
+            </ul>
+
+            <p><em>The switch case makes decision-making in C easier, cleaner, and more efficient.</em></p>
+        

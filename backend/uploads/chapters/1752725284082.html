@@ -1,0 +1,92 @@
+
+            <h2>Dynamic Memory Allocation in C</h2>
+            <p>In C, memory can be allocated at runtime using dynamic memory allocation. This is useful when the size of data structures (like arrays or structs) cannot be determined at compile-time.</p>
+
+            <h3>Why Use Dynamic Memory?</h3>
+            <ul>
+            <li>Efficient use of memory</li>
+            <li>Allocate memory only when needed</li>
+            <li>Helps with large and complex data structures (linked lists, trees, etc.)</li>
+            </ul>
+
+            <h3>Memory Allocation Functions (from <code>&lt;stdlib.h&gt;</code>):</h3>
+            <table border="1" cellpadding="6">
+            <thead>
+                <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td><code>malloc()</code></td>
+                <td>Allocates a block of memory</td>
+                </tr>
+                <tr>
+                <td><code>calloc()</code></td>
+                <td>Allocates memory and initializes to 0</td>
+                </tr>
+                <tr>
+                <td><code>realloc()</code></td>
+                <td>Reallocates memory block to a new size</td>
+                </tr>
+                <tr>
+                <td><code>free()</code></td>
+                <td>Frees previously allocated memory</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <h3>1. <code>malloc()</code> Example:</h3>
+            <pre><code>#include &lt;stdlib.h&gt;
+        int arr = (int) malloc(5 * sizeof(int));
+        if (arr == NULL) {
+        printf("Memory not allocated!");
+        }</code></pre>
+
+            <h3>2. <code>calloc()</code> Example:</h3>
+            <pre><code>int arr = (int) calloc(5, sizeof(int)); // All values initialized to 0</code></pre>
+
+            <h3>3. <code>realloc()</code> Example:</h3>
+            <pre><code>arr = (int*) realloc(arr, 10 * sizeof(int)); // Resize the array</code></pre>
+
+            <h3>4. <code>free()</code> Example:</h3>
+            <pre><code>free(arr); // Always free dynamically allocated memory</code></pre>
+
+            <h3>Important Notes:</h3>
+            <ul>
+            <li>Always check if memory allocation was successful (check for NULL).</li>
+            <li><strong>Free every allocated memory</strong> using <code>free()</code> to prevent memory leaks.</li>
+            <li>Dynamic memory is stored in the heap segment.</li>
+            </ul>
+
+            <h3>Visual Memory Segments in C:</h3>
+            <ul>
+            <li><strong>Code Segment</strong>: Program instructions</li>
+            <li><strong>Stack</strong>: Function call variables</li>
+            <li><strong>Heap</strong>: Dynamically allocated memory (malloc/calloc)</li>
+            </ul>
+
+            <h3>Use Case:</h3>
+            <pre><code>// Read array size at runtime
+        int n;
+        printf("Enter number of elements: ");
+        scanf("%d", &n);
+
+        int arr = (int) malloc(n * sizeof(int));
+        if (arr == NULL) {
+        printf("Memory not allocated!");
+        } else {
+        for (int i = 0; i < n; i++) {
+            arr[i] = i + 1;
+        }
+
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
+
+        free(arr);
+        }</code></pre>
+
+            <p><em>Dynamic memory management is essential for efficient and flexible C programs, especially for data structures like linked lists, trees, and graphs.</em></p>
+        

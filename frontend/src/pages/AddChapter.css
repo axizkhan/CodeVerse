@@ -1,0 +1,184 @@
+/* Container */
+.add-chapter-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Neon Background Glow */
+.add-chapter-container::before,
+.add-chapter-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  transform: scale(1.6);
+  opacity: 0.5;
+  animation: pulse 6s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+.add-chapter-container::before {
+  top: 20%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: #00ffff;
+  box-shadow: 0 0 80px #00ffff, 0 0 120px #00ffff;
+}
+
+.add-chapter-container::after {
+  top: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: #ff00ff;
+  box-shadow: 0 0 80px #ff00ff, 0 0 120px #ff00ff;
+}
+
+/* Form Styling */
+.add-chapter-form {
+  position: relative;
+  z-index: 1;
+  background-color: #121212;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Title */
+.form-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: cyan;
+  text-align: center;
+}
+
+/* Inputs */
+.form-input,
+.form-textarea,
+.form-file,
+select {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select option {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Button */
+.neon-button.submit-btn {
+  width: 100%;
+  margin-top: 10px;
+  background-color: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.neon-button.submit-btn:hover {
+  background-color: #00ffff;
+  color: black;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+}
+
+.neon-button.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Success/Error Message */
+.form-message {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.error-msg {
+  color: #ff4081;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0.6;
+  }
+}
+
+/* File Upload */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #00cccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .add-chapter-form {
+    padding: 20px;
+  }
+  .form-title {
+    font-size: 1.5rem;
+  }
+}

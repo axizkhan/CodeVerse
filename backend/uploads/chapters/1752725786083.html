@@ -1,0 +1,77 @@
+
+                <h2>Polymorphism in C++</h2>
+                <p>Polymorphism means "many forms". In C++, it allows the same interface to behave differently depending on the underlying object. It is one of the pillars of Object-Oriented Programming (OOP).</p>
+
+                <h3>Types of Polymorphism</h3>
+                <ul>
+                <li><strong>Compile-time Polymorphism</strong> (Static Binding)</li>
+                <li><strong>Run-time Polymorphism</strong> (Dynamic Binding)</li>
+                </ul>
+
+                <h3>1. Compile-Time Polymorphism</h3>
+                <p>Achieved through <strong>function overloading</strong> and <strong>operator overloading</strong>.</p>
+
+                <h4>Function Overloading Example</h4>
+                <pre><code>class Print {
+            public:
+                void show(int i) {
+                cout << "Integer: " << i << endl;
+                }
+                void show(double d) {
+                cout << "Double: " << d << endl;
+                }
+            };</code></pre>
+
+                <h4>Operator Overloading Example</h4>
+                <pre><code>class Complex {
+            int real, imag;
+            public:
+                Complex(int r, int i) : real(r), imag(i) {}
+                Complex operator + (const Complex& c) {
+                return Complex(real + c.real, imag + c.imag);
+                }
+            };</code></pre>
+
+                <h3>2. Run-Time Polymorphism</h3>
+                <p>Achieved using <strong>inheritance</strong> and <strong>virtual functions</strong>. A base class function is overridden in a derived class.</p>
+
+                <h4>Example</h4>
+                <pre><code>class Animal {
+            public:
+                virtual void sound() {
+                cout << "Animal makes sound" << endl;
+                }
+            };
+
+            class Dog : public Animal {
+            public:
+                void sound() override {
+                cout << "Dog barks" << endl;
+                }
+            };
+
+            int main() {
+            Animal* a;
+            Dog d;
+            a = &d;
+            a->sound();  // Output: Dog barks
+            return 0;
+            }</code></pre>
+
+                <h3>Virtual Functions</h3>
+                <ul>
+                <li>Declared using the <code>virtual</code> keyword in base class</li>
+                <li>Enable dynamic binding</li>
+                <li>Must be overridden in derived class</li>
+                </ul>
+
+                <h3>Pure Virtual Functions & Abstract Classes</h3>
+                <p>A class that contains a pure virtual function becomes an abstract class and cannot be instantiated directly.</p>
+                <pre><code>class Shape {
+            public:
+                virtual void draw() = 0;  // Pure virtual function
+            };</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Polymorphism makes C++ powerful for building flexible and extensible systems. It allows you to write generic code that works with different types of objects using a common interface.</p>
+            
