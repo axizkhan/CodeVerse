@@ -11,7 +11,7 @@ import AllTutorial from './pages/AllTutorial.jsx';
 import AllChapters from './pages/AllChapter.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
-import './admin.css';
+import './Admin.css';
 
 // Define allowed paths with dynamic segments
 const VALID_ADMIN_PATTERNS = [
