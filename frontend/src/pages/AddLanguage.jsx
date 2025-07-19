@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './AddLanguage.css';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AddLanguage = () => {
   const [form, setForm] = useState({
@@ -38,7 +39,7 @@ const AddLanguage = () => {
 
     try {
       setLoading(true);
-      await axios.post('http://localhost:8080/language', formData, {
+      await axios.post(`${backendUrl}/language`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const StatCards = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/dashboard-stats');
+        const res = await axios.get(`${backendUrl}/admin/dashboard-stats`);
         setStats(res.data);
       } catch (err) {
         console.error('Failed to fetch dashboard stats:', err);

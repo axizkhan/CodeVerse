@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const MembershipExpiryAlerts = () => {
   const [expiringUsers, setExpiringUsers] = useState([]);
@@ -8,7 +9,7 @@ const MembershipExpiryAlerts = () => {
   useEffect(() => {
     const fetchExpiring = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/membership-expiring');
+        const res = await axios.get(`${backendUrl}/admin/membership-expiring`);
         setExpiringUsers(res.data);
       } catch (err) {
         console.error(err);

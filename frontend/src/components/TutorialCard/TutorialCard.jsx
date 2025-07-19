@@ -43,9 +43,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TutorialCard = ({ name, description, trend, logo, onClick }) => {
-    console.log(name);
+    // console.log(name);
   return (
     <motion.div
       onClick={onClick}
@@ -58,7 +59,7 @@ const TutorialCard = ({ name, description, trend, logo, onClick }) => {
     >
       <div className="flex items-center mb-6">
         <img
-          src={`http://localhost:8080${logo}`} // Updated path
+          src={`${backendUrl}${logo}`} // Updated path
           alt={`${name} icon`}
           className="w-12 h-12 mr-4 object-contain bg-transparent rounded"
           style={{ backgroundColor: 'transparent' }}

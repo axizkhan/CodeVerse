@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from 'recharts';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const allMonths = [
   { month: 'Jan', orders: 0 },
   { month: 'Feb', orders: 0 },
@@ -30,7 +30,7 @@ const MonthlyOrdersChart = () => {
   useEffect(() => {
     const fetchMonthlyOrders = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/monthly-orders');
+        const res = await axios.get(`${backendUrl}/admin/monthly-orders`);
 
         const responseMap = {};
         res.data.forEach(entry => {
@@ -55,7 +55,7 @@ const MonthlyOrdersChart = () => {
 
   return (
     <div className="chart-card">
-      <h3>📦 Monthly Orders</h3>
+      <h3> Monthly Orders</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />

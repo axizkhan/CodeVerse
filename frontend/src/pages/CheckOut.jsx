@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CheckOut.css';
 import UserContext from '../UserContext'; // <-- import your UserContext
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function Checkout() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function Checkout() {
         return;
       }
 
-      const response = await axios.post('http://localhost:8080/order/add', {
+      const response = await axios.post(`${backendUrl}/order/add`, {
         userId,
         membershipId,
       });

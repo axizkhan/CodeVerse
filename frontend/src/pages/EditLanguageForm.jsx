@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AllTutorial.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
   const [form, setForm] = useState({
@@ -32,7 +33,7 @@ export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
         formData.append('oldLogo', initialData.logo); // for deletion
       }
 
-      await axios.put(`http://localhost:8080/language/${initialData._id}`, formData, {
+      await axios.put(`${backendUrl}/language/${initialData._id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -58,7 +59,7 @@ export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
         <label>Current Logo</label>
         <div>
           {initialData.logo && (
-            <img src={`http://localhost:8080${initialData.logo}`} alt="Current Logo" height="60" />
+            <img src={`${backendUrl}${initialData.logo}`} alt="Current Logo" height="60" />
           )}
         </div>
 

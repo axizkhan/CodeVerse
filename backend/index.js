@@ -14,7 +14,7 @@ const path = require('path');
 
 // MongoDB URL and Secret from .env
 const mongo_url = process.env.MONGO_URL;
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // Import models and routes
 const User = require("./models/User.js");
@@ -70,7 +70,7 @@ const sessionOption = {
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
     sameSite: "lax",
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
   },
 };
 

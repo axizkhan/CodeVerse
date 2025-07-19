@@ -104,7 +104,7 @@ import axios from 'axios';
 import './AllTutorial.css';
 import EditLanguageForm from './EditLanguageForm';
 import { useNavigate } from 'react-router-dom';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function AllTutorial() {
   const [languages, setLanguages] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -113,7 +113,7 @@ export default function AllTutorial() {
 
   const fetchLanguages = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/language/all');
+      const res = await axios.get(`${backendUrl}/language/all`);
       setLanguages(res.data);
     } catch (err) {
       console.error(err);
@@ -127,7 +127,7 @@ export default function AllTutorial() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure to delete this language?')) return;
     try {
-      await axios.delete(`http://localhost:8080/language/${id}`);
+      await axios.delete(`${backendUrl}/language/${id}`);
       fetchLanguages();
     } catch (err) {
       console.error(err);
@@ -176,7 +176,7 @@ export default function AllTutorial() {
                   <td>
                     {lang.logo ? (
                       <img
-                        src={`http://localhost:8080${lang.logo}`}
+                        src={`${backendUrl}${lang.logo}`}
                         alt="logo"
                         className="logo-img"
                         style={{ width: '40px', height: '40px', objectFit: 'contain' }}

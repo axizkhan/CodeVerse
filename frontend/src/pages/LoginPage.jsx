@@ -79,6 +79,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import axios from "axios";
 import UserContext from "../UserContext"; // import
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LoginPage = () => {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -93,7 +94,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/user/login", form, {
+      const res = await axios.post(`${backendUrl}/user/login`, form, {
         withCredentials: true,
       });
       setMessage(res.data.message);

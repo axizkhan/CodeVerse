@@ -3,7 +3,7 @@ import './GetStarted.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import membership from '../../../backend/models/Membership';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function GetStarted() {
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function GetStarted() {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/memberships/all');
+        const res = await axios.get(`${backendUrl}/memberships/all`);
         setPlans(res.data.data || []);
         console.log("Plans loaded:", res.data.data);
       } catch (err) {
@@ -53,7 +53,7 @@ export default function GetStarted() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:8080/api/contact', form);
+      await axios.post(`${backendUrl}/api/contact`, form);
       setShowDialog(true);
       setForm({ name: '', email: '', subject: 'Subscription Inquiry', message: '' });
       setErrorMsg('');

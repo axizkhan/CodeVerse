@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const checkUser = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/user/check", {
+      const res = await axios.get(`${backendUrl}/user/check`, {
         withCredentials: true,
       });
       setUser(res.data.user);

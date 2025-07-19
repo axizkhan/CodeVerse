@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const COLORS = ['#FFCE56', '#4BC0C0', '#9966FF', '#FF6384', '#36A2EB', '#FF9F40'];
 
@@ -10,7 +11,7 @@ const MembershipChart = () => {
   useEffect(() => {
     const fetchMembershipData = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/membership-popularity');
+        const res = await axios.get(`${backendUrl}/admin/membership-popularity`);
         // Transform data for recharts
         const formatted = res.data.map(item => ({
           name: item._id,

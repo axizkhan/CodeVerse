@@ -4,9 +4,14 @@ import TutorialCard from '../components/TutorialCard/TutorialCard.jsx';
 import LanguageContext from '../LanguageContext.jsx';
 import './Home.css';
 
+
+
 const Tutorials = () => {
   const { languages, loading } = useContext(LanguageContext);
   const navigate = useNavigate();
+  // languages.map(lang => {
+  //  console.log(lang.logo);
+  // });
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-white py-12 overflow-hidden">

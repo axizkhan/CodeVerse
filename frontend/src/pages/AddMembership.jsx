@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddMembership.css';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AddMembership = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const AddMembership = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/memberships/add', formData);
+      await axios.post(`${backendUrl}/memberships/add`, formData);
       alert('Membership added successfully!');
       setFormData({
         name: '',

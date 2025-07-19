@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AllChapter.css';
 import { useParams } from 'react-router-dom';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AllChapters = () => {
   const { id } = useParams(); // language id from URL
@@ -15,9 +16,9 @@ const AllChapters = () => {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/language/${id}/chapters`);
+        const res = await axios.get(`${backendUrl}/language/${id}/chapters`);
         setChapters(res.data);
-        const langRes = await axios.get(`http://localhost:8080/language`);
+        const langRes = await axios.get(`${backendUrl}/language`);
         const foundLang = langRes.data.find(lang => lang._id === id);
         setLanguageName(foundLang?.name || 'Unknown Language');
       } catch (err) {
@@ -46,7 +47,7 @@ const AllChapters = () => {
         formData.append('file', newFile);
       }
 
-      await axios.put(`http://localhost:8080/chapter/${editingChapter}`, formData);
+      await axios.put(`${backendUrl}/chapter/${editingChapter}`, formData);
       setEditingChapter(null);
       window.location.reload();
     } catch (err) {
@@ -57,7 +58,7 @@ const AllChapters = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this chapter?')) return;
     try {
-      await axios.delete(`http://localhost:8080/chapter/${id}`);
+      await axios.delete(`${backendUrl}/chapter/${id}`);
       setChapters(chapters.filter(ch => ch._id !== id));
     } catch (err) {
       console.error(err);

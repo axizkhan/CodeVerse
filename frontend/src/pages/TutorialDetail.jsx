@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import LanguageContext from '../LanguageContext.jsx';
 import './TutorialDetail.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TutorialDetail = () => {
   const { language, topic = 'introduction' } = useParams();
@@ -29,7 +30,7 @@ const TutorialDetail = () => {
         const content = currentChapter.content;
 
         if (content && content.startsWith('/uploads')) {
-          const res = await fetch(`http://localhost:8080${content}`);
+          const res = await fetch(`${backendUrl}${content}`);
           const html = await res.text();
           setHtmlContent(html);
         } else {

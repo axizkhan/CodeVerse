@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ShowOrder.css'; // Optional: for styling
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function ShowOrder() {
   const [orders, setOrders] = useState([]);
@@ -10,7 +11,7 @@ export default function ShowOrder() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/order/all');
+        const res = await axios.get(`${backendUrl}/order/all`);
         console.log('Fetched orders:', res.data.data);
         setOrders(res.data.data);
         setFilteredOrders(res.data.data);

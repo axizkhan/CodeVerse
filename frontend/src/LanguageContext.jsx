@@ -34,6 +34,7 @@
 
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageContext = createContext();
 
@@ -43,7 +44,7 @@ export const LanguageProvider = ({ children }) => {
 
   const fetchHtmlFromPath = async (path) => {
     try {
-      const res = await fetch(`http://localhost:8080${path}`);
+      const res = await fetch(`${backendUrl}${path}`);
       return await res.text();
     } catch (err) {
       console.error(`Failed to fetch content from ${path}`);
@@ -53,7 +54,7 @@ export const LanguageProvider = ({ children }) => {
 
   const fetchLanguages = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/language/all');
+      const res = await axios.get(`${backendUrl}/language/all`);
       const rawLanguages = res.data;
 
       // Resolve chapter HTML content

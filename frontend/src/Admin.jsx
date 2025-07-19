@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, Outlet, useLocation, matchPath } from 'react-router-dom';
 import AdminSidebar from './components/AdminSidebar/AdminSidebar';
 import AddLanguage from './pages/AddLanguage';
 import AddChapter from './pages/AddChapter';
@@ -10,12 +10,11 @@ import ShowAllMembership from './pages/ShowAllMembership.jsx';
 import AllTutorial from './pages/AllTutorial.jsx';
 import AllChapters from './pages/AllChapter.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'; 
-import UserContext from './UserContext.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import './admin.css';
 
-const VALID_ADMIN_PATHS = [
-  '/admin',
+// Define allowed paths with dynamic segments
+const VALID_ADMIN_PATTERNS = [
   '/admin/add-language',
   '/admin/add-chapter',
   '/admin/add-membership',
@@ -23,6 +22,7 @@ const VALID_ADMIN_PATHS = [
   '/admin/show-user',
   '/admin/show-all-membership',
   '/admin/all-tutorials',
+  '/admin/language/:id/chapters',
   '/admin/dashboard',
 ];
 
@@ -36,9 +36,9 @@ const AdminLayout = ({ open, setOpen }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Show sidebar only for known admin routes
-  const showSidebar = VALID_ADMIN_PATHS.some((path) =>
-    location.pathname.startsWith(path)
+  // Dynamically check if current path matches one of the valid patterns
+  const showSidebar = VALID_ADMIN_PATTERNS.some(pattern =>
+    matchPath(pattern, location.pathname)
   );
 
   return (
@@ -74,7 +74,7 @@ const Admin = () => {
         <Route path="language/:id/chapters" element={<PrivateRoute element={<AllChapters />} />} />
         <Route path="dashboard" element={<PrivateRoute element={<Dashboard />} />} />
 
-        {/* 404 fallback — no sidebar here */}
+        {/* ❌ No sidebar on this fallback route */}
         <Route path="*" element={<h2 className="error-msg">404 - Page Not Found</h2>} />
       </Route>
     </Routes>

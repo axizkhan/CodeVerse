@@ -91,6 +91,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./SignupPage.css";
 import axios from "axios";
 import UserContext from "../UserContext"; // ✅ import
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const SignupPage = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
@@ -105,7 +106,7 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/user/signup", form, {
+      const res = await axios.post(`${backendUrl}/user/signup`, form, {
         withCredentials: true,
       });
       setMessage(res.data.message);

@@ -7,6 +7,7 @@ import { Menu, X, User } from 'lucide-react';
 import UserContext from '../../UserContext'; // adjust path if needed
 import { AccountCircle } from '@mui/icons-material';
 import { Menu as MuiMenu, MenuItem, IconButton } from '@mui/material';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,7 @@ const NavBar = () => {
 
 const handleLogout = async () => {
   try {
-    await fetch('http://localhost:8080/user/logout', {
+    await fetch(`${backendUrl}/user/logout`, {
       method: 'GET', // or POST if you updated backend
       credentials: 'include',
     });

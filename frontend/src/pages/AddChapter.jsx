@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './AddChapter.css';
 import axios from 'axios';
 import AdminSidebar from '../components/AdminSidebar/AdminSidebar';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AddChapter = () => {
   const [languages, setLanguages] = useState([]);
@@ -18,7 +19,7 @@ const AddChapter = () => {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/language')
+    axios.get(`${backendUrl}/language`)
       .then(res => setLanguages(res.data))
       .catch(err => console.error("Failed to load languages", err));
   }, []);
@@ -59,7 +60,7 @@ const handleSubmit = async (e) => {
 
   setLoading(true);
   try {
-    await axios.post('http://localhost:8080/chapter', formData);
+    await axios.post(`${backendUrl}/chapter`, formData);
     setMessage("Chapter added successfully!");
 
     setForm({ name: '', title: '', content: '', languageId: '' });

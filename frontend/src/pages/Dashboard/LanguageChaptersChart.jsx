@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageChaptersChart = () => {
   const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ const LanguageChaptersChart = () => {
   useEffect(() => {
     const fetchChapterData = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/language-chapter-counts');
+        const res = await axios.get(`${backendUrl}/admin/language-chapter-counts`);
         setData(res.data);
       } catch (err) {
         console.error('Error fetching language chapter data:', err);

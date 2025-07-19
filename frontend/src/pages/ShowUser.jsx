@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ShowUser.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function ShowUser() {
   const [users, setUsers] = useState([]);
@@ -12,7 +13,7 @@ export default function ShowUser() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/user/all');
+        const res = await axios.get(`${backendUrl}/user/all`);
         setUsers(res.data);
         setFilteredUsers(res.data);
       } catch (err) {
@@ -35,7 +36,7 @@ export default function ShowUser() {
   const handleToggleRole = async (id, currentRole) => {
     const newRole = currentRole === 'user' ? 'admin' : 'user';
     try {
-      const res = await axios.put(`http://localhost:8080/user/role/${id}`, { role: newRole });
+      const res = await axios.put(`${backendUrl}/user/role/${id}`, { role: newRole });
       const updatedUser = res.data.user;
       const updatedList = users.map(user => (user._id === id ? updatedUser : user));
       setUsers(updatedList);
@@ -47,7 +48,7 @@ export default function ShowUser() {
 
   const handleBlacklist = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:8080/user/blacklist/${id}`);
+      const res = await axios.put(`${backendUrl}/user/blacklist/${id}`);
       const updatedUser = res.data.user;
       const updatedList = users.map(user => (user._id === id ? updatedUser : user));
       setUsers(updatedList);

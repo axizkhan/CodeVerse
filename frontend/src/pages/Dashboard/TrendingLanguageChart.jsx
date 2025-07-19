@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   CartesianGrid
 } from 'recharts';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TrendingLanguageChart = () => {
   const [data, setData] = useState([]);
@@ -16,7 +17,7 @@ const TrendingLanguageChart = () => {
   useEffect(() => {
     const fetchTrends = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/admin/language-trends');
+        const res = await axios.get(`${backendUrl}/admin/language-trends`);
         const formatted = res.data.map(lang => ({
           language: lang.name,
           trend: lang.trend,

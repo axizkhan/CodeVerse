@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MembershipForm from './MembershipForm';
 import './ShowAllMembership.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function ShowAllMembership() {
   const [memberships, setMemberships] = useState([]);
@@ -22,7 +23,7 @@ export default function ShowAllMembership() {
 
   const fetchMemberships = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/memberships/all');
+      const res = await axios.get(`${backendUrl}/memberships/all`);
       setMemberships(res.data.data || []);
     } catch (err) {
       console.error("Error fetching memberships:", err);
@@ -32,7 +33,7 @@ export default function ShowAllMembership() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this membership?")) return;
     try {
-      await axios.delete(`http://localhost:8080/memberships/delete/${id}`);
+      await axios.delete(`${backendUrl}/memberships/delete/${id}`);
       fetchMemberships();
     } catch (err) {
       console.error(err);
@@ -47,7 +48,7 @@ export default function ShowAllMembership() {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/memberships/update/${editing}`, editForm);
+      await axios.put(`${backendUrl}/memberships/update/${editing}`, editForm);
       setEditing(null);
       fetchMemberships();
     } catch (err) {
