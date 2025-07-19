@@ -11,7 +11,7 @@ import { Menu as MuiMenu, MenuItem, IconButton } from '@mui/material';
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const { user, setUser, loading } = useContext(UserContext);
+  const { user, setUser, loading, checkUser } = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
@@ -28,17 +28,21 @@ const NavBar = () => {
     handleMenuClose();
   };
 
-  const handleLogout = async () => {
-    try {
-      await fetch('http://localhost:8080/user/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
-      setUser(null);
-    } catch (err) {
-      console.error("Logout failed:", err);
-    }
-  };
+ // ✅ Include checkUser
+
+const handleLogout = async () => {
+  try {
+    await fetch('http://localhost:8080/user/logout', {
+      method: 'GET', // or POST if you updated backend
+      credentials: 'include',
+    });
+
+    await checkUser(); // ✅ Re-check session from backend
+  } catch (err) {
+    console.error("Logout failed:", err);
+  }
+};
+
 
   return (
     <nav className="w-full bg-[#0D0D0D] text-white shadow-md z-50 relative">

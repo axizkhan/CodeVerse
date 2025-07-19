@@ -3,18 +3,18 @@ import './About.css';
 
 const developers = [
   {
-    name: 'Sarah Doe',
-    role: 'Coding Wizard',
+    name: 'Taher Bohra',
+    role: 'Full Stack Developer',
     description:
-      "Sarah is a coding wizard whose spells somehow work... most of the time. When she's not busy debugging, she's performing interpretive dance to the sweet songs of compiler errors.",
-    img: 'https://randomuser.me/api/portraits/women/44.jpg',
+      "Taher is a passionate full stack web developer with a keen eye for detail and a love for clean, scalable code. From crafting elegant UIs to building powerful backend systems, he transforms ideas into impactful digital experiences. Always eager to learn, Taher blends logic with creativity to deliver excellence.",
+    img: '../public/taher.jpeg', // Replace with your real photo if you like
   },
   {
-    name: 'John Smith',
-    role: 'Code Master',
+    name: 'Aziz Bohra',
+    role: 'Full Stack Developer',
     description:
-      'John is a master of writing code that no one understands, not even himself. In his spare time, he enjoys long walks on the beach and laughing at his own bugs.',
-    img: 'https://randomuser.me/api/portraits/men/46.jpg',
+      "Aziz is a dynamic full stack developer who thrives on solving complex challenges with smart solutions. Whether it’s building intuitive frontend designs or architecting robust server-side logic, Aziz brings clarity, speed, and innovation to the table. His enthusiasm and dedication are the backbone of every successful build.",
+    img: '../public/aziz.jpeg', // Replace with your real photo if you like
   },
 ];
 
@@ -23,14 +23,13 @@ export default function About() {
     <div className="about-page">
       <div className="neon-bg"></div>
 
-    <div className="about-hero">
-  <h1>
-    <span className="text-cyan-400">Code</span>
-    <span className="text-white">Verse</span>
-  </h1>
-  <p>Developers that built this website</p>
-</div>
-
+      <div className="about-hero">
+        <h1>
+          <span className="text-cyan-400">Code</span>
+          <span className="text-white">Verse</span>
+        </h1>
+        <p>Meet the minds behind this website</p>
+      </div>
 
       <div className="dev-cards">
         {developers.map((dev, idx) => (

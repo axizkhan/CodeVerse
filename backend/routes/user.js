@@ -58,19 +58,17 @@ router.post("/login", (req, res, next) => {
 
 // LOGOUT Route
 router.get("/logout", wrapAsync(async (req, res) => {
-  if (!req.user) {
-    throw new ExpressError("No user is currently logged in.", 400);
+  if (req.user) {
+    // Update user status to "Active"
+    req.user.status = "Active";
+    await req.user.save();
   }
 
-  // Update status to "Active"
-  req.user.status = "Active";
-  await req.user.save();
-
-  // Proceed with logout
+  // Proceed with logout even if not logged in
   await new Promise((resolve, reject) => {
     req.logout((err) => {
       if (err) return reject(new ExpressError(err.message, 500));
-      req.session.destroy((err) => {
+      req.session?.destroy((err) => {
         if (err) return reject(new ExpressError(err.message, 500));
         res.clearCookie("connect.sid");
         res.json({ message: "Logged out successfully" });
@@ -79,6 +77,7 @@ router.get("/logout", wrapAsync(async (req, res) => {
     });
   });
 }));
+
 
 router.get("/check", (req, res, next) => {
   if (req.isAuthenticated()) {

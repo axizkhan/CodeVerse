@@ -70,6 +70,7 @@ const sessionOption = {
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
     sameSite: "lax",
+    secure: true,
   },
 };
 
