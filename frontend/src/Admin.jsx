@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
 import AdminSidebar from './components/AdminSidebar/AdminSidebar';
 import AddLanguage from './pages/AddLanguage';
 import AddChapter from './pages/AddChapter';
@@ -10,15 +10,25 @@ import ShowAllMembership from './pages/ShowAllMembership.jsx';
 import AllTutorial from './pages/AllTutorial.jsx';
 import AllChapters from './pages/AllChapter.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
-// import AllTutorials from './pages/AllTutorials';
-// import AllUsers from './pages/AllUsers';
-// import Membership from './pages/Membership';
-// import Dashboard from './pages/AdminDashboard';
-
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'; 
+import UserContext from './UserContext.jsx';
 import './admin.css';
+
+const VALID_ADMIN_PATHS = [
+  '/admin',
+  '/admin/add-language',
+  '/admin/add-chapter',
+  '/admin/add-membership',
+  '/admin/show-order',
+  '/admin/show-user',
+  '/admin/show-all-membership',
+  '/admin/all-tutorials',
+  '/admin/dashboard',
+];
 
 const AdminLayout = ({ open, setOpen }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -26,13 +36,18 @@ const AdminLayout = ({ open, setOpen }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Show sidebar only for known admin routes
+  const showSidebar = VALID_ADMIN_PATHS.some((path) =>
+    location.pathname.startsWith(path)
+  );
+
   return (
     <div className={`admin-container neon-blobs`}>
-      <AdminSidebar open={open} setOpen={setOpen} />
+      {showSidebar && <AdminSidebar open={open} setOpen={setOpen} />}
       <main
         className="admin-main"
         style={{
-          marginLeft: !isMobile && open ? '250px' : '0px',
+          marginLeft: !isMobile && open && showSidebar ? '250px' : '0px',
           transition: 'margin 0.3s ease',
         }}
       >
@@ -49,22 +64,17 @@ const Admin = () => {
     <Routes>
       <Route element={<AdminLayout open={open} setOpen={setOpen} />}>
         <Route index element={<Navigate to="add-language" replace />} />
-        <Route path="add-language" element={<AddLanguage />} />
-        <Route path="add-chapter" element={<AddChapter />} />
-        <Route path="add-membership" element={<AddMembership />} />
-        <Route path="show-order" element={<ShowOrder />} />
-        <Route path="show-user" element={<ShowUser />} />
-        <Route path="show-all-membership" element={<ShowAllMembership />} />
-        <Route path="all-tutorials" element={<AllTutorial />} />
-        <Route path="language/:id/chapters" element={<AllChapters />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="add-language" element={<PrivateRoute element={<AddLanguage />} />} />
+        <Route path="add-chapter" element={<PrivateRoute element={<AddChapter />} />} />
+        <Route path="add-membership" element={<PrivateRoute element={<AddMembership />} />} />
+        <Route path="show-order" element={<PrivateRoute element={<ShowOrder />} />} />
+        <Route path="show-user" element={<PrivateRoute element={<ShowUser />} />} />
+        <Route path="show-all-membership" element={<PrivateRoute element={<ShowAllMembership />} />} />
+        <Route path="all-tutorials" element={<PrivateRoute element={<AllTutorial />} />} />
+        <Route path="language/:id/chapters" element={<PrivateRoute element={<AllChapters />} />} />
+        <Route path="dashboard" element={<PrivateRoute element={<Dashboard />} />} />
 
-
-
-        {/* <Route path="all-tutorials" element={<AllTutorials />} />
-        <Route path="users" element={<AllUsers />} />
-        <Route path="membership" element={<Membership />} />
-        <Route path="dashboard" element={<Dashboard />} /> */}
+        {/* 404 fallback — no sidebar here */}
         <Route path="*" element={<h2 className="error-msg">404 - Page Not Found</h2>} />
       </Route>
     </Routes>
