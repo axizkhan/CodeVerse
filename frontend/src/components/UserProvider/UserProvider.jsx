@@ -11,6 +11,7 @@ const UserProvider = ({ children }) => {
     try {
       const res = await axios.get(`${backendUrl}/user/check`, {
         withCredentials: true,
+        credentials: "include",
       });
       setUser(res.data.user);
     } catch (err) {
