@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ShowOrder.css'; // Optional: for styling
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 export default function ShowOrder() {
   const [orders, setOrders] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL; // Adjust this based on your environment
 
   useEffect(() => {
     const fetchOrders = async () => {

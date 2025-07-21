@@ -1,32 +1,25 @@
-import React, { createContext, useState, useEffect } from 'react';
-export const UserContext = createContext(null);
+// UserProvider.jsx
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import UserContext from "../../UserContext";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
- const checkUser = async () => {
-  try {
-    const res = await fetch(`${backendUrl}/user/check`, {
-      credentials: 'include',
-    });
-    const data = await res.json();
-
-    if (res.ok) {
-      setUser(data.user || null);
-    } else {
+  const checkUser = async () => {
+    try {
+      const res = await axios.get(`${backendUrl}/user/check`, {
+        withCredentials: true,
+      });
+      setUser(res.data.user);
+    } catch (err) {
       setUser(null);
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error("checkUser failed:", err);
-    setUser(null);
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   useEffect(() => {
     checkUser();
@@ -38,3 +31,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export default UserProvider;

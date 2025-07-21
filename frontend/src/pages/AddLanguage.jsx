@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import './AddLanguage.css';
 import axios from 'axios';
 
-
 const AddLanguage = () => {
   const [form, setForm] = useState({
     name: '',

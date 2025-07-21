@@ -5,18 +5,19 @@ import { AccountCircle } from '@mui/icons-material';
 import { Menu as MuiMenu, MenuItem, IconButton } from '@mui/material';
 import UserContext from '../../UserContext'; // Adjust path if needed
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const { user, loading, checkUser } = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
+
+  const { user, loading, checkUser } = useContext(UserContext);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Auto-close mobile/account menu on route change
   useEffect(() => {
     setIsOpen(false);
     setAccountOpen(false);
@@ -43,7 +44,7 @@ const NavBar = () => {
         credentials: 'include',
       });
       await checkUser();
-      navigate('/login');
+      navigate('/login'); // Optional: redirect after logout
     } catch (err) {
       console.error('Logout failed:', err);
     }

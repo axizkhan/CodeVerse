@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CheckOut.css';
 import UserContext from '../UserContext'; // <-- import your UserContext
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export default function Checkout() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -11,6 +11,8 @@ export default function Checkout() {
   const { user } = useContext(UserContext); // <-- get user from context
 
   const [showDialog, setShowDialog] = React.useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   if (!state) {
     return (
       <div className="checkout-container">

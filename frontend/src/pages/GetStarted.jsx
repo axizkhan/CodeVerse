@@ -3,6 +3,7 @@ import './GetStarted.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import membership from '../../../backend/models/Membership';
+
 export default function GetStarted() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();

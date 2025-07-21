@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AllTutorial.css';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
   const [form, setForm] = useState({
@@ -9,7 +8,7 @@ export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
     description: initialData.description,
     trend: initialData.trend,
   });
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [newLogo, setNewLogo] = useState(null);
 
   const handleChange = (e) => {

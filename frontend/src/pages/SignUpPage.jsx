@@ -2,18 +2,13 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./SignupPage.css";
 import axios from "axios";
-import UserContext from "../UserContext"; // ✅ import
-
-
- const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-
+import UserContext from "../UserContext"; //  import
 const SignupPage = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { checkUser } = useContext(UserContext); // use context
- 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

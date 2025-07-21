@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TutorialCard = ({ name, description, trend, logo, onClick }) => {
-    // console.log(name);
+    console.log(name);
   return (
     <motion.div
       onClick={onClick}

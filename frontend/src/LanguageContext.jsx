@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageContext = createContext();
 

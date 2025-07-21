@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
-
 const languages = [
   { name: 'Python', neon: 'from-yellow-400 to-blue-400', path: '/tutorials/python' },
   { name: 'C', neon: 'from-yellow-300 to-yellow-500', path: '/tutorials/c' },

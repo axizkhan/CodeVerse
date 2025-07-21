@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './AddChapter.css';
 import axios from 'axios';
 import AdminSidebar from '../components/AdminSidebar/AdminSidebar';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AddChapter = () => {
   const [languages, setLanguages] = useState([]);

@@ -3,8 +3,6 @@ import axios from 'axios';
 import './AllChapter.css';
 import { useParams } from 'react-router-dom';
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
 const AllChapters = () => {
   const { id } = useParams(); // language ID from URL
   const [languageName, setLanguageName] = useState('');
@@ -14,6 +12,7 @@ const AllChapters = () => {
   const [updatedData, setUpdatedData] = useState({ name: '', title: '', content: '' });
   const [newFile, setNewFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // Fetch chapters and language name
   useEffect(() => {
