@@ -6,7 +6,7 @@ import {
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageChaptersChart = () => {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const [data, setData] = useState([]);
 
   useEffect(() => {

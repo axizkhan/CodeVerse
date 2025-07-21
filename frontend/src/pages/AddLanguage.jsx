@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './AddLanguage.css';
 import axios from 'axios';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 const AddLanguage = () => {
   const [form, setForm] = useState({

@@ -16,30 +16,26 @@ const AllChapters = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // Fetch chapters and language name
-  useEffect(() => {
-    const fetchChapters = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${backendUrl}/language/${id}/chapters`);
-        setChapters(res.data);
-<<<<<<< HEAD
-        const langRes = await axios.get(`${backendUrl}/language`);
-        const foundLang = langRes.data.find(lang => lang._id === id);
-=======
+ useEffect(() => {
+  const fetchChapters = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${backendUrl}/language/${id}/chapters`);
+      setChapters(res.data);
 
-        const langRes = await axios.get(`${backendUrl}/language`);
-        const foundLang = langRes.data.find((lang) => lang._id === id);
->>>>>>> 56632f2 (final commit expected)
-        setLanguageName(foundLang?.name || 'Unknown Language');
-      } catch (err) {
-        console.error('Error fetching chapters:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+      const langRes = await axios.get(`${backendUrl}/language`);
+      const foundLang = langRes.data.find((lang) => lang._id === id);
+      setLanguageName(foundLang?.name || 'Unknown Language');
+    } catch (err) {
+      console.error('Error fetching chapters:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchChapters();
-  }, [id]);
+  fetchChapters();
+}, [id]);
+
 
   // Edit handler
   const handleEdit = (chapter) => {

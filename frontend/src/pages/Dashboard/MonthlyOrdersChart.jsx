@@ -18,7 +18,7 @@ const allMonths = [
   { month: 'Nov', orders: 0 },
   { month: 'Dec', orders: 0 },
 ];
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 const monthMap = {
   1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun',

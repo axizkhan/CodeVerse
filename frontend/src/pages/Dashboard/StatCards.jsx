@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const StatCards = () => {
   const [stats, setStats] = useState(null);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;

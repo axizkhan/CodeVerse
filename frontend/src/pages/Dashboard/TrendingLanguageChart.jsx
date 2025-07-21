@@ -13,7 +13,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TrendingLanguageChart = () => {
   const [data, setData] = useState([]);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
   useEffect(() => {
     const fetchTrends = async () => {

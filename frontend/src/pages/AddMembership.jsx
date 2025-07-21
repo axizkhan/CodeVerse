@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './AddMembership.css';
 import axios from 'axios';
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AddMembership = () => {
   const [formData, setFormData] = useState({
