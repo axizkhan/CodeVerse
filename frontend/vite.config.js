@@ -5,10 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
-<<<<<<< HEAD
-=======
+
   
->>>>>>> 56632f2 (final commit expected)
+
   plugins: [react(),
   tailwindcss(),
   
