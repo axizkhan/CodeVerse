@@ -2,13 +2,12 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./SignupPage.css";
 import axios from "axios";
-<<<<<<< HEAD
 import UserContext from "../UserContext"; // ✅ import
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-=======
-import UserContext from "../UserContext"; //  import
->>>>>>> 56632f2 (final commit expected)
+
+
+
 const SignupPage = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [message, setMessage] = useState("");
