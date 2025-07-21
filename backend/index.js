@@ -16,13 +16,10 @@ const app = express();
 // ✅ Environment variables
 const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT || 8080;
-<<<<<<< HEAD
-=======
 const secret = process.env.SECRET_KEY;
 const frontendUrl = process.env.FRONTEND_URL;
->>>>>>> 56632f2 (final commit expected)
 
-//  Validate required .env variables
+// Validate required .env variables
 if (!mongo_url || !port || !secret || !frontendUrl) {
   console.error("❌ Missing required environment variables in .env");
   process.exit(1);
@@ -34,13 +31,13 @@ async function main() {
 }
 main()
   .then(() => {
-    console.log(" Connected to MongoDB");
+    console.log("✅ Connected to MongoDB");
     app.listen(port, () => {
-      console.log(` Server is running on port ${port}`);
+      console.log(`🚀 Server is running on port ${port}`);
     });
   })
   .catch((err) => {
-    console.error(" MongoDB connection failed:", err);
+    console.error("❌ MongoDB connection failed:", err);
   });
 
 // Session Store
@@ -64,44 +61,17 @@ const sessionOption = {
     expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
-<<<<<<< HEAD
-     sameSite: 'none',
-    secure: process.env.NODE_ENV === "production",
+    sameSite: 'lax',
+    secure: isProduction,
   },
 };
-
-// Simple test route
-app.get("/hii", (req, res) => {
-  res.send("welcome");
-  console.log("request come");
-});
-
-// Serve uploads with CORS
-app.use('/uploads', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', [process.env.FRONTEND_URL, 'http://localhost:5173']);
-  res.header('Access-Control-Allow-Methods', 'GET');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-}, express.static(path.join(__dirname, 'uploads')));
 
 // Middleware
-=======
-    sameSite: 'lax',
-    secure: isProduction, // only true when in production (HTTPS)
-  },
-};
-
-//  Middleware
->>>>>>> 56632f2 (final commit expected)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-<<<<<<< HEAD
-  origin: [process.env.FRONTEND_URL, 'http://localhost:5173'],
-=======
-  origin: frontendUrl,
->>>>>>> 56632f2 (final commit expected)
+  origin: [frontendUrl, 'http://localhost:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
@@ -111,26 +81,26 @@ app.use(session(sessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//  Passport Configuration
+// Passport Configuration
 const User = require("./models/User");
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//  Serve Static Uploads with CORS
+// Serve uploads with CORS
 app.use('/uploads', cors({
-  origin: frontendUrl,
-  credentials: true
+  origin: [frontendUrl, 'http://localhost:5173'],
+  credentials: true,
 }), express.static(path.join(__dirname, 'uploads')));
 
-//  Routes
+// Routes
 app.get("/", (req, res) => {
-  res.send(" Welcome to CodeVerse API");
+  res.send("🌐 Welcome to CodeVerse API");
 });
 
 app.get("/hii", (req, res) => {
-  res.send(" Hello! Server is running");
-  console.log(" /hii route was hit");
+  res.send("👋 Hello! Server is running");
+  console.log("GET /hii");
 });
 
 app.use("/user", require("./routes/user"));
