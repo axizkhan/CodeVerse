@@ -3,16 +3,16 @@ import axios from 'axios';
 import './AllTutorial.css';
 import EditLanguageForm from './EditLanguageForm';
 import { useNavigate } from 'react-router-dom';
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export default function AllTutorial() {
   const [languages, setLanguages] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [editingLang, setEditingLang] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-  // Fetch all languages
   const fetchLanguages = async () => {
     setLoading(true);
     try {
@@ -29,7 +29,6 @@ export default function AllTutorial() {
     fetchLanguages();
   }, []);
 
-  // Delete a language with confirmation
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this language?')) return;
     try {
@@ -40,7 +39,6 @@ export default function AllTutorial() {
     }
   };
 
-  // Filtered list based on search
   const filtered = languages.filter((lang) =>
     lang.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -51,7 +49,6 @@ export default function AllTutorial() {
 
       {!editingLang && (
         <>
-          {/* Search Input */}
           <input
             type="text"
             placeholder="Search by language name..."
@@ -66,59 +63,6 @@ export default function AllTutorial() {
             }}
           />
 
-<<<<<<< HEAD
-          <table className="tutorial-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Logo</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Trend</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((lang) => (
-                <tr key={lang._id}>
-                  <td>{lang._id}</td>
-                  <td>
-                    {lang.logo ? (
-                      <img
-                        src={`${backendUrl}${lang.logo}`}
-                        alt="logo"
-                        className="logo-img"
-                        style={{ width: '40px', height: '40px', objectFit: 'contain' }}
-                      />
-                    ) : (
-                      <span style={{ color: 'gray' }}>No Logo</span>
-                    )}
-                  </td>
-                  <td>{lang.name}</td>
-                  <td>{lang.description}</td>
-                  <td>{lang.trend}</td>
-                  <td>
-                    <button
-                      onClick={() => setEditingLang(lang)}
-                      className="btn edit-btn"
-                    >
-                      Update
-                    </button>
-                    <button
-                      onClick={() => handleDelete(lang._id)}
-                      className="btn delete-btn"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      onClick={() => navigate(`/admin/language/${lang._id}/chapters`)}
-                      className="btn chapters-btn"
-                    >
-                      Chapters
-                    </button>
-                  </td>
-=======
-          {/* Loading State */}
           {loading ? (
             <p style={{ textAlign: 'center', color: 'cyan', marginTop: '1rem' }}>
               Loading tutorials...
@@ -137,7 +81,6 @@ export default function AllTutorial() {
                   <th>Description</th>
                   <th>Trend</th>
                   <th>Actions</th>
->>>>>>> 56632f2 (final commit expected)
                 </tr>
               </thead>
               <tbody>
@@ -150,11 +93,7 @@ export default function AllTutorial() {
                           src={`${backendUrl}${lang.logo}`}
                           alt="logo"
                           className="logo-img"
-                          style={{
-                            width: '40px',
-                            height: '40px',
-                            objectFit: 'contain'
-                          }}
+                          style={{ width: '40px', height: '40px', objectFit: 'contain' }}
                         />
                       ) : (
                         <span style={{ color: 'gray' }}>No Logo</span>
@@ -164,22 +103,14 @@ export default function AllTutorial() {
                     <td>{lang.description}</td>
                     <td>{lang.trend}</td>
                     <td>
-                      <button
-                        onClick={() => setEditingLang(lang)}
-                        className="btn edit-btn"
-                      >
+                      <button onClick={() => setEditingLang(lang)} className="btn edit-btn">
                         Update
                       </button>
-                      <button
-                        onClick={() => handleDelete(lang._id)}
-                        className="btn delete-btn"
-                      >
+                      <button onClick={() => handleDelete(lang._id)} className="btn delete-btn">
                         Delete
                       </button>
                       <button
-                        onClick={() =>
-                          navigate(`/admin/language/${lang._id}/chapters`)
-                        }
+                        onClick={() => navigate(`/admin/language/${lang._id}/chapters`)}
                         className="btn chapters-btn"
                       >
                         Chapters
@@ -193,7 +124,6 @@ export default function AllTutorial() {
         </>
       )}
 
-      {/* Edit Mode */}
       {editingLang && (
         <EditLanguageForm
           initialData={editingLang}
