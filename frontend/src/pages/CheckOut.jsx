@@ -11,8 +11,6 @@ export default function Checkout() {
   const { user } = useContext(UserContext); // <-- get user from context
 
   const [showDialog, setShowDialog] = React.useState(false);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
   if (!state) {
     return (
       <div className="checkout-container">
