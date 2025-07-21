@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./SignupPage.css";
 import axios from "axios";
 import UserContext from "../UserContext"; // ✅ import
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 
 
