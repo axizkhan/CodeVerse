@@ -2,20 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import LanguageContext from '../LanguageContext.jsx';
 import './TutorialDetail.css';
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TutorialDetail = () => {
   const { language, topic = 'introduction' } = useParams();
   const { languages, loading } = useContext(LanguageContext);
   const [htmlContent, setHtmlContent] = useState('<p>Loading content...</p>');
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // Scroll to top when topic changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [topic]);
 
-  // Find current language and topic
   const currentLang = languages.find(
     (lang) => lang.name.toLowerCase() === language.toLowerCase()
   );
@@ -35,11 +34,7 @@ const TutorialDetail = () => {
       try {
         const content = currentChapter.content;
 
-<<<<<<< HEAD
-        if (content && content.startsWith('/uploads')) {
-=======
         if (typeof content === 'string' && content.startsWith('/uploads')) {
->>>>>>> 56632f2 (final commit expected)
           const res = await fetch(`${backendUrl}${content}`);
           const html = await res.text();
           setHtmlContent(html);
@@ -53,15 +48,12 @@ const TutorialDetail = () => {
     };
 
     loadHtml();
-  }, [currentChapter, backendUrl]);
+  }, [currentChapter]);
 
-  // Loading state
   if (loading) return <p className="text-center text-cyan-400">Loading...</p>;
 
-  // Language not found, redirect
   if (!currentLang) return <Navigate to="/tutorials" />;
 
-  // No chapters available
   if (chapters.length === 0) {
     return (
       <div className="tutorial-detail-container">
@@ -80,7 +72,6 @@ const TutorialDetail = () => {
     );
   }
 
-  // Invalid topic — redirect to first valid chapter
   if (topicIndex === -1) {
     return <Navigate to={`/tutorials/${language}/${chapters[0]?.name}`} />;
   }
