@@ -5,7 +5,7 @@ import axios from "axios";
 import UserContext from "../UserContext"; // ✅ import
 
 
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 const SignupPage = () => {
@@ -13,7 +13,7 @@ const SignupPage = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { checkUser } = useContext(UserContext); // use context
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+ 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

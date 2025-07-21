@@ -10,7 +10,7 @@ export default function ShowUser() {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
   useEffect(() => {
     const fetchUsers = async () => {

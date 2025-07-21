@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AllChapter.css';
 import { useParams } from 'react-router-dom';
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AllChapters = () => {
@@ -13,29 +14,27 @@ const AllChapters = () => {
   const [updatedData, setUpdatedData] = useState({ name: '', title: '', content: '' });
   const [newFile, setNewFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // Fetch chapters and language name
- useEffect(() => {
-  const fetchChapters = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${backendUrl}/language/${id}/chapters`);
-      setChapters(res.data);
+  useEffect(() => {
+    const fetchChapters = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(`${backendUrl}/language/${id}/chapters`);
+        setChapters(res.data);
 
-      const langRes = await axios.get(`${backendUrl}/language`);
-      const foundLang = langRes.data.find((lang) => lang._id === id);
-      setLanguageName(foundLang?.name || 'Unknown Language');
-    } catch (err) {
-      console.error('Error fetching chapters:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+        const langRes = await axios.get(`${backendUrl}/language`);
+        const foundLang = langRes.data.find((lang) => lang._id === id);
+        setLanguageName(foundLang?.name || 'Unknown Language');
+      } catch (err) {
+        console.error('Error fetching chapters:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchChapters();
-}, [id]);
-
+    fetchChapters();
+  }, [id]);
 
   // Edit handler
   const handleEdit = (chapter) => {
@@ -68,13 +67,8 @@ const AllChapters = () => {
   const handleDelete = async (chapterId) => {
     if (!window.confirm('Are you sure you want to delete this chapter?')) return;
     try {
-<<<<<<< HEAD
-      await axios.delete(`${backendUrl}/chapter/${id}`);
-      setChapters(chapters.filter(ch => ch._id !== id));
-=======
       await axios.delete(`${backendUrl}/chapter/${chapterId}`);
       setChapters((prev) => prev.filter((ch) => ch._id !== chapterId));
->>>>>>> 56632f2 (final commit expected)
     } catch (err) {
       console.error('Delete failed:', err);
     }
