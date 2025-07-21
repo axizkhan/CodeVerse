@@ -83,7 +83,7 @@ router.get("/check", (req, res, next) => {
   if (req.isAuthenticated()) {
     res.json({ user: req.user });
   } else {
-    next(new ExpressError("Not authenticated", 401));
+    next(new ExpressError("Not Found", 404));
   }
 });
 

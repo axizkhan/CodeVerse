@@ -4,7 +4,7 @@ import MonthlyOrdersChart from './MonthlyOrdersChart';
 import LanguageChaptersChart from './LanguageChaptersChart';
 import TrendingLanguageChart from './TrendingLanguageChart';
 import MembershipChart from './MembershipChart';
-import MembershipExpiryAlerts from './MembershipExpiryAlerts';
+// import MembershipExpiryAlerts from './MembershipExpiryAlerts';
 import QuickActions from './QuickActions';
 // import './chartSetup'
 import './Dashboard.css';

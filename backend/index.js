@@ -2,73 +2,69 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
-const MongoStore = require("connect-mongo");
-
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const MongoStore = require('connect-mongo');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const cors = require('cors');
 const path = require('path');
 
-// MongoDB URL and Secret from .env
+// Express App
+const app = express();
+
+// ✅ Environment variables
 const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT || 8080;
+<<<<<<< HEAD
+=======
+const secret = process.env.SECRET_KEY;
+const frontendUrl = process.env.FRONTEND_URL;
+>>>>>>> 56632f2 (final commit expected)
 
-// Import models and routes
-const User = require("./models/User.js");
-const userRoute = require("./routes/user.js");
-const contactRoute = require("./routes/contact");
-const languageRoute = require('./routes/language.js');
-const chapterRoute = require('./routes/chapter.js');
-const membershipRoutes = require('./routes/membership');
-const uploadRoute = require("./routes/upload.js");
-const orderRoute = require("./routes/order.js");
-const dashboardRoute = require("./routes/dashboard.js");
-const errorHandler = require('./utils/errorHandler');
+//  Validate required .env variables
+if (!mongo_url || !port || !secret || !frontendUrl) {
+  console.error("❌ Missing required environment variables in .env");
+  process.exit(1);
+}
 
-// Connect to MongoDB
-main()
-  .then(() => {
-    console.log("✅ Connected to MongoDB");
-    app.listen(port, () => {
-      console.log(`🚀 Server is running on port ${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err);
-  });
-
+// MongoDB Connection
 async function main() {
   await mongoose.connect(mongo_url);
 }
+main()
+  .then(() => {
+    console.log(" Connected to MongoDB");
+    app.listen(port, () => {
+      console.log(` Server is running on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error(" MongoDB connection failed:", err);
+  });
 
-// Session store
+// Session Store
 const store = MongoStore.create({
   mongoUrl: mongo_url,
-  crypto: {
-    secret: process.env.SECRET_KEY,
-  },
+  crypto: { secret },
   collectionName: "sessions",
-  touchAfter: 24 * 60 * 60, // 24 hours
+  touchAfter: 24 * 60 * 60,
   ttl: 10 * 24 * 60 * 60, // 10 days
 });
+store.on("error", (e) => console.error("❌ Session store error:", e));
 
-store.on("error", function (e) {
-  console.error("Session store error:", e);
-});
+const isProduction = process.env.NODE_ENV === 'production';
 
-// Session options
 const sessionOption = {
   store,
-  secret: process.env.SECRET_KEY,
+  secret,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
+<<<<<<< HEAD
      sameSite: 'none',
     secure: process.env.NODE_ENV === "production",
   },
@@ -89,34 +85,63 @@ app.use('/uploads', (req, res, next) => {
 }, express.static(path.join(__dirname, 'uploads')));
 
 // Middleware
+=======
+    sameSite: 'lax',
+    secure: isProduction, // only true when in production (HTTPS)
+  },
+};
+
+//  Middleware
+>>>>>>> 56632f2 (final commit expected)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
+<<<<<<< HEAD
   origin: [process.env.FRONTEND_URL, 'http://localhost:5173'],
+=======
+  origin: frontendUrl,
+>>>>>>> 56632f2 (final commit expected)
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
 
 app.use(session(sessionOption));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
+//  Passport Configuration
+const User = require("./models/User");
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Routes
-app.use("/user", userRoute);
-app.use("/api", contactRoute);
-app.use("/upload", uploadRoute);
-app.use('/language', languageRoute);
-app.use('/chapter', chapterRoute);
-app.use('/memberships', membershipRoutes);
-app.use('/order', orderRoute);
-app.use('/admin', dashboardRoute);
+//  Serve Static Uploads with CORS
+app.use('/uploads', cors({
+  origin: frontendUrl,
+  credentials: true
+}), express.static(path.join(__dirname, 'uploads')));
 
-// Global error handler
+//  Routes
+app.get("/", (req, res) => {
+  res.send(" Welcome to CodeVerse API");
+});
+
+app.get("/hii", (req, res) => {
+  res.send(" Hello! Server is running");
+  console.log(" /hii route was hit");
+});
+
+app.use("/user", require("./routes/user"));
+app.use("/api", require("./routes/contact"));
+app.use("/upload", require("./routes/upload"));
+app.use("/language", require("./routes/language"));
+app.use("/chapter", require("./routes/chapter"));
+app.use("/memberships", require("./routes/membership"));
+app.use("/order", require("./routes/order"));
+app.use("/admin", require("./routes/dashboard"));
+
+// Global Error Handler
+const errorHandler = require('./utils/errorHandler');
 app.use(errorHandler);

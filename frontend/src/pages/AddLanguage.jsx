@@ -12,6 +12,7 @@ const AddLanguage = () => {
   const [logo, setLogo] = useState(null);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fileInputRef = useRef(null);
 
@@ -66,7 +67,7 @@ const AddLanguage = () => {
   };
 
   return (
-    <div className="add-language-container neon-blobs">
+    <div className="add-language-container ">
       <form className="add-language-form" onSubmit={handleSubmit}>
         <h2 className="form-title">Add New Language</h2>
 

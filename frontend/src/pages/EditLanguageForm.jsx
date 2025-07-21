@@ -9,7 +9,7 @@ export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
     description: initialData.description,
     trend: initialData.trend,
   });
-  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [newLogo, setNewLogo] = useState(null);
 
   const handleChange = (e) => {

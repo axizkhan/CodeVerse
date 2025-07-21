@@ -70,7 +70,7 @@
   z-index: 1;
   min-height: 100vh;
   transition: margin 0.3s ease;
-  background: linear-gradient(135deg, #0a0a0a, #1a003d);
+  background: linear-gradient(135deg, #0a0a0a);
 }
 
 /* Error Message */

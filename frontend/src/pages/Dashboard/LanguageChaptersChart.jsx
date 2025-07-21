@@ -6,6 +6,7 @@ import {
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageChaptersChart = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -28,10 +29,10 @@ const LanguageChaptersChart = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="name"
-            interval={0} // ✅ Show all labels
-            angle={-45} // ✅ Rotate labels for spacing
+            interval={0} //  Show all labels
+            angle={-45} // Rotate labels for spacing
             textAnchor="end"
-            height={60} // ✅ Give enough space for rotated labels
+            height={60} // Give enough space for rotated labels
           />
           <YAxis />
           <Tooltip />

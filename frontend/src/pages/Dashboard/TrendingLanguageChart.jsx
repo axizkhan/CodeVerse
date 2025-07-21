@@ -13,6 +13,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const TrendingLanguageChart = () => {
   const [data, setData] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchTrends = async () => {
@@ -33,7 +34,7 @@ const TrendingLanguageChart = () => {
 
   return (
     <div className="chart-card">
-      <h3>🔥 Trending Languages</h3>
+      <h3> Trending Languages</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 20, right: 20, bottom: 60, left: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />

@@ -6,12 +6,18 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const COLORS = ['#FFCE56', '#4BC0C0', '#9966FF', '#FF6384', '#36A2EB', '#FF9F40'];
 
 const MembershipChart = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchMembershipData = async () => {
       try {
+<<<<<<< HEAD
         const res = await axios.get(`${backendUrl}/admin/membership-popularity`);
+=======
+        const res = await axios.get(`${backendUrl}/admin/membership-popularity1`);
+>>>>>>> 56632f2 (final commit expected)
         // Transform data for recharts
         const formatted = res.data.map(item => ({
           name: item._id,

@@ -6,6 +6,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const checkUser = async () => {
     try {

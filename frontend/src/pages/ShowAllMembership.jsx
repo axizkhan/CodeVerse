@@ -8,6 +8,7 @@ export default function ShowAllMembership() {
   const [memberships, setMemberships] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [editing, setEditing] = useState(null);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [editForm, setEditForm] = useState({
     name: '',
     price: '',

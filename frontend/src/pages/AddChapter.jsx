@@ -12,6 +12,7 @@ const AddChapter = () => {
     languageId: '',
     content: ''
   });
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -81,7 +82,7 @@ const handleSubmit = async (e) => {
 
   return (
     
-    <div className="add-chapter-container neon-blobs">
+    <div className="add-chapter-container ">
       <form className="add-chapter-form" onSubmit={handleSubmit}>
         <h2 className="form-title">Add New Chapter</h2>
 

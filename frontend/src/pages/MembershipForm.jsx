@@ -9,6 +9,7 @@ export default function MembershipForm({
   onCancel,
   isEditing = false,
 }) {
+  
   const handleChange = (e, index = null) => {
     const { name, value } = e.target;
     if (name === 'perks' && index !== null) {

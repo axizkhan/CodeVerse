@@ -5,6 +5,7 @@ import axios from 'axios';
 // import membership from '../../../backend/models/Membership';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function GetStarted() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
 
   const [plans, setPlans] = useState([]);

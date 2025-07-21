@@ -5,6 +5,7 @@ import './Dashboard.css';
 
 const QuickActions = () => {
   const navigate = useNavigate();
+  
 
   const actions = [
     { label: ' Add Language', path: '/admin/add-language' },

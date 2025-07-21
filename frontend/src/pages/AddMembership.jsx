@@ -12,6 +12,7 @@ const AddMembership = () => {
   termsAndConditions: '',
   cancellationPolicy: '',
 });
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
   const handleChange = (e, index = null) => {

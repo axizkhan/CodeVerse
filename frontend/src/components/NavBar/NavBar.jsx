@@ -1,20 +1,36 @@
-
-
-
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
-import UserContext from '../../UserContext'; // adjust path if needed
 import { AccountCircle } from '@mui/icons-material';
 import { Menu as MuiMenu, MenuItem, IconButton } from '@mui/material';
+<<<<<<< HEAD
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
+=======
+import UserContext from '../../UserContext'; // Adjust path if needed
+>>>>>>> 56632f2 (final commit expected)
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+<<<<<<< HEAD
   const { user, setUser, loading, checkUser } = useContext(UserContext);
+=======
+>>>>>>> 56632f2 (final commit expected)
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
+
+  const { user, loading, checkUser } = useContext(UserContext);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Auto-close mobile/account menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+    setAccountOpen(false);
+    setAnchorEl(null);
+  }, [location]);
 
   const handleAccountClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,6 +45,7 @@ const NavBar = () => {
     handleMenuClose();
   };
 
+<<<<<<< HEAD
  // ✅ Include checkUser
 
 const handleLogout = async () => {
@@ -44,6 +61,20 @@ const handleLogout = async () => {
   }
 };
 
+=======
+  const handleLogout = async () => {
+    try {
+      await fetch(`${backendUrl}/user/logout`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      await checkUser();
+      navigate('/login'); // Optional: redirect after logout
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
+  };
+>>>>>>> 56632f2 (final commit expected)
 
   return (
     <nav className="w-full bg-[#0D0D0D] text-white shadow-md z-50 relative">
@@ -70,14 +101,12 @@ const handleLogout = async () => {
                 </Link>
 
                 {user.role === 'admin' && (
-                  <Link
-                    to="/admin/dashboard"
-                    className="hover:text-cyan-400 transition"
-                  >
+                  <Link to="/admin/dashboard" className="hover:text-cyan-400 transition">
                     Admin
                   </Link>
                 )}
 
+                {/* Custom dropdown for account */}
                 <div className="relative">
                   <button
                     onClick={() => setAccountOpen(!accountOpen)}
@@ -118,34 +147,29 @@ const handleLogout = async () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-[#0D0D0D] px-4 pb-4 space-y-2">
-          <Link to="/" className="block py-2 hover:text-cyan-400" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/tutorials" className="block py-2 hover:text-cyan-400" onClick={() => setIsOpen(false)}>Tutorials</Link>
-          <Link to="/about" className="block py-2 hover:text-cyan-400" onClick={() => setIsOpen(false)}>About</Link>
+          <Link to="/" className="block py-2 hover:text-cyan-400">Home</Link>
+          <Link to="/tutorials" className="block py-2 hover:text-cyan-400">Tutorials</Link>
+          <Link to="/about" className="block py-2 hover:text-cyan-400">About</Link>
 
           {!loading && user ? (
             <>
               <Link
                 to="/get-started"
                 className="block px-4 py-1 border border-cyan-400 text-cyan-400 rounded-full hover:bg-cyan-400 hover:text-black transition"
-                onClick={() => setIsOpen(false)}
               >
                 Subscription
               </Link>
 
               {user.role === 'admin' && (
-                <Link
-                  to="/admin/dashboard"
-                  className="block py-2 hover:text-cyan-400"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link to="/admin/dashboard" className="block py-2 hover:text-cyan-400">
                   Admin
                 </Link>
               )}
 
+              {/* MUI Dropdown on Mobile */}
               <IconButton onClick={handleAccountClick} sx={{ color: 'cyan' }}>
                 <AccountCircle />
               </IconButton>
-
               <MuiMenu
                 anchorEl={anchorEl}
                 open={isMenuOpen}
@@ -168,8 +192,8 @@ const handleLogout = async () => {
             </>
           ) : (
             <>
-              <Link to="/login" className="block py-2 hover:text-cyan-400" onClick={() => setIsOpen(false)}>Login</Link>
-              <Link to="/signup" className="block py-2 hover:text-cyan-400" onClick={() => setIsOpen(false)}>Signup</Link>
+              <Link to="/login" className="block py-2 hover:text-cyan-400">Login</Link>
+              <Link to="/signup" className="block py-2 hover:text-cyan-400">Signup</Link>
             </>
           )}
         </div>

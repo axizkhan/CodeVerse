@@ -4,6 +4,7 @@ import './Dashboard.css';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const StatCards = () => {
   const [stats, setStats] = useState(null);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchStats = async () => {
