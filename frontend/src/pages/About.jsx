@@ -7,7 +7,7 @@ const developers = [
     role: 'Full Stack Developer',
     description:
       "Taher is a passionate full stack web developer with a keen eye for detail and a love for clean, scalable code. From crafting elegant UIs to building powerful backend systems, he transforms ideas into impactful digital experiences. Always eager to learn, Taher blends logic with creativity to deliver excellence.",
-<<<<<<< HEAD
+
     img: '../public/taher.jpeg', // Replace with your real photo if you like
   },
   {
@@ -16,15 +16,14 @@ const developers = [
     description:
       "Aziz is a dynamic full stack developer who thrives on solving complex challenges with smart solutions. Whether it’s building intuitive frontend designs or architecting robust server-side logic, Aziz brings clarity, speed, and innovation to the table. His enthusiasm and dedication are the backbone of every successful build.",
     img: '../public/aziz.jpeg', // Replace with your real photo if you like
-=======
-    img: '/taher.jpeg', // Place this in public
+ // Place this in public
   },
   {
       name: 'Aziz Bohra',
       role: 'Full Stack Developer',
       description: 'Aziz is a dynamic full stack developer who thrives on solving complex challenges with smart solutions. Whether it’s building intuitive frontend designs or architecting robust server-side logic, Aziz brings clarity, speed, and innovation to the table. His enthusiasm and dedication are the backbone of every successful build.',
       img: '/aziz.jpeg', // Place this in public
->>>>>>> 56632f2 (final commit expected)
+
   },
 ];
 
@@ -33,7 +32,7 @@ export default function About() {
     <div className="about-page">
       <div className="neon-bg"></div>
 
-<<<<<<< HEAD
+
       <div className="about-hero">
         <h1>
           <span className="text-cyan-400">Code</span>
@@ -41,7 +40,7 @@ export default function About() {
         </h1>
         <p>Meet the minds behind this website</p>
       </div>
-=======
+
         <div className="about-hero">
             <h1>
             <span className="text-cyan-400">Code</span>
@@ -50,7 +49,7 @@ export default function About() {
           <p>Meet the minds behind this website</p>
         </div>
 
->>>>>>> 56632f2 (final commit expected)
+
 
       <div className="dev-cards">
         {developers.map((dev, idx) => (
