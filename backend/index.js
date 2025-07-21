@@ -62,7 +62,7 @@ const sessionOption = {
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
     sameSite: 'lax',
-    secure: isProduction,
+    secure: false,
   },
 };
 
@@ -95,11 +95,11 @@ app.use('/uploads', cors({
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("🌐 Welcome to CodeVerse API");
+  res.send(" Welcome to CodeVerse API");
 });
 
 app.get("/hii", (req, res) => {
-  res.send("👋 Hello! Server is running");
+  res.send(" Hello! Server is running");
   console.log("GET /hii");
 });
 

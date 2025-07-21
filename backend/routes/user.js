@@ -79,11 +79,11 @@ router.get("/logout", wrapAsync(async (req, res) => {
 }));
 
 
-router.get("/check", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.json({ user: req.user });
+router.get('/check', async (req, res) => {
+  if (req.user) {
+    res.status(200).json({ user: req.user });
   } else {
-    next(new ExpressError("Not Found", 404));
+    res.status(401).json({ message: 'Not logged in' });
   }
 });
 
