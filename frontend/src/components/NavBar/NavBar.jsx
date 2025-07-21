@@ -3,29 +3,20 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
 import { AccountCircle } from '@mui/icons-material';
 import { Menu as MuiMenu, MenuItem, IconButton } from '@mui/material';
-<<<<<<< HEAD
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-=======
 import UserContext from '../../UserContext'; // Adjust path if needed
->>>>>>> 56632f2 (final commit expected)
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-<<<<<<< HEAD
-  const { user, setUser, loading, checkUser } = useContext(UserContext);
-=======
->>>>>>> 56632f2 (final commit expected)
+  const { user, loading, checkUser } = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-
-  const { user, loading, checkUser } = useContext(UserContext);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Auto-close mobile/account menu on route change
   useEffect(() => {
     setIsOpen(false);
     setAccountOpen(false);
@@ -45,23 +36,6 @@ const NavBar = () => {
     handleMenuClose();
   };
 
-<<<<<<< HEAD
- // ✅ Include checkUser
-
-const handleLogout = async () => {
-  try {
-    await fetch(`${backendUrl}/user/logout`, {
-      method: 'GET', // or POST if you updated backend
-      credentials: 'include',
-    });
-
-    await checkUser(); // ✅ Re-check session from backend
-  } catch (err) {
-    console.error("Logout failed:", err);
-  }
-};
-
-=======
   const handleLogout = async () => {
     try {
       await fetch(`${backendUrl}/user/logout`, {
@@ -69,12 +43,11 @@ const handleLogout = async () => {
         credentials: 'include',
       });
       await checkUser();
-      navigate('/login'); // Optional: redirect after logout
+      navigate('/login');
     } catch (err) {
       console.error('Logout failed:', err);
     }
   };
->>>>>>> 56632f2 (final commit expected)
 
   return (
     <nav className="w-full bg-[#0D0D0D] text-white shadow-md z-50 relative">
