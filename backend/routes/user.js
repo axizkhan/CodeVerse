@@ -81,6 +81,7 @@ router.get("/logout", wrapAsync(async (req, res) => {
 }));
 
 router.get("/check", (req, res, next) => {
+ 
   if (req.isAuthenticated()) {
     res.json({ user: req.user });
   } else {

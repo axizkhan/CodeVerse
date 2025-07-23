@@ -61,8 +61,8 @@ const sessionOption = {
     expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
-    // sameSite: 'none',
-    // secure: isProduction, // only true when in production (HTTPS)
+    sameSite: isProduction ? 'none' : 'lax', // ✅ Enable cross-site cookies for production
+    secure: isProduction,
   },
 };
 
@@ -71,10 +71,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: frontendUrl,
+  origin: frontendUrl, // Make sure this matches your frontend domain exactly
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // ✅ Add Authorization header
+  optionsSuccessStatus: 200 // ✅ For legacy browser support
 }));
 
 app.use(session(sessionOption));
@@ -101,6 +102,13 @@ app.get("/", (req, res) => {
 app.get("/hii", (req, res) => {
   res.send(" Hello! Server is running");
   console.log(" /hii route was hit");
+});
+
+app.use((req, res, next) => {
+  console.log('Session ID:', req.sessionID);
+  console.log('User authenticated:', req.isAuthenticated());
+  console.log('Session user:', req.user ? req.user.username : 'None');
+  next();
 });
 
 app.use("/user", require("./routes/user"));
