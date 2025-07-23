@@ -1,177 +1,128 @@
 .tutorial-detail-container {
-    display: flex;
-    min-height: 100vh;
-    background: #0d0d0d;
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background: #0d0d0d;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* SIDEBAR */
 .sidebar {
-    width: 250px;
-    background: #121212;
-    padding: 30px;
-    border-right: 1px solid #333;
+  width: 250px;
+  background: #121212;
+  padding: 30px;
+  border-right: 1px solid #333;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #00e0ff #1a1a1a;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #00e0ff;
+  border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }
 
 .sidebar h2 {
-    color: cyan;
-    margin-bottom: 20px;
+  color: cyan;
+  margin-bottom: 20px;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .sidebar ul li {
-    margin: 12px 0;
+  margin: 12px 0;
 }
 
 .sidebar ul li a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.2s;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.3s;
+  display: block;
+  padding: 6px 12px;
+  border-radius: 6px;
 }
 
 .sidebar ul li a.active,
 .sidebar ul li a:hover {
-    color: cyan;
-    font-weight: bold;
+  color: cyan;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: bold;
 }
 
+/* MAIN CONTENT */
 .content-area {
-    flex: 1;
-    padding: 40px;
+  flex: 1;
+  padding: 40px;
 }
 
 .code-block {
-    background: #1e1e1e;
-    color: #00ffcc;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
+  background: #1e1e1e;
+  color: #00ffcc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
 }
 
-/* Content HTML Styling */
+/* HTML Content Styling */
+.html-content h1,
 .html-content h2,
 .html-content h3 {
-    color: #00ffe5;
-    margin-top: 20px;
+  color: #00ffe5;
+  margin-top: 20px;
 }
 
 .html-content p {
-    line-height: 1.6;
-    margin: 10px 0;
+  line-height: 1.6;
+  margin: 10px 0;
+  font-size: 1rem;
 }
 
 .html-content ul {
-    padding-left: 20px;
-    margin: 10px 0;
+  padding-left: 20px;
+  margin: 10px 0;
 }
 
 .html-content li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .html-content pre {
-    background-color: #1e1e1e;
-    padding: 12px;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin-top: 15px;
+  background-color: #1e1e1e;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 15px;
 }
 
 .html-content code {
-    color: #00ffcc;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
+  color: #00ffcc;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
-    .tutorial-detail-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #333;
-        padding: 20px;
-    }
-
-    .content-area {
-        padding: 20px;
-    }
-
-    .sidebar h2 {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .sidebar ul {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 20px;
-        padding-bottom: 10px;
-        scrollbar-width: none;
-        /* Firefox */
-    }
-
-    .sidebar ul::-webkit-scrollbar {
-        display: none;
-        /* Chrome/Safari */
-    }
-
-    .sidebar ul li {
-        flex: 0 0 auto;
-    }
-
-    .sidebar ul li a {
-        font-size: 1rem;
-        padding: 6px 12px;
-        border-radius: 6px;
-        background-color: rgba(255, 255, 255, 0.05);
-        white-space: nowrap;
-    }
-
-
-
-    .sidebar ul li {
-        margin: 5px 10px;
-    }
-
-    .sidebar ul li a {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .content-area {
-        padding: 16px;
-    }
-
-    .html-content h1,
-    .html-content h2 {
-        font-size: 1.3rem;
-    }
-
-    .html-content p {
-        font-size: 0.9rem;
-    }
-
-    .html-content code,
-    .code-block {
-        font-size: 0.8rem;
-    }
-}
-
+/* NAVIGATION BUTTONS */
 .navigation-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .nav-button {
@@ -181,7 +132,7 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-button:hover {
@@ -205,29 +156,82 @@
   background-color: #00e0ff;
   color: #000;
 }
-.sidebar {
-  width: 250px;
-  background: #121212;
-  padding: 30px;
-  border-right: 1px solid #333;
 
-  /* Sticky & scrollable */
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #00e0ff #1a1a1a;
-}
-.sidebar::-webkit-scrollbar {
-  width: 6px;
+/* TABLET RESPONSIVENESS */
+@media (max-width: 1024px) {
+  .tutorial-detail-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    padding: 20px;
+  }
+
+  .sidebar h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .sidebar ul {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 16px;
+    scrollbar-width: none;
+  }
+
+  .sidebar ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar ul li {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .sidebar ul li a {
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
+
+  .content-area {
+    padding: 24px;
+  }
 }
 
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #00e0ff;
-  border-radius: 10px;
-}
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+  .content-area {
+    padding: 16px;
+  }
 
-.sidebar::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  .html-content h1,
+  .html-content h2,
+  .html-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .html-content p {
+    font-size: 0.9rem;
+  }
+
+  .html-content code,
+  .code-block {
+    font-size: 0.8rem;
+  }
+
+  .nav-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

@@ -12,7 +12,7 @@ const MembershipChart = () => {
   useEffect(() => {
     const fetchMembershipData = async () => {
       try {
-        const res = await axios.get(`${backendUrl}/admin/membership-popularity`);
+        const res = await axios.get(`${backendUrl}/admin//membership-popularity`);
         // Transform data for recharts
         const formatted = res.data.map(item => ({
           name: item._id,

@@ -81,7 +81,6 @@ router.get("/logout", wrapAsync(async (req, res) => {
 }));
 
 router.get("/check", (req, res, next) => {
- 
   if (req.isAuthenticated()) {
     res.json({ user: req.user });
   } else {
@@ -120,16 +119,6 @@ router.put("/role/:id", wrapAsync(async (req, res) => {
   res.status(200).json({ message: "User role updated", user: updatedUser });
 }));
 
-
-// Add this route temporarily in user.js for testing
-router.get("/debug", (req, res) => {
-  res.json({
-    sessionID: req.sessionID,
-    isAuthenticated: req.isAuthenticated(),
-    user: req.user || null,
-    cookies: req.headers.cookie || 'No cookies'
-  });
-});
 module.exports = router;  
 
 
