@@ -61,8 +61,8 @@ const sessionOption = {
     expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
-    sameSite: 'none',
-    secure: isProduction, // only true when in production (HTTPS)
+    // sameSite: 'none',
+    // secure: isProduction, // only true when in production (HTTPS)
   },
 };
 
