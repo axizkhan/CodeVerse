@@ -2,18 +2,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
 
   const checkUser = async () => {
+
     try {
+      console.log(backendUrl)
       const res = await axios.get(`${backendUrl}/user/check`, {
         withCredentials: true,
       });
+      console.log(res.data.user);
       setUser(res.data.user);
+      navigate("/");
     } catch (err) {
       setUser(null);
     } finally {

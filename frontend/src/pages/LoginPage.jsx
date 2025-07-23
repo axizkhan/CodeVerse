@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import axios from "axios";
 import UserContext from "../UserContext"; // import
+import { useEffect } from "react";
 
 
 const LoginPage = () => {
@@ -12,28 +13,34 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { checkUser } = useContext(UserContext); //  use context
 
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post(`${backendUrl}/user/login`, form, {
+      withCredentials: true,
+    });
+    setMessage(res.data.message);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(`${backendUrl}/user/login`, form, {
-        withCredentials: true,
-      });
-      setMessage(res.data.message);
+    // ✅ Immediately check user after login
+    await checkUser();  
+  } catch (err) {
+    setMessage(err.response?.data?.message || "Login failed");
+  }
+};
 
-      if (res.status === 200) {
-        await checkUser(); // update context immediately
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      }
-    } catch (err) {
-      setMessage(err.response?.data?.message || "Login failed");
-    }
+// ✅ Check user once when component mounts (optional, like on page refresh)
+useEffect(() => {
+  const fetchUser = async () => {
+    await checkUser();
   };
+  fetchUser();
+}, []); // empty dependency: runs once on mount
+
+        
 
   return (
     <div className="login-container neon-blobs">
