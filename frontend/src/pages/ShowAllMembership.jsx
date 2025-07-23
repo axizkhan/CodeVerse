@@ -100,10 +100,10 @@ export default function ShowAllMembership() {
                     </ul>
                   </td>
                   <td>
-                    <button className="action-btn" onClick={() => handleEditClick(m)}>
+                    <button className="action-btn" >
                       Update
                     </button>
-                    <button className="action-btn danger" onClick={() => handleDelete(m._id)}>
+                    <button className="action-btn danger" >
                       Delete
                     </button>
                   </td>

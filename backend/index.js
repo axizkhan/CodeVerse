@@ -103,11 +103,11 @@ app.get("/hii", (req, res) => {
   console.log(" /hii route was hit");
 });
 
-app.use("/user", require("./routes/user"));
+// app.use("/user", require("./routes/user"));
 app.use("/api", require("./routes/contact"));
 app.use("/upload", require("./routes/upload"));
 app.use("/language", require("./routes/language"));
-app.use("/chapter", require("./routes/chapter"));
+// app.use("/chapter", require("./routes/chapter"));
 app.use("/memberships", require("./routes/membership"));
 app.use("/order", require("./routes/order"));
 app.use("/admin", require("./routes/dashboard"));

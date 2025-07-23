@@ -51,7 +51,7 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
   return (
     <div className="add-membership-container">
       <h2>Add Membership</h2>
-      <form onSubmit={handleSubmit} className="membership-form">
+      <form  className="membership-form">
         <input
           type="text"
           name="name"

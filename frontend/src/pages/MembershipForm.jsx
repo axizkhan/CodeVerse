@@ -27,7 +27,7 @@ export default function MembershipForm({
   return (
     <div className="edit-form-container">
       <h3>{isEditing ? 'Edit Membership' : 'Add Membership'}</h3>
-      <form onSubmit={onSubmit} className="edit-form">
+      <form  className="edit-form">
         <label>Name</label>
         <input
           type="text"

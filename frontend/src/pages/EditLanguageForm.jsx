@@ -45,7 +45,7 @@ export default function EditLanguageForm({ initialData, onCancel, onSuccess }) {
   return (
     <div className="edit-form-container">
       <h3>Edit Language</h3>
-      <form onSubmit={handleSubmit} className="edit-form" encType="multipart/form-data">
+      <form  className="edit-form" encType="multipart/form-data">
         <label>Name</label>
         <input name="name" value={form.name} onChange={handleChange} required />
 

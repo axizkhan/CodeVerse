@@ -23,57 +23,57 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // POST /languages - Add a new language with file upload
-router.post(
-  '/',
-  upload.single('logo'),
-  (req, res, next) => {
-    req.body.logo = req.file ? `/uploads/languages/${req.file.filename}` : '';
-    next();
-  },
-  validateLanguage, // <-- use validation middleware
-  wrapAsync(async (req, res) => {
-    const { name, logo, description, trend } = req.body;
-    const lang = new Language({ name, logo, description, trend });
-    await lang.save();
-    res.status(201).json(lang);
-  })
-);
+// router.post(
+//   '/',
+//   upload.single('logo'),
+//   (req, res, next) => {
+//     req.body.logo = req.file ? `/uploads/languages/${req.file.filename}` : '';
+//     next();
+//   },
+//   validateLanguage, // <-- use validation middleware
+//   wrapAsync(async (req, res) => {
+//     const { name, logo, description, trend } = req.body;
+//     const lang = new Language({ name, logo, description, trend });
+//     await lang.save();
+//     res.status(201).json(lang);
+//   })
+// );
 
 // PUT /languages/:id - Update a language and replace old image if new one is uploaded
-router.put(
-  '/:id',
-  upload.single('logo'),
-  (req, res, next) => {
-    req.body.logo = req.file ? `/uploads/languages/${req.file.filename}` : req.body.logo || '';
-    next();
-  },
-  validateLanguage, // <-- use validation middleware
-  wrapAsync(async (req, res) => {
-    const { name, logo, description, trend, oldLogo } = req.body;
-    const updateFields = { name, logo, description, trend };
+// router.put(
+//   '/:id',
+//   upload.single('logo'),
+//   (req, res, next) => {
+//     req.body.logo = req.file ? `/uploads/languages/${req.file.filename}` : req.body.logo || '';
+//     next();
+//   },
+//   validateLanguage, // <-- use validation middleware
+//   wrapAsync(async (req, res) => {
+//     const { name, logo, description, trend, oldLogo } = req.body;
+//     const updateFields = { name, logo, description, trend };
 
-    if (req.file && oldLogo) {
-      const oldImagePath = path.join(__dirname, '..', oldLogo);
-      fs.unlink(oldImagePath, (err) => {
-        if (err) console.error('Failed to delete old logo:', err.message);
-      });
-    }
+//     if (req.file && oldLogo) {
+//       const oldImagePath = path.join(__dirname, '..', oldLogo);
+//       fs.unlink(oldImagePath, (err) => {
+//         if (err) console.error('Failed to delete old logo:', err.message);
+//       });
+//     }
 
-    const updatedLang = await Language.findByIdAndUpdate(req.params.id, updateFields, { new: true });
-    if (!updatedLang) throw new ExpressError('Language not found', 404);
-    res.status(200).json(updatedLang);
-  })
-);
+//     const updatedLang = await Language.findByIdAndUpdate(req.params.id, updateFields, { new: true });
+//     if (!updatedLang) throw new ExpressError('Language not found', 404);
+//     res.status(200).json(updatedLang);
+//   })
+// );
 
 // DELETE /languages/:id - Delete a language and its logo
-router.delete('/language/:id', wrapAsync(async (req, res) => {
-  const language = await Language.findById(req.params.id);
-  if (!language) throw new ExpressError('Language not found', 404);
+// router.delete('/language/:id', wrapAsync(async (req, res) => {
+//   const language = await Language.findById(req.params.id);
+//   if (!language) throw new ExpressError('Language not found', 404);
 
-  await language.remove();
+//   await language.remove();
 
-  res.json({ message: 'Language and related data deleted successfully' });
-}));
+//   res.json({ message: 'Language and related data deleted successfully' });
+// }));
 
 // GET /languages - Get all languages
 router.get('/', wrapAsync(async (req, res) => {

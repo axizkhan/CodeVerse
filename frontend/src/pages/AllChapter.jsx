@@ -148,7 +148,7 @@ const AllChapters = () => {
               </button>
               <button
                 className="action-btn danger"
-                onClick={() => setEditingChapter(null)}
+                
               >
                 Cancel
               </button>
@@ -212,7 +212,7 @@ const AllChapters = () => {
                       </button>
                       <button
                         className="action-btn danger"
-                        onClick={() => handleDelete(chap._id)}
+                        
                       >
                         Delete
                       </button>

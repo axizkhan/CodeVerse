@@ -21,19 +21,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // POST /language - Add a new language with logo
-router.post('/', upload.single('logo'), wrapAsync(async (req, res) => {
-  const { name, description } = req.body;
-  const logoPath = req.file ? `/uploads/languages/${req.file.filename}` : '';
+// router.post('/', upload.single('logo'), wrapAsync(async (req, res) => {
+//   const { name, description } = req.body;
+//   const logoPath = req.file ? `/uploads/languages/${req.file.filename}` : '';
 
-  const lang = new Language({
-    name,
-    logo: logoPath,
-    description
-  });
+//   const lang = new Language({
+//     name,
+//     logo: logoPath,
+//     description
+//   });
 
-  await lang.save();
-  res.status(201).json(lang);
-}));
+//   await lang.save();
+//   res.status(201).json(lang);
+// }));
 
 // GET /language - Get all languages
 router.get('/', wrapAsync(async (req, res) => {

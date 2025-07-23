@@ -8,35 +8,35 @@ const wrapAsync = require('../utils/wrapAsync');
 const { validateOrder } = require('../middleware/validation');
 
 // 🔹 Create new order
-router.post('/add', validateOrder, wrapAsync(async (req, res) => {
-  const { userId, membershipId } = req.body;
+// router.post('/add', validateOrder, wrapAsync(async (req, res) => {
+//   const { userId, membershipId } = req.body;
 
-  const membership = await Membership.findById(membershipId);
-  if (!membership) throw new ExpressError('Membership not found', 404);
+//   const membership = await Membership.findById(membershipId);
+//   if (!membership) throw new ExpressError('Membership not found', 404);
 
-  const order = new Order({
-    user: userId,
-    membership: membership._id,
-    membershipName: membership.name,
-    membershipPrice: membership.price,
-    status: 'active'
-  });
+//   const order = new Order({
+//     user: userId,
+//     membership: membership._id,
+//     membershipName: membership.name,
+//     membershipPrice: membership.price,
+//     status: 'active'
+//   });
 
-  await order.save();
+//   await order.save();
 
-  // Link order to user
-  await User.findByIdAndUpdate(
-    userId,
-    { $addToSet: { order: order._id } }, // prevent duplicates
-    { new: true }
-  );
+//   // Link order to user
+//   await User.findByIdAndUpdate(
+//     userId,
+//     { $addToSet: { order: order._id } }, // prevent duplicates
+//     { new: true }
+//   );
 
-  res.status(201).json({
-    success: true,
-    message: 'Order placed successfully',
-    data: order
-  });
-}));
+//   res.status(201).json({
+//     success: true,
+//     message: 'Order placed successfully',
+//     data: order
+//   });
+// }));
 
 // 🔹 Get all orders (admin)
 router.get('/all', wrapAsync(async (req, res) => {
@@ -48,23 +48,23 @@ router.get('/all', wrapAsync(async (req, res) => {
 }));
 
 // 🔹 Update order status (admin)
-router.put('/update/:id', wrapAsync(async (req, res) => {
-  const { status } = req.body;
-  if (!status) throw new ExpressError('Status is required', 400);
+// router.put('/update/:id', wrapAsync(async (req, res) => {
+//   const { status } = req.body;
+//   if (!status) throw new ExpressError('Status is required', 400);
 
-  const order = await Order.findByIdAndUpdate(
-    req.params.id,
-    { status },
-    { new: true, runValidators: true }
-  );
+//   const order = await Order.findByIdAndUpdate(
+//     req.params.id,
+//     { status },
+//     { new: true, runValidators: true }
+//   );
 
-  if (!order) throw new ExpressError('Order not found', 404);
+//   if (!order) throw new ExpressError('Order not found', 404);
 
-  res.json({
-    success: true,
-    message: 'Order status updated',
-    data: order
-  });
-}));
+//   res.json({
+//     success: true,
+//     message: 'Order status updated',
+//     data: order
+//   });
+// }));
 
 module.exports = router;

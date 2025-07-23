@@ -67,7 +67,7 @@ const AddLanguage = () => {
 
   return (
     <div className="add-language-container ">
-      <form className="add-language-form" onSubmit={handleSubmit}>
+      <form className="add-language-form" >
         <h2 className="form-title">Add New Language</h2>
 
         <input
