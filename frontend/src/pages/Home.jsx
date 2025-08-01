@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="relative min-h-[140vh] bg-[#0D0D0D] text-white flex flex-col items-center justify-start pt-32 px-4 overflow-hidden">
       {/* Neon Particle Background */}
-      <div className="neon-blobs pointer-events-none absolute top-0 left-0 w-full h-[60vh] z-0" />
+       <div className="neon-blobs pointer-events-none absolute top-0 left-0 w-full h-[60vh] z-0" />
 
       {/* Hero Section */}
       <div className="z-10 text-center mb-20">

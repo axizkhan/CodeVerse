@@ -95,13 +95,13 @@ export default function ShowUser() {
                 <td>
                   <button
                     className="action-btn"
-                    
+                    onClick={() => handleToggleRole(user._id, user.role)}
                   >
                     Change Role
                   </button>
                   <button
                     className="action-btn danger"
-                    
+                    onClick={() => handleBlacklist(user._id)}
                     disabled={user.status === 'Blacklisted'}
                   >
                     Blacklist

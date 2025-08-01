@@ -65,7 +65,7 @@ const NavBar = () => {
             <Link to="/tutorials" className="hover:text-cyan-400 transition">Tutorials</Link>
             <Link to="/about" className="hover:text-cyan-400 transition">About</Link>
 
-            
+            {!loading && user ? (
               <>
                 <Link
                   to="/get-started"
@@ -74,21 +74,39 @@ const NavBar = () => {
                   Subscription
                 </Link>
 
-                
+                {user.role === 'admin' && (
                   <Link to="/admin/dashboard" className="hover:text-cyan-400 transition">
                     Admin
                   </Link>
-                
+                )}
 
                 {/* Custom dropdown for account */}
-                
+                <div className="relative">
+                  <button
+                    onClick={() => setAccountOpen(!accountOpen)}
+                    className="flex items-center space-x-2 hover:text-cyan-400"
+                  >
+                    <User size={20} />
+                    <span>Account</span>
+                  </button>
+                  {accountOpen && (
+                    <div className="absolute right-0 mt-2 w-40 bg-[#1a1a1a] border border-cyan-400 rounded shadow-lg z-50">
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 hover:bg-cyan-400 hover:text-black transition"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
               </>
-            
+            ) : (
               <>
                 <Link to="/login" className="hover:text-cyan-400 transition">Login</Link>
                 <Link to="/signup" className="hover:text-cyan-400 transition">Signup</Link>
               </>
-           
+            )}
           </div>
 
           {/* Mobile Hamburger */}

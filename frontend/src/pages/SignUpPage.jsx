@@ -14,28 +14,28 @@ const SignupPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await axios.post(`${backendUrl}/user/signup`, form, {
-  //       withCredentials: true,
-  //     });
-  //     setMessage(res.data.message);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${backendUrl}/user/signup`, form, {
+        withCredentials: true,
+      });
+      setMessage(res.data.message);
 
-  //     if (res.status === 200) {
-  //       await checkUser(); //  update context immediately
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 1000);
-  //     }
-  //   } catch (err) {
-  //     setMessage(err.response?.data?.message || "Signup failed");
-  //   }
-  // };
+      if (res.status === 200) {
+        await checkUser(); //  update context immediately
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
+    } catch (err) {
+      setMessage(err.response?.data?.message || "Signup failed");
+    }
+  };
 
   return (
     <div className="signup-container neon-blobs">
-      <form className="signup-form" >
+      <form className="signup-form" onSubmit={handleSubmit}>
         <h2 className="signup-title">Create Your Account</h2>
 
         <input

@@ -82,7 +82,7 @@ const handleSubmit = async (e) => {
   return (
     
     <div className="add-chapter-container ">
-      <form className="add-chapter-form" >
+      <form className="add-chapter-form" onSubmit={handleSubmit}>
         <h2 className="form-title">Add New Chapter</h2>
 
         <select

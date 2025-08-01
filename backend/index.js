@@ -13,7 +13,7 @@ const path = require('path');
 // Express App
 const app = express();
 
-// ✅ Environment variables
+//  Environment variables
 const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT || 8080;
 const secret = process.env.SECRET_KEY;
@@ -71,7 +71,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: frontendUrl,
+  origin: [frontendUrl,PORTFOLIO],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
@@ -103,11 +103,11 @@ app.get("/hii", (req, res) => {
   console.log(" /hii route was hit");
 });
 
-// app.use("/user", require("./routes/user"));
+app.use("/user", require("./routes/user"));
 app.use("/api", require("./routes/contact"));
 app.use("/upload", require("./routes/upload"));
 app.use("/language", require("./routes/language"));
-// app.use("/chapter", require("./routes/chapter"));
+app.use("/chapter", require("./routes/chapter"));
 app.use("/memberships", require("./routes/membership"));
 app.use("/order", require("./routes/order"));
 app.use("/admin", require("./routes/dashboard"));

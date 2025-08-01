@@ -16,28 +16,28 @@ const LoginPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await axios.post(`${backendUrl}/user/login`, form, {
-  //       withCredentials: true,
-  //     });
-  //     setMessage(res.data.message);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${backendUrl}/user/login`, form, {
+        withCredentials: true,
+      });
+      setMessage(res.data.message);
 
-  //     if (res.status === 200) {
-  //       await checkUser(); // update context immediately
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 1000);
-  //     }
-  //   } catch (err) {
-  //     setMessage(err.response?.data?.message || "Login failed");
-  //   }
-  // };
+      if (res.status === 200) {
+        await checkUser(); // update context immediately
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
+    } catch (err) {
+      setMessage(err.response?.data?.message || "Login failed");
+    }
+  };
 
   return (
     <div className="login-container neon-blobs">
-      <form className="login-form" >
+      <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">Login to CodeVerse</h2>
 
         <input

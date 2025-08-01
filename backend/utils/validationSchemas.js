@@ -10,11 +10,13 @@ const chapterSchema = Joi.object({
 // Language validation schema
 const languageSchema = Joi.object({
   name: Joi.string().required(),
-  logo: Joi.string().allow(''),
-  description: Joi.string().allow(''),
-  trend: Joi.number().integer().min(0),
-  topics: Joi.array().items(Joi.string().hex().length(24))
-});
+  description: Joi.string().allow('').optional(),
+  trend: Joi.number().required(),
+  logo: Joi.string().allow('').optional(),
+
+  // 👇 This allows oldLogo but strips it out before validation result is used
+  oldLogo: Joi.string().allow('').optional()
+}).options({ stripUnknown: true });
 
 // Membership validation schema
 const membershipSchema = Joi.object({
