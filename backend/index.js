@@ -18,7 +18,7 @@ const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT || 8080;
 const secret = process.env.SECRET_KEY;
 const frontendUrl = process.env.FRONTEND_URL;
-
+const portfolioUrl = process.env.PORTFOLIO;
 //  Validate required .env variables
 if (!mongo_url || !port || !secret || !frontendUrl) {
   console.error("❌ Missing required environment variables in .env");
@@ -71,7 +71,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: [frontendUrl,PORTFOLIO],
+  origin: [frontendUrl,portfolioUrl],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
