@@ -13,16 +13,15 @@ const path = require('path');
 // Express App
 const app = express();
 
-//  Environment variables
+// ✅ Environment variables
 const mongo_url = process.env.MONGO_URL;
-const port = process.env.PORT || 8080;  
+const port = process.env.PORT || 8080;
 const secret = process.env.SECRET_KEY;
 const frontendUrl = process.env.FRONTEND_URL;
 const portfolioUrl = process.env.PORTFOLIO_URL;
-const isProduction = process.env.NODE_ENV === 'production';
 
 //  Validate required .env variables
-if (isProduction && (!mongo_url || !secret || !frontendUrl || !portfolioUrl)) {
+if (!mongo_url || !port || !secret || !frontendUrl || !portfolioUrl) {
   console.error("❌ Missing required environment variables in .env");
   process.exit(1);
 }
@@ -52,7 +51,7 @@ const store = MongoStore.create({
 });
 store.on("error", (e) => console.error("❌ Session store error:", e));
 
-
+const isProduction = process.env.NODE_ENV === 'production';
 
 const sessionOption = {
   store,
@@ -63,8 +62,8 @@ const sessionOption = {
     expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
-    // sameSite: 'lax',
-    // secure: isProduction, // only true when in production (HTTPS)
+    sameSite: 'lax',
+    secure: isProduction, // only true when in production (HTTPS)
   },
 };
 
@@ -72,28 +71,21 @@ const sessionOption = {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-// List of allowed origins
 const allowedOrigins = [frontendUrl, portfolioUrl];
 
-// Setup CORS with function-based origin validation
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests without origin (e.g., Postman, mobile apps)
-    if (!origin) return callback(null, true);
-    
+    if (!origin) return callback(null, true); // Allow non-browser tools like Postman
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('CORS policy: Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
-
 
 app.use(session(sessionOption));
 app.use(passport.initialize());
