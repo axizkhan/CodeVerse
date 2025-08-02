@@ -8,6 +8,7 @@ const wrapAsync = require('../utils/wrapAsync');
 router.post(
   "/contact", // <-- use middleware from validation.js
   wrapAsync(async (req, res) => {
+    console.log("Contact form submission received:", req.body);
     const { name, email, subject, message } = req.body;
 
     await sendEmail({
