@@ -18,7 +18,7 @@ const mongo_url = process.env.MONGO_URL;
 const port = process.env.PORT || 8080;
 const secret = process.env.SECRET_KEY;
 const frontendUrl = process.env.FRONTEND_URL;
-const portfolioUrl = process.env.PORTFOLIO;
+
 //  Validate required .env variables
 if (!mongo_url || !port || !secret || !frontendUrl) {
   console.error("❌ Missing required environment variables in .env");
@@ -61,7 +61,7 @@ const sessionOption = {
     expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days
     maxAge: 1000 * 60 * 60 * 24 * 10,
     httpOnly: true,
-    sameSite: 'lax',
+    // sameSite: 'lax',
     // secure: isProduction, // only true when in production (HTTPS)
   },
 };
@@ -70,11 +70,23 @@ const sessionOption = {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.PORTFOLIO_URL,
+];
 app.use(cors({
-  origin: [frontendUrl,portfolioUrl],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow Postman, curl, etc.
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
+  
 }));
 
 app.use(session(sessionOption));
