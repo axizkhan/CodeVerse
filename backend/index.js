@@ -15,10 +15,11 @@ const app = express();
 
 //  Environment variables
 const mongo_url = process.env.MONGO_URL;
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;  
 const secret = process.env.SECRET_KEY;
 const frontendUrl = process.env.FRONTEND_URL;
 const portfolioUrl = process.env.PORTFOLIO_URL;
+const isProduction = process.env.NODE_ENV === 'production';
 
 //  Validate required .env variables
 if (isProduction && (!mongo_url || !secret || !frontendUrl || !portfolioUrl)) {
@@ -51,7 +52,7 @@ const store = MongoStore.create({
 });
 store.on("error", (e) => console.error("❌ Session store error:", e));
 
-const isProduction = process.env.NODE_ENV === 'production';
+
 
 const sessionOption = {
   store,
