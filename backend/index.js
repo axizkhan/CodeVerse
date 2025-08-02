@@ -21,7 +21,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 const portfolioUrl = process.env.PORTFOLIO_URL;
 
 //  Validate required .env variables
-if (!mongo_url || !port || !secret || !frontendUrl || !portfolioUrl) {
+if (isProduction && (!mongo_url || !secret || !frontendUrl || !portfolioUrl)) {
   console.error("❌ Missing required environment variables in .env");
   process.exit(1);
 }
