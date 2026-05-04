@@ -1,0 +1,68 @@
+
+                <h2>Object-Oriented Programming (OOP) in Java</h2>
+                <p>Java is a fully object-oriented programming language (except for primitive types). OOP allows better modularity, reusability, and code organization.</p>
+
+                <h3>Core OOP Principles</h3>
+                <ol>
+                <li><strong>Encapsulation:</strong> Wrapping data (variables) and methods into a single unit (class). Access is controlled using access modifiers.</li>
+                <li><strong>Abstraction:</strong> Hiding internal details and showing only essential features using abstract classes or interfaces.</li>
+                <li><strong>Inheritance:</strong> One class (child) can inherit fields and methods from another class (parent), promoting reusability.</li>
+                <li><strong>Polymorphism:</strong> Allows a single interface to represent different underlying data types (method overloading & overriding).</li>
+                </ol>
+
+                <h3>1. Encapsulation Example</h3>
+                <pre><code>public class Person {
+            private String name;
+
+            public void setName(String n) {
+                name = n;
+            }
+
+            public String getName() {
+                return name;
+            }
+            }</code></pre>
+
+                <h3>2. Inheritance Example</h3>
+                <pre><code>class Animal {
+            void sound() {
+                System.out.println("Animal makes sound");
+            }
+            }
+
+            class Dog extends Animal {
+            void sound() {
+                System.out.println("Dog barks");
+            }
+            }</code></pre>
+
+                <h3>3. Abstraction Example</h3>
+                <pre><code>abstract class Shape {
+            abstract void draw();
+            }
+
+            class Circle extends Shape {
+            void draw() {
+                System.out.println("Drawing Circle");
+            }
+            }</code></pre>
+
+                <h3>4. Polymorphism Example</h3>
+                <p><strong>Compile-time (Overloading):</strong></p>
+                <pre><code>class Math {
+            int add(int a, int b) { return a + b; }
+            double add(double a, double b) { return a + b; }
+            }</code></pre>
+
+                <p><strong>Runtime (Overriding):</strong></p>
+                <pre><code>Animal a = new Dog();
+            a.sound(); // Output: Dog barks</code></pre>
+
+                <h3>Benefits of OOP</h3>
+                <ul>
+                <li>Modularity: Code is divided into objects.</li>
+                <li>Reusability: Inheritance helps reuse common logic.</li>
+                <li>Scalability: Easy to manage and extend.</li>
+                <li>Security: Encapsulation hides internal data.</li>
+                </ul>
+            

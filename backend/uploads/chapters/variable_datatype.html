@@ -1,0 +1,99 @@
+
+                <h2>Variables and Data Types in Java</h2>
+                <p>Variables are used to store data in a program. Each variable must be declared with a data type, which tells Java what kind of value the variable can hold.</p>
+
+                <h3>Declaration Syntax</h3>
+                <pre><code>dataType variableName = value;</code></pre>
+                <p><strong>Example:</strong></p>
+                <pre><code>int age = 25;
+            double price = 199.99;
+            char grade = 'A';
+            String name = "Alice";</code></pre>
+
+                <h3>Types of Variables</h3>
+                <ul>
+                <li><strong>Local Variables:</strong> Declared inside a method and accessible only within it.</li>
+                <li><strong>Instance Variables:</strong> Declared in a class but outside methods. They belong to objects.</li>
+                <li><strong>Static Variables:</strong> Declared with the <code>static</code> keyword. Belong to the class, not objects.</li>
+                </ul>
+
+                <h3>Data Types in Java</h3>
+
+                <h4>1. Primitive Data Types</h4>
+                <table border="1" cellpadding="6" cellspacing="0">
+                <thead>
+                    <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                    <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><code>int</code></td>
+                    <td>Integer values</td>
+                    <td>4 bytes</td>
+                    <td><code>int count = 10;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>float</code></td>
+                    <td>Decimal values</td>
+                    <td>4 bytes</td>
+                    <td><code>float price = 99.99f;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>double</code></td>
+                    <td>More precise decimal values</td>
+                    <td>8 bytes</td>
+                    <td><code>double pi = 3.14159;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>char</code></td>
+                    <td>Single character</td>
+                    <td>2 bytes</td>
+                    <td><code>char letter = 'A';</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>boolean</code></td>
+                    <td>True or false</td>
+                    <td>1 bit</td>
+                    <td><code>boolean isJavaFun = true;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>byte</code></td>
+                    <td>Small integers (-128 to 127)</td>
+                    <td>1 byte</td>
+                    <td><code>byte age = 30;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>short</code></td>
+                    <td>Short integer</td>
+                    <td>2 bytes</td>
+                    <td><code>short year = 2025;</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>long</code></td>
+                    <td>Large integers</td>
+                    <td>8 bytes</td>
+                    <td><code>long views = 1000000000L;</code></td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <h4>2. Non-Primitive (Reference) Data Types</h4>
+                <ul>
+                <li><code>String</code>: A sequence of characters</li>
+                <li><code>Arrays</code>: A collection of variables of the same type</li>
+                <li><code>Objects</code>: Instances of classes</li>
+                </ul>
+                <pre><code>String message = "Hello, Java!";
+            int[] numbers = {1, 2, 3, 4};</code></pre>
+
+                <h3>Type Casting</h3>
+                <p>You can convert between types using casting:</p>
+                <pre><code>int x = (int) 10.5; // Explicit casting
+            double y = 20;      // Implicit casting</code></pre>
+
+                <blockquote><strong>Note:</strong> Always initialize variables before use in Java.</blockquote>
+            

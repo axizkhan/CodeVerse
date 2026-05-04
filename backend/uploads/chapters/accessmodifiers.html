@@ -1,0 +1,78 @@
+
+                <h2>Access Modifiers in Java</h2>
+                <p>Access Modifiers define the scope (visibility) of classes, methods, and variables. Java has four main access modifiers:</p>
+
+                <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                    <th>Modifier</th>
+                    <th>Class</th>
+                    <th>Package</th>
+                    <th>Subclass</th>
+                    <th>World</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><strong>public</strong></td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    </tr>
+                    <tr>
+                    <td><strong>protected</strong></td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>❌</td>
+                    </tr>
+                    <tr>
+                    <td><strong>default (no modifier)</strong></td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    </tr>
+                    <tr>
+                    <td><strong>private</strong></td>
+                    <td>✔</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <h3>1. public</h3>
+                <p>Accessible from anywhere in the program.</p>
+                <pre><code>public class Demo {
+            public int x = 10;
+            }</code></pre>
+
+                <h3>2. private</h3>
+                <p>Accessible only within the same class.</p>
+                <pre><code>class Demo {
+            private int x = 10;
+            }</code></pre>
+
+                <h3>3. protected</h3>
+                <p>Accessible within the same package and by subclasses in other packages.</p>
+                <pre><code>class Parent {
+            protected int x = 10;
+            }</code></pre>
+
+                <h3>4. default (no modifier)</h3>
+                <p>Accessible only within the same package.</p>
+                <pre><code>class Demo {
+            int x = 10; // default access
+            }</code></pre>
+
+                <h3>When to Use What?</h3>
+                <ul>
+                <li><strong>Use <code>private</code></strong> for encapsulation.</li>
+                <li><strong>Use <code>public</code></strong> for APIs or interfaces.</li>
+                <li><strong>Use <code>protected</code></strong> when you expect subclasses.</li>
+                <li><strong>Use default</strong> when keeping things package-private.</li>
+                </ul>
+            

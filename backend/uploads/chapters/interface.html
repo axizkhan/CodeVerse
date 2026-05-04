@@ -1,0 +1,102 @@
+
+                <h2>Interfaces in Java</h2>
+                <p>An <strong>interface</strong> in Java is a reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types. Interfaces cannot contain instance fields or constructors.</p>
+
+                <h3>Why Use Interfaces?</h3>
+                <ul>
+                <li>To achieve abstraction (100% abstraction prior to Java 8).</li>
+                <li>To support multiple inheritance (a class can implement multiple interfaces).</li>
+                <li>To separate "what to do" from "how to do it."</li>
+                </ul>
+
+                <h3>Syntax</h3>
+                <pre><code>interface Animal {
+            void sound(); // abstract method
+            }</code></pre>
+
+                <h3>Implementing an Interface</h3>
+                <pre><code>class Dog implements Animal {
+            public void sound() {
+                System.out.println("Dog barks");
+            }
+            }</code></pre>
+
+                <h3>Using the Interface</h3>
+                <pre><code>public class Main {
+            public static void main(String[] args) {
+                Animal myDog = new Dog();
+                myDog.sound();  // Output: Dog barks
+            }
+            }</code></pre>
+
+                <h3>Java 8+ Interface Features</h3>
+                <ul>
+                <li><strong>Default Methods:</strong> Provide a body to methods in interfaces using <code>default</code>.</li>
+                <li><strong>Static Methods:</strong> Belong to the interface and not to instances.</li>
+                </ul>
+
+                <h3>Example of Default and Static Methods</h3>
+                <pre><code>interface MyInterface {
+            default void greet() {
+                System.out.println("Hello from default method!");
+            }
+            
+            static void sayHi() {
+                System.out.println("Hi from static method!");
+            }
+            }</code></pre>
+
+                <h3>Multiple Interfaces</h3>
+                <pre><code>interface Printable {
+            void print();
+            }
+
+            interface Showable {
+            void show();
+            }
+
+            class Demo implements Printable, Showable {
+            public void print() {
+                System.out.println("Printing...");
+            }
+
+            public void show() {
+                System.out.println("Showing...");
+            }
+            }</code></pre>
+
+                <h3>Difference Between Abstract Class and Interface</h3>
+                <table border="1" cellpadding="6">
+                <tr>
+                    <th>Feature</th>
+                    <th>Abstract Class</th>
+                    <th>Interface</th>
+                </tr>
+                <tr>
+                    <td>Methods</td>
+                    <td>Can have abstract and concrete methods</td>
+                    <td>Only abstract methods (Java 7), default/static methods (Java 8+)</td>
+                </tr>
+                <tr>
+                    <td>Fields</td>
+                    <td>Instance variables allowed</td>
+                    <td>Only static final constants</td>
+                </tr>
+                <tr>
+                    <td>Inheritance</td>
+                    <td>Single inheritance</td>
+                    <td>Multiple interfaces can be implemented</td>
+                </tr>
+                <tr>
+                    <td>Constructor</td>
+                    <td>Can have constructors</td>
+                    <td>No constructors</td>
+                </tr>
+                </table>
+
+                <h3>Use Cases</h3>
+                <ul>
+                <li>Use <strong>interfaces</strong> when unrelated classes must implement the same methods.</li>
+                <li>Use <strong>abstract classes</strong> when classes are closely related with shared base logic.</li>
+                </ul>
+            

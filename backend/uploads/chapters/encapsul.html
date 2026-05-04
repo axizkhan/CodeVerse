@@ -1,0 +1,78 @@
+
+                <h2>Encapsulation in Java</h2>
+                <p><strong>Encapsulation</strong> is one of the fundamental concepts in object-oriented programming (OOP). It refers to the practice of wrapping data (variables) and code (methods) together into a single unit, typically a class. This helps protect the data and ensures that it is used properly.</p>
+
+                <h3>Key Concepts</h3>
+                <ul>
+                <li>Keep data members <code>private</code></li>
+                <li>Provide <code>public</code> getter and setter methods to access and update the value of private variables</li>
+                </ul>
+
+                <h3>Benefits of Encapsulation</h3>
+                <ul>
+                <li>Improves code maintainability and flexibility</li>
+                <li>Prevents unauthorized access to class members</li>
+                <li>Makes the class easy to test and debug</li>
+                <li>Protects internal state of the object</li>
+                </ul>
+
+                <h3>Example</h3>
+                <pre><code>class Student {
+            private String name;
+            private int age;
+
+            // Getter method for name
+            public String getName() {
+                return name;
+            }
+
+            // Setter method for name
+            public void setName(String newName) {
+                name = newName;
+            }
+
+            // Getter method for age
+            public int getAge() {
+                return age;
+            }
+
+            // Setter method for age
+            public void setAge(int newAge) {
+                if (newAge > 0) {
+                age = newAge;
+                }
+            }
+            }
+
+            public class Main {
+            public static void main(String[] args) {
+                Student s = new Student();
+                s.setName("John");
+                s.setAge(20);
+
+                System.out.println("Name: " + s.getName());
+                System.out.println("Age: " + s.getAge());
+            }
+            }</code></pre>
+
+                <h3>Why Use Getters and Setters?</h3>
+                <p>Using getters and setters instead of making variables public provides better control over how variables are accessed or modified.</p>
+
+                <pre><code>// Bad Practice - public field
+            public class Person {
+            public int age; // anyone can modify this directly
+            }</code></pre>
+
+                <pre><code>// Good Practice - encapsulated field
+            public class Person {
+            private int age;
+
+            public int getAge() { return age; }
+            public void setAge(int age) {
+                if (age > 0) this.age = age;
+            }
+            }</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Encapsulation helps you hide internal implementation details of a class and only expose what's necessary. This makes code more secure and robust.</p>
+            

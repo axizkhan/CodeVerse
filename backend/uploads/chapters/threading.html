@@ -1,0 +1,112 @@
+
+                <h2>Multithreading in Java</h2>
+                <p>Multithreading is a Java feature that allows the concurrent execution of two or more threads. It helps in performing multiple operations simultaneously, which improves performance especially in CPU-intensive tasks.</p>
+
+                <h3>What is a Thread?</h3>
+                <p>A thread is the smallest unit of execution in a program. In Java, every program has at least one thread (the main thread).</p>
+
+                <h3>Benefits of Multithreading</h3>
+                <ul>
+                <li>Efficient use of CPU</li>
+                <li>Improved application performance</li>
+                <li>Concurrent task execution</li>
+                <li>Better resource sharing</li>
+                </ul>
+
+                <h3>Ways to Create Threads</h3>
+                <ol>
+                <li>By extending the <code>Thread</code> class</li>
+                <li>By implementing the <code>Runnable</code> interface</li>
+                </ol>
+
+                <h4>1. Extending Thread Class</h4>
+                <pre><code>class MyThread extends Thread {
+            public void run() {
+                System.out.println("Thread is running...");
+            }
+            }
+
+            public class Test {
+            public static void main(String[] args) {
+                MyThread t1 = new MyThread();
+                t1.start();
+            }
+            }</code></pre>
+
+                <h4>2. Implementing Runnable Interface</h4>
+                <pre><code>class MyRunnable implements Runnable {
+            public void run() {
+                System.out.println("Runnable thread running...");
+            }
+            }
+
+            public class Test {
+            public static void main(String[] args) {
+                Thread t1 = new Thread(new MyRunnable());
+                t1.start();
+            }
+            }</code></pre>
+
+                <h3>Thread Lifecycle</h3>
+                <ol>
+                <li><strong>New</strong>: Thread object is created.</li>
+                <li><strong>Runnable</strong>: <code>start()</code> is called.</li>
+                <li><strong>Running</strong>: Thread is executing.</li>
+                <li><strong>Waiting/Blocked</strong>: Thread is paused or waiting.</li>
+                <li><strong>Terminated</strong>: Thread finishes execution.</li>
+                </ol>
+
+                <h3>Thread Methods</h3>
+                <ul>
+                <li><code>start()</code>: Starts the thread</li>
+                <li><code>run()</code>: Contains the code executed by the thread</li>
+                <li><code>sleep(ms)</code>: Puts the thread to sleep</li>
+                <li><code>join()</code>: Waits for another thread to finish</li>
+                <li><code>setPriority()</code>: Sets thread priority</li>
+                <li><code>isAlive()</code>: Checks if thread is running</li>
+                </ul>
+
+                <h3>Synchronization</h3>
+                <p>When multiple threads access the same resource, <strong>synchronization</strong> is used to avoid conflicts.</p>
+                <pre><code>synchronized void print() {
+            // only one thread can access this at a time
+            }</code></pre>
+
+                <h3>Example with Synchronization</h3>
+                <pre><code>class Counter {
+            int count = 0;
+
+            synchronized void increment() {
+                count++;
+            }
+            }
+
+            public class Test {
+            public static void main(String[] args) {
+                Counter counter = new Counter();
+
+                Thread t1 = new Thread(() -> {
+                for (int i = 0; i < 1000; i++) counter.increment();
+                });
+
+                Thread t2 = new Thread(() -> {
+                for (int i = 0; i < 1000; i++) counter.increment();
+                });
+
+                t1.start();
+                t2.start();
+
+                try {
+                t1.join();
+                t2.join();
+                } catch (Exception e) {
+                System.out.println(e);
+                }
+
+                System.out.println("Count: " + counter.count);
+            }
+            }</code></pre>
+
+                <h3>Conclusion</h3>
+                <p>Multithreading enhances performance by allowing simultaneous execution. Proper thread management and synchronization are essential for avoiding data inconsistencies.</p>
+            

@@ -1,25 +1,24 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const { BrevoClient } = require("@getbrevo/brevo");
+require("dotenv").config();
 
-
-const sendEmail = async ({ subject, html }) => {
-  const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER,  // ✅ loaded from .env
-    pass: process.env.GMAIL_PASS,  // ✅ loaded from .env
-  },
+const client = new BrevoClient({
+  apiKey: process.env.BREVO_API_KEY,
 });
 
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER, // destination: employee/admin
-    subject,
-    html,
-  };
-
-  await transporter.sendMail(mailOptions);
-  console.log("📨 Email sent to admin");
+const sendEmail = async ({ subject, html, senderEmail = null }) => {
+  try {
+    await client.transactionalEmails.sendTransacEmail({
+      sender: {
+        email: process.env.BREVO_EMAIL,
+        name: "CodeVerse",
+      },
+      to: [{ email: senderEmail ?? process.env.BREVO_EMAIL }], // destination: employee/admin
+      subject,
+      htmlContent: html,
+    });
+  } catch (err) {
+    console.error("Email error:", err);
+  }
 };
 
 module.exports = sendEmail;

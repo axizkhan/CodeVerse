@@ -1,0 +1,69 @@
+
+                <h2>Abstract Classes in Java</h2>
+                <p>An <strong>abstract class</strong> is a class that cannot be instantiated on its own and is meant to be extended by other classes. It can have both abstract methods (without body) and regular methods (with implementation).</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                <li>Declared using the <code>abstract</code> keyword.</li>
+                <li>Can contain both abstract and non-abstract methods.</li>
+                <li>Cannot be instantiated directly.</li>
+                <li>Used to provide a base class with common code structure.</li>
+                </ul>
+
+                <h3>Syntax</h3>
+                <pre><code>abstract class Animal {
+            abstract void sound(); // abstract method
+            void sleep() {         // concrete method
+                System.out.println("Sleeping...");
+            }
+            }</code></pre>
+
+                <h3>Extending Abstract Class</h3>
+                <pre><code>class Dog extends Animal {
+            void sound() {
+                System.out.println("Dog barks");
+            }
+            }
+
+            public class Main {
+            public static void main(String[] args) {
+                Animal myDog = new Dog();
+                myDog.sound();  // Output: Dog barks
+                myDog.sleep();  // Output: Sleeping...
+            }
+            }</code></pre>
+
+                <h3>When to Use Abstract Classes</h3>
+                <ul>
+                <li>When you want to provide a common base with some default functionality.</li>
+                <li>When multiple classes share common code but also require their own implementations.</li>
+                <li>When using inheritance and method overriding for a hierarchy of related classes.</li>
+                </ul>
+
+                <h3>Difference Between Abstract Class and Interface</h3>
+                <table border="1" cellpadding="6">
+                <tr>
+                    <th>Feature</th>
+                    <th>Abstract Class</th>
+                    <th>Interface</th>
+                </tr>
+                <tr>
+                    <td>Methods</td>
+                    <td>Can have both abstract and concrete methods</td>
+                    <td>All methods are abstract (until Java 7); Java 8+ allows default/static methods</td>
+                </tr>
+                <tr>
+                    <td>Inheritance</td>
+                    <td>Supports single inheritance only</td>
+                    <td>Can be implemented by multiple classes</td>
+                </tr>
+                <tr>
+                    <td>Keyword</td>
+                    <td><code>abstract</code></td>
+                    <td><code>interface</code></td>
+                </tr>
+                </table>
+
+                <h3>Note:</h3>
+                <p>If you have methods with shared logic and want to enforce structure, abstract classes are the right choice.</p>
+            

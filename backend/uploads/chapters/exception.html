@@ -1,0 +1,89 @@
+
+                <h2>Exception Handling in Java</h2>
+                <p>Exception handling in Java is a mechanism to handle runtime errors, allowing the normal flow of the application to continue.</p>
+
+                <h3>What is an Exception?</h3>
+                <p>An <strong>exception</strong> is an event that occurs during the execution of a program that disrupts its normal flow.</p>
+
+                <h3>Types of Exceptions</h3>
+                <ul>
+                <li><strong>Checked Exceptions:</strong> Exceptions that are checked at compile-time (e.g., IOException, SQLException).</li>
+                <li><strong>Unchecked Exceptions:</strong> Exceptions that occur at runtime (e.g., ArithmeticException, NullPointerException).</li>
+                </ul>
+
+                <h3>Exception Hierarchy</h3>
+                <pre><code>
+            Throwable
+            ├── Exception
+            │   ├── IOException
+            │   └── SQLException
+            ├── RuntimeException
+            │   ├── NullPointerException
+            │   └── ArithmeticException
+            └── Error (e.g., OutOfMemoryError)
+                </code></pre>
+
+                <h3>Syntax: try-catch</h3>
+                <pre><code>try {
+            // Code that may throw an exception
+            } catch (ExceptionType name) {
+            // Code to handle the exception
+            }</code></pre>
+
+                <h3>Example</h3>
+                <pre><code>public class Example {
+            public static void main(String[] args) {
+                try {
+                int result = 10 / 0;
+                } catch (ArithmeticException e) {
+                System.out.println("Cannot divide by zero!");
+                }
+            }
+            }</code></pre>
+
+                <h3>try-catch-finally</h3>
+                <pre><code>try {
+            // risky code
+            } catch (Exception e) {
+            // handle exception
+            } finally {
+            // always executed
+            }</code></pre>
+
+                <h3>Multiple catch blocks</h3>
+                <pre><code>try {
+            int[] arr = new int[3];
+            arr[5] = 10;
+            } catch (ArithmeticException e) {
+            System.out.println("Arithmetic error");
+            } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index error");
+            }</code></pre>
+
+                <h3>throw Keyword</h3>
+                <p>Used to throw an exception manually.</p>
+                <pre><code>throw new ArithmeticException("This is a manual exception");</code></pre>
+
+                <h3>throws Keyword</h3>
+                <p>Used in method signature to declare exceptions.</p>
+                <pre><code>public void readFile() throws IOException {
+            // file reading logic
+            }</code></pre>
+
+                <h3>Custom Exceptions</h3>
+                <pre><code>class MyException extends Exception {
+            public MyException(String message) {
+                super(message);
+            }
+            }</code></pre>
+
+                <h3>Best Practices</h3>
+                <ul>
+                <li>Always catch the most specific exception first.</li>
+                <li>Use finally block to release resources like file streams or database connections.</li>
+                <li>Avoid using empty catch blocks.</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>Exception handling makes your Java programs more robust and less likely to crash unexpectedly. It's an essential part of Java application development.</p>
+            

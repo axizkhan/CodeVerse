@@ -19,7 +19,7 @@ const userSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["Active", "Blacklisted","Login"],
+    enum: ["Active", "Blacklisted", "Login"],
     default: "Active",
   },
   role: {
@@ -27,11 +27,16 @@ const userSchema = new Schema({
     enum: ["user", "admin"],
     default: "user",
   },
-  order: [{
-    type: Schema.Types.ObjectId,
-    ref: "Order",
-  }],
-
+  order: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Order",
+    },
+  ],
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.plugin(passportLocalMongoose);

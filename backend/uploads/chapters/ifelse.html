@@ -1,0 +1,63 @@
+
+                <h2>If-Else Statements in Java</h2>
+                <p>The <strong>if-else</strong> statement allows conditional execution of code blocks based on whether a condition is <code>true</code> or <code>false</code>.</p>
+
+                <h3>1. Basic if Statement</h3>
+                <p>This executes a block of code only if the condition is true.</p>
+                <pre><code>int number = 10;
+            if (number > 0) {
+            System.out.println("The number is positive.");
+            }</code></pre>
+
+                <h3>2. if-else Statement</h3>
+                <p>If the condition is false, the <code>else</code> block runs.</p>
+                <pre><code>int number = -5;
+            if (number > 0) {
+            System.out.println("Positive");
+            } else {
+            System.out.println("Negative");
+            }</code></pre>
+
+                <h3>3. if-else if Ladder</h3>
+                <p>Used to check multiple conditions sequentially.</p>
+                <pre><code>int score = 75;
+            if (score >= 90) {
+            System.out.println("Grade: A");
+            } else if (score >= 75) {
+            System.out.println("Grade: B");
+            } else if (score >= 60) {
+            System.out.println("Grade: C");
+            } else {
+            System.out.println("Grade: F");
+            }</code></pre>
+
+                <h3>4. Nested if Statements</h3>
+                <p>You can place one <code>if</code> statement inside another.</p>
+                <pre><code>int age = 25;
+            boolean hasLicense = true;
+
+            if (age >= 18) {
+            if (hasLicense) {
+                System.out.println("You can drive.");
+            } else {
+                System.out.println("You need a license.");
+            }
+            } else {
+            System.out.println("You're too young to drive.");
+            }</code></pre>
+
+                <h3>5. Ternary Operator (Short if-else)</h3>
+                <p>A compact form of <code>if-else</code> for simple expressions:</p>
+                <pre><code>int a = 5, b = 10;
+            int max = (a > b) ? a : b;
+            System.out.println("Max is: " + max);</code></pre>
+
+                <h3>Best Practices</h3>
+                <ul>
+                <li>Always use braces <code>{}</code> for better readability—even for single-line blocks.</li>
+                <li>Avoid deeply nested <code>if</code> statements; consider using logical operators instead.</li>
+                <li>Use <code>switch</code> when checking multiple exact values of a variable.</li>
+                </ul>
+
+                <blockquote><strong>Note:</strong> Always validate user input and handle edge cases inside <code>if</code> blocks.</blockquote>
+            

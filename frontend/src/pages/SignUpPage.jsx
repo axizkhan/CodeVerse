@@ -25,7 +25,7 @@ const SignupPage = () => {
       if (res.status === 200) {
         await checkUser(); //  update context immediately
         setTimeout(() => {
-          navigate("/");
+          navigate("/Verify");
         }, 1000);
       }
     } catch (err) {
@@ -35,7 +35,9 @@ const SignupPage = () => {
 
   return (
     <div className="signup-container neon-blobs">
-      <form className="signup-form" onSubmit={handleSubmit}>
+      <form
+        className="signup-form"
+        onSubmit={handleSubmit}>
         <h2 className="signup-title">Create Your Account</h2>
 
         <input
@@ -63,7 +65,9 @@ const SignupPage = () => {
           required
         />
 
-        <button type="submit" className="neon-button signup-button">
+        <button
+          type="submit"
+          className="neon-button signup-button">
           Sign Up
         </button>
 
@@ -71,7 +75,9 @@ const SignupPage = () => {
 
         <p className="login-link">
           Already have an account?{" "}
-          <Link to="/login" className="link-neon">
+          <Link
+            to="/login"
+            className="link-neon">
             Login
           </Link>
         </p>
@@ -81,4 +87,3 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
-

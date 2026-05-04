@@ -1,0 +1,53 @@
+
+                <h2>Strings in Java</h2>
+                <p>A <strong>String</strong> in Java is an object that represents a sequence of characters. Unlike many languages, strings in Java are immutable.</p>
+
+                <h3>Creating Strings</h3>
+                <pre><code>String str1 = "Hello"; // Using string literal
+            String str2 = new String("World"); // Using new keyword</code></pre>
+
+                <h3>Common String Methods</h3>
+                <ul>
+                <li><code>length()</code> – Returns the length of the string</li>
+                <li><code>charAt(index)</code> – Returns character at a given index</li>
+                <li><code>substring(start, end)</code> – Extracts substring</li>
+                <li><code>toLowerCase()</code>, <code>toUpperCase()</code></li>
+                <li><code>trim()</code> – Removes whitespace</li>
+                <li><code>equals()</code>, <code>equalsIgnoreCase()</code> – Compare strings</li>
+                <li><code>contains()</code> – Checks if substring exists</li>
+                <li><code>replace()</code> – Replace characters/substrings</li>
+                </ul>
+
+                <h3>Example</h3>
+                <pre><code>String name = "Java Programming";
+            System.out.println(name.length());          // Output: 16
+            System.out.println(name.charAt(5));         // Output: P
+            System.out.println(name.substring(5, 16));  // Output: Programming</code></pre>
+
+                <h3>String Comparison</h3>
+                <pre><code>String a = "hello";
+            String b = "hello";
+            String c = new String("hello");
+
+            System.out.println(a == b);       // true (same reference)
+            System.out.println(a == c);       // false (different object)
+            System.out.println(a.equals(c));  // true (same content)</code></pre>
+
+                <h3>StringBuilder and StringBuffer</h3>
+                <p><strong>Why?</strong> String objects are immutable. Use these for mutable strings.</p>
+                <ul>
+                <li><strong>StringBuilder:</strong> Fast, not thread-safe</li>
+                <li><strong>StringBuffer:</strong> Thread-safe, slightly slower</li>
+                </ul>
+
+                <pre><code>StringBuilder sb = new StringBuilder("Hello");
+            sb.append(" World");
+            System.out.println(sb); // Output: Hello World</code></pre>
+
+                <h3>Important Notes</h3>
+                <ul>
+                <li>Strings are stored in a special memory area called <code>String Pool</code></li>
+                <li>Use <code>equals()</code> to compare string content</li>
+                <li>Use <code>StringBuilder</code> for large text operations</li>
+                </ul>
+            

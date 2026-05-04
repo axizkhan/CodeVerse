@@ -1,0 +1,77 @@
+
+                <h2>Constructors in Java</h2>
+                <p>A <strong>constructor</strong> is a special method that is called when an object is instantiated. It is used to initialize the object.</p>
+
+                <h3>Characteristics of Constructors</h3>
+                <ul>
+                <li>Constructor name must match the class name.</li>
+                <li>It does not have a return type (not even <code>void</code>).</li>
+                <li>Called automatically when a new object is created using <code>new</code>.</li>
+                </ul>
+
+                <h3>Types of Constructors</h3>
+                <ol>
+                <li><strong>Default Constructor:</strong> No parameters.</li>
+                <li><strong>Parameterized Constructor:</strong> Takes arguments to initialize object.</li>
+                <li><strong>Copy Constructor:</strong> Creates a new object using an existing one (not provided by default).</li>
+                </ol>
+
+                <h3>Example: Default Constructor</h3>
+                <pre><code>class Car {
+            Car() {
+                System.out.println("Car object created!");
+            }
+            public static void main(String[] args) {
+                Car myCar = new Car();
+            }
+            }</code></pre>
+
+                <h3>Example: Parameterized Constructor</h3>
+                <pre><code>class Car {
+            String model;
+            Car(String m) {
+                model = m;
+            }
+
+            public static void main(String[] args) {
+                Car myCar = new Car("Tesla");
+                System.out.println(myCar.model); // Output: Tesla
+            }
+            }</code></pre>
+
+                <h3>Constructor Overloading</h3>
+                <p>You can define multiple constructors with different parameter lists.</p>
+                <pre><code>class Student {
+            Student() {
+                System.out.println("Default constructor");
+            }
+
+            Student(String name) {
+                System.out.println("Hello " + name);
+            }
+            }</code></pre>
+
+                <h3>Copy Constructor (Manual)</h3>
+                <pre><code>class Book {
+            String title;
+            Book(String t) {
+                title = t;
+            }
+
+            Book(Book b) {
+                title = b.title;
+            }
+
+            public static void main(String[] args) {
+                Book b1 = new Book("Java");
+                Book b2 = new Book(b1);
+                System.out.println(b2.title); // Output: Java
+            }
+            }</code></pre>
+
+                <h3>Important Notes</h3>
+                <ul>
+                <li>If no constructor is defined, Java provides a default one automatically.</li>
+                <li>Constructors can be overloaded but not overridden (since they aren't inherited).</li>
+                </ul>
+            

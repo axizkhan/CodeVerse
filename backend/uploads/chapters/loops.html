@@ -1,0 +1,53 @@
+
+                <h2>Loops in Java</h2>
+                <p>Loops are used to execute a block of code repeatedly until a specified condition is met. Java supports several types of loops to handle different use cases.</p>
+
+                <h3>1. for Loop</h3>
+                <p>The <code>for</code> loop is used when the number of iterations is known beforehand.</p>
+                <pre><code>for (int i = 1; i <= 5; i++) {
+            System.out.println("Count: " + i);
+            }</code></pre>
+
+                <h3>2. while Loop</h3>
+                <p>The <code>while</code> loop is used when the number of iterations is unknown, and the condition is checked before each iteration.</p>
+                <pre><code>int i = 1;
+            while (i <= 5) {
+            System.out.println("Count: " + i);
+            i++;
+            }</code></pre>
+
+                <h3>3. do-while Loop</h3>
+                <p>The <code>do-while</code> loop is similar to <code>while</code>, but it guarantees at least one execution of the loop body.</p>
+                <pre><code>int i = 1;
+            do {
+            System.out.println("Count: " + i);
+            i++;
+            } while (i <= 5);</code></pre>
+
+                <h3>4. Enhanced for (for-each) Loop</h3>
+                <p>Used to iterate over arrays and collections easily.</p>
+                <pre><code>int[] numbers = {1, 2, 3, 4, 5};
+            for (int num : numbers) {
+            System.out.println(num);
+            }</code></pre>
+
+                <h3>Loop Control Statements</h3>
+                <ul>
+                <li><strong>break:</strong> Exits the loop immediately.</li>
+                <li><strong>continue:</strong> Skips the current iteration and goes to the next one.</li>
+                </ul>
+                <pre><code>for (int i = 1; i <= 5; i++) {
+            if (i == 3) continue;
+            System.out.println(i);
+            }</code></pre>
+
+                <h3>When to Use Each Loop</h3>
+                <ul>
+                <li><strong>for</strong> – when the number of iterations is known</li>
+                <li><strong>while</strong> – when looping until a condition becomes false</li>
+                <li><strong>do-while</strong> – when the loop should run at least once</li>
+                <li><strong>for-each</strong> – when working with arrays/collections</li>
+                </ul>
+
+                <blockquote><strong>Tip:</strong> Always be cautious of infinite loops caused by incorrect or missing loop conditions.</blockquote>
+            

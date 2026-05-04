@@ -1,0 +1,52 @@
+
+                <h2>Arrays in Java</h2>
+                <p>An array in Java is a data structure that can store multiple values of the same data type in a single variable.</p>
+
+                <h3>Why Use Arrays?</h3>
+                <ul>
+                <li>To store multiple related values under a single name</li>
+                <li>To access elements using indices</li>
+                <li>Useful in loops and bulk data processing</li>
+                </ul>
+
+                <h3>Declaration and Initialization</h3>
+                <pre><code>int[] numbers = new int[5]; // declaration with size
+            int[] values = {10, 20, 30, 40, 50}; // declaration with values</code></pre>
+
+                <h3>Accessing Array Elements</h3>
+                <pre><code>System.out.println(values[2]); // Output: 30</code></pre>
+
+                <h3>Updating Array Elements</h3>
+                <pre><code>values[1] = 25; // updates second element to 25</code></pre>
+
+                <h3>Looping through an Array</h3>
+                <pre><code>for (int i = 0; i < values.length; i++) {
+            System.out.println(values[i]);
+            }</code></pre>
+
+                <h3>Using Enhanced For Loop</h3>
+                <pre><code>for (int value : values) {
+            System.out.println(value);
+            }</code></pre>
+
+                <h3>Multidimensional Arrays</h3>
+                <pre><code>int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6}
+            };
+
+            System.out.println(matrix[1][2]); // Output: 6</code></pre>
+
+                <h3>Common Mistakes</h3>
+                <ul>
+                <li>Accessing out-of-bound indices (e.g., <code>arr[5]</code> in a size 5 array)</li>
+                <li>Assuming arrays grow dynamically (use ArrayList for dynamic resizing)</li>
+                </ul>
+
+                <h3>Tips</h3>
+                <ul>
+                <li>Use <code>.length</code> to get array size</li>
+                <li>Prefer enhanced for-loop for read-only iteration</li>
+                <li>Use multidimensional arrays for tables or grids</li>
+                </ul>
+            

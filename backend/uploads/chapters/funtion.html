@@ -1,0 +1,71 @@
+
+                <h2>Functions in Java</h2>
+                <p>In Java, functions are called <strong>methods</strong>. They are blocks of code that perform a specific task, improve code reuse, and make programs more modular and easier to manage.</p>
+
+                <h3>Basic Syntax</h3>
+                <pre><code>returnType methodName(parameter1, parameter2, ...) {
+            // method body
+            return value;
+            }</code></pre>
+
+                <h3>Example: Method that adds two numbers</h3>
+                <pre><code>public class Calculator {
+            static int add(int a, int b) {
+                return a + b;
+            }
+
+            public static void main(String[] args) {
+                int result = add(5, 10);
+                System.out.println("Sum: " + result);
+            }
+            }</code></pre>
+
+                <h3>Types of Methods</h3>
+                <ul>
+                <li><strong>Predefined Methods:</strong> Built-in Java methods (e.g. <code>System.out.println()</code>, <code>Math.max()</code>).</li>
+                <li><strong>User-defined Methods:</strong> Created by the programmer for custom tasks.</li>
+                </ul>
+
+                <h3>Method Overloading</h3>
+                <p>Java allows multiple methods with the same name but different parameters.</p>
+                <pre><code>class Printer {
+            void print(String text) {
+                System.out.println(text);
+            }
+
+            void print(int number) {
+                System.out.println(number);
+            }
+            }</code></pre>
+
+                <h3>Return Type</h3>
+                <ul>
+                <li><code>void</code> – the method returns nothing.</li>
+                <li><code>int</code>, <code>double</code>, <code>String</code>, etc. – method returns a value of that type.</li>
+                </ul>
+
+                <h3>Static vs Non-Static Methods</h3>
+                <ul>
+                <li><strong>Static:</strong> Called using the class name, does not require object creation.</li>
+                <li><strong>Non-static:</strong> Requires object creation to call the method.</li>
+                </ul>
+                <pre><code>public class MyClass {
+            void greet() {
+                System.out.println("Hello!");
+            }
+
+            public static void main(String[] args) {
+                MyClass obj = new MyClass();
+                obj.greet(); // non-static method
+            }
+            }</code></pre>
+
+                <h3>Benefits of Using Methods</h3>
+                <ul>
+                <li>Code reusability</li>
+                <li>Improves code readability</li>
+                <li>Easier debugging and maintenance</li>
+                </ul>
+
+                <blockquote><strong>Tip:</strong> Always give methods meaningful names that reflect their purpose.</blockquote>
+            

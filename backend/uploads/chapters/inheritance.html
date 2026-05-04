@@ -1,0 +1,74 @@
+
+                <h2>Inheritance in Java</h2>
+                <p>Inheritance is a mechanism in Java where one class can inherit fields and methods from another. It promotes code reusability and represents "is-a" relationships.</p>
+
+                <h3>Types of Inheritance in Java</h3>
+                <ul>
+                <li><strong>Single Inheritance:</strong> One class inherits from another.</li>
+                <li><strong>Multilevel Inheritance:</strong> A class inherits from a class which in turn inherits from another.</li>
+                <li><strong>Hierarchical Inheritance:</strong> Multiple classes inherit from a single class.</li>
+                </ul>
+                <p><em>Note: Java does not support multiple inheritance with classes to avoid ambiguity, but it supports it via interfaces.</em></p>
+
+                <h3>Syntax of Inheritance</h3>
+                <pre><code>class Parent {
+            void display() {
+                System.out.println("Parent method");
+            }
+            }
+
+            class Child extends Parent {
+            void show() {
+                System.out.println("Child method");
+            }
+            }
+
+            public class Main {
+            public static void main(String[] args) {
+                Child c = new Child();
+                c.display(); // From Parent
+                c.show();    // From Child
+            }
+            }</code></pre>
+
+                <h3>Key Keywords</h3>
+                <ul>
+                <li><code>extends</code>: Used for class inheritance</li>
+                <li><code>super</code>: Refers to the parent class constructor or members</li>
+                </ul>
+
+                <h3>Using super keyword</h3>
+                <pre><code>class Parent {
+            int x = 5;
+            }
+
+            class Child extends Parent {
+            int x = 10;
+
+            void printX() {
+                System.out.println(super.x); // Access parent x
+            }
+            }</code></pre>
+
+                <h3>Constructors in Inheritance</h3>
+                <p>When an object of the child class is created, the constructor of the parent class is called first.</p>
+                <pre><code>class A {
+            A() {
+                System.out.println("Parent Constructor");
+            }
+            }
+
+            class B extends A {
+            B() {
+                super(); // Optional, called automatically
+                System.out.println("Child Constructor");
+            }
+            }</code></pre>
+
+                <h3>Why Use Inheritance?</h3>
+                <ul>
+                <li>Code reuse</li>
+                <li>Supports polymorphism and method overriding</li>
+                <li>Logical hierarchy between classes</li>
+                </ul>
+            

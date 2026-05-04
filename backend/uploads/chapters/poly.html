@@ -1,0 +1,63 @@
+
+                <h2>Polymorphism in Java</h2>
+                <p>Polymorphism allows objects to take on many forms. In Java, polymorphism lets you perform the same action in different ways, increasing flexibility and scalability of your code.</p>
+
+                <h3>Types of Polymorphism</h3>
+                <ul>
+                <li><strong>Compile-time Polymorphism (Static)</strong> – Method Overloading</li>
+                <li><strong>Run-time Polymorphism (Dynamic)</strong> – Method Overriding</li>
+                </ul>
+
+                <h3>1. Method Overloading (Compile-Time)</h3>
+                <p>Method overloading occurs when multiple methods have the same name but different parameter lists.</p>
+                <pre><code>class MathUtils {
+            int add(int a, int b) {
+                return a + b;
+            }
+
+            double add(double a, double b) {
+                return a + b;
+            }
+
+            int add(int a, int b, int c) {
+                return a + b + c;
+            }
+            }</code></pre>
+
+                <h3>2. Method Overriding (Run-Time)</h3>
+                <p>Method overriding happens when a subclass provides a specific implementation of a method declared in a parent class.</p>
+                <pre><code>class Animal {
+            void sound() {
+                System.out.println("Animal makes a sound");
+            }
+            }
+
+            class Dog extends Animal {
+            void sound() {
+                System.out.println("Dog barks");
+            }
+            }
+
+            public class Main {
+            public static void main(String[] args) {
+                Animal a = new Dog(); // Upcasting
+                a.sound(); // Outputs: Dog barks
+            }
+            }</code></pre>
+
+                <h3>Key Concepts</h3>
+                <ul>
+                <li><strong>Upcasting:</strong> Using a parent class reference for a child class object</li>
+                <li><strong>Dynamic Dispatch:</strong> Method call is resolved at runtime</li>
+                </ul>
+
+                <h3>Benefits of Polymorphism</h3>
+                <ul>
+                <li>Code Reusability</li>
+                <li>Ease of Maintenance</li>
+                <li>Supports extensibility and flexibility</li>
+                </ul>
+
+                <h3>Note:</h3>
+                <p>Polymorphism is a key pillar of Object-Oriented Programming, alongside Inheritance, Abstraction, and Encapsulation.</p>
+            

@@ -1,0 +1,73 @@
+
+                <h2>Switch Case in Java</h2>
+                <p>The <code>switch</code> statement is used when you have multiple conditions to check based on the value of a single variable. It is an alternative to using many <code>if-else-if</code> statements.</p>
+
+                <h3>Syntax:</h3>
+                <pre><code>switch (expression) {
+            case value1:
+                // statements
+                break;
+            case value2:
+                // statements
+                break;
+            ...
+            default:
+                // default statements
+            }</code></pre>
+
+                <h3>Example: Day of the Week</h3>
+                <pre><code>int day = 3;
+            switch (day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            case 5:
+                System.out.println("Friday");
+                break;
+            case 6:
+                System.out.println("Saturday");
+                break;
+            case 7:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("Invalid day");
+            }</code></pre>
+
+                <h3>Important Points</h3>
+                <ul>
+                <li><strong>Break Statement:</strong> Prevents fall-through to the next case.</li>
+                <li><strong>Default Case:</strong> Executes when no match is found.</li>
+                <li><strong>Only constants or final variables</strong> can be used as case labels.</li>
+                </ul>
+
+                <h3>Switch with String (Java 7+)</h3>
+                <pre><code>String language = "Java";
+            switch (language) {
+            case "Java":
+                System.out.println("You chose Java!");
+                break;
+            case "Python":
+                System.out.println("You chose Python!");
+                break;
+            default:
+                System.out.println("Unknown Language");
+            }</code></pre>
+
+                <h3>When to Use switch</h3>
+                <ul>
+                <li>When checking multiple possible exact matches of one variable.</li>
+                <li>When using menu-based or command-based logic.</li>
+                </ul>
+
+                <blockquote><strong>Tip:</strong> Avoid using switch with complex expressions or ranges—use <code>if-else</code> instead.</blockquote>
+            
