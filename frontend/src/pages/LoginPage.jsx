@@ -4,7 +4,6 @@ import "./LoginPage.css";
 import axios from "axios";
 import UserContext from "../UserContext"; // import
 
-
 const LoginPage = () => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [form, setForm] = useState({ username: "", password: "" });
@@ -23,9 +22,9 @@ const LoginPage = () => {
         withCredentials: true,
       });
       setMessage(res.data.message);
+      setUser(res.data.user);
 
       if (res.status === 200) {
-        await checkUser(); // update context immediately
         setTimeout(() => {
           navigate("/");
         }, 1000);
@@ -37,7 +36,9 @@ const LoginPage = () => {
 
   return (
     <div className="login-container neon-blobs">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form
+        className="login-form"
+        onSubmit={handleSubmit}>
         <h2 className="login-title">Login to CodeVerse</h2>
 
         <input
@@ -57,7 +58,9 @@ const LoginPage = () => {
           required
         />
 
-        <button type="submit" className="neon-button login-button">
+        <button
+          type="submit"
+          className="neon-button login-button">
           Login
         </button>
 
@@ -65,7 +68,9 @@ const LoginPage = () => {
 
         <p className="signup-link">
           Don't have an account?{" "}
-          <Link to="/signup" className="link-neon">
+          <Link
+            to="/signup"
+            className="link-neon">
             Create one
           </Link>
         </p>
