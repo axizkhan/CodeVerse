@@ -32,8 +32,9 @@ async function main() {
 main()
   .then(() => {
     console.log(" Connected to MongoDB");
-    app.listen(port, "0.0.0.0");
-    console.log("Server is up");
+    app.listen(port, () => {
+      console.log("Server is up");
+    });
   })
   .catch((err) => {
     console.error(" MongoDB connection failed:", err);
@@ -69,7 +70,12 @@ const sessionOption = {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const allowedOrigins = [frontendUrl];
+const allowedOrigins = [
+  frontendUrl,
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://codeverse.us-east-1.elasticbeanstalk.com",
+];
 
 app.use(
   cors({
@@ -105,10 +111,15 @@ passport.deserializeUser(User.deserializeUser());
 app.use(
   "/uploads",
   cors({
-    origin: frontendUrl,
+    origin: [
+      frontendUrl,
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "http://codeverse.us-east-1.elasticbeanstalk.com",
+    ],
     credentials: true,
   }),
-  express.static(path.join("uploads")),
+  express.static(path.join(__dirname, "uploads")),
 );
 
 // app.use((req, res, next) => {
