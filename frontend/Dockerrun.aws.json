@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "axizkhan/codeverse-frontend:latest",
+    "Name": "axizkhan/codeverse-frontend:v1",
     "Update": "true"
   },
   "Ports": [

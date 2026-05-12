@@ -2,12 +2,11 @@
   padding: 30px;
   background-color: #0d0d0d;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .show-users-container h2 {
   margin-bottom: 20px;
-  color: cyan;
 }
 
 .user-search-input {
@@ -29,7 +28,8 @@
   overflow: hidden;
 }
 
-.users-table th, .users-table td {
+.users-table th,
+.users-table td {
   border: 1px solid #333;
   padding: 12px 15px;
   text-align: left;

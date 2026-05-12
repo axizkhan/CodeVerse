@@ -51,26 +51,29 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="w-full bg-[#0D0D0D] text-white shadow-md z-50 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 z-50 w-full transition-all duration-300 border-b glass border-border-light dark:border-border">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Logo />
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
+
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6 items-center">
+          <div className="hidden items-center space-x-8 md:flex">
             <Link
               to="/"
-              className="hover:text-cyan-400 transition">
+              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary">
               Home
             </Link>
             <Link
               to="/tutorials"
-              className="hover:text-cyan-400 transition">
+              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary">
               Tutorials
             </Link>
             <Link
               to="/about"
-              className="hover:text-cyan-400 transition">
+              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary">
               About
             </Link>
 
@@ -78,31 +81,32 @@ const NavBar = () => {
               <>
                 <Link
                   to="/get-started"
-                  className="px-4 py-1 border border-cyan-400 text-cyan-400 rounded-full hover:bg-cyan-400 hover:text-black transition">
+                  className="rounded-full border border-primary px-5 py-1.5 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-white">
                   Subscription
                 </Link>
 
                 {user.role === "admin" && (
                   <Link
                     to="/admin/dashboard"
-                    className="hover:text-cyan-400 transition">
+                    className="text-sm font-medium text-text-secondary transition-colors hover:text-primary">
                     Admin
                   </Link>
                 )}
 
-                {/* Custom dropdown for account */}
+                {/* Custom Account Dropdown */}
                 <div className="relative">
                   <button
                     onClick={() => setAccountOpen(!accountOpen)}
-                    className="flex items-center space-x-2 hover:text-cyan-400">
-                    <User size={20} />
-                    <span>Account</span>
+                    className="flex items-center space-x-2 text-text-secondary transition-colors hover:text-primary">
+                    <User size={18} />
+                    <span className="text-sm font-medium">Account</span>
                   </button>
+
                   {accountOpen && (
-                    <div className="absolute right-0 mt-2 w-40 bg-[#1a1a1a] border border-cyan-400 rounded shadow-lg z-50">
+                    <div className="animate-fadeIn absolute right-0 mt-3 w-48 overflow-hidden rounded-card-md border border-border shadow-lg glass z-50">
                       <button
                         onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 hover:bg-cyan-400 hover:text-black transition">
+                        className="block w-full px-4 py-3 text-left text-sm text-text-primary transition-colors hover:bg-primary hover:text-white">
                         Logout
                       </button>
                     </div>
@@ -110,24 +114,26 @@ const NavBar = () => {
                 </div>
               </>
             ) : (
-              <>
+              <div className="flex items-center space-x-4">
                 <Link
                   to="/login"
-                  className="hover:text-cyan-400 transition">
+                  className="text-sm font-medium text-text-secondary transition-colors hover:text-primary">
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="hover:text-cyan-400 transition">
+                  className="rounded-full bg-primary px-5 py-1.5 text-sm font-semibold text-white transition-all hover:bg-primary-hover shadow-sm">
                   Signup
                 </Link>
-              </>
+              </div>
             )}
           </div>
 
           {/* Mobile Hamburger */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)}>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-text-primary transition-colors hover:text-primary">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -136,78 +142,66 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0D0D0D] px-4 pb-4 space-y-2">
-          <Link
-            to="/"
-            className="block py-2 hover:text-cyan-400">
-            Home
-          </Link>
-          <Link
-            to="/tutorials"
-            className="block py-2 hover:text-cyan-400">
-            Tutorials
-          </Link>
-          <Link
-            to="/about"
-            className="block py-2 hover:text-cyan-400">
-            About
-          </Link>
+        <div className="animate-fadeIn fixed inset-x-4 top-20 z-50 rounded-card-md border border-white/10 bg-white/90 backdrop-blur-xl shadow-2xl space-y-4 p-6 md:hidden overflow-hidden">
+          {/* Decorative Glow inside glass */}
+          <div className="absolute -top-10 -left-10 h-32 w-32 bg-primary/20 blur-3xl pointer-events-none" />
 
-          {!loading && user ? (
-            <>
-              <Link
-                to="/get-started"
-                className="block px-4 py-1 border border-cyan-400 text-cyan-400 rounded-full hover:bg-cyan-400 hover:text-black transition">
-                Subscription
-              </Link>
+          <nav className="relative z-10 space-y-4">
+            <Link
+              to="/"
+              className="block text-lg font-bold tracking-tight text-text-primary hover:text-primary transition-colors">
+              Home
+            </Link>
+            <Link
+              to="/tutorials"
+              className="block text-lg font-bold tracking-tight text-text-primary hover:text-primary transition-colors">
+              Tutorials
+            </Link>
+            <Link
+              to="/about"
+              className="block text-lg font-bold tracking-tight text-text-primary hover:text-primary transition-colors">
+              About
+            </Link>
 
-              {user.role === "admin" && (
+            {!loading && user ? (
+              <div className="space-y-4 pt-4 border-t border-white/10">
                 <Link
-                  to="/admin/dashboard"
-                  className="block py-2 hover:text-cyan-400">
-                  Admin
+                  to="/get-started"
+                  className="block rounded-card-sm bg-primary/10 border border-primary/30 py-3 text-center font-black uppercase tracking-widest text-xs text-primary hover:bg-primary hover:text-white transition-all">
+                  Subscription
                 </Link>
-              )}
-
-              {/* MUI Dropdown on Mobile */}
-              <IconButton
-                onClick={handleAccountClick}
-                sx={{ color: "cyan" }}>
-                <AccountCircle />
-              </IconButton>
-              <MuiMenu
-                anchorEl={anchorEl}
-                open={isMenuOpen}
-                onClose={handleMenuClose}
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                transformOrigin={{ vertical: "top", horizontal: "right" }}
-                PaperProps={{
-                  sx: {
-                    bgcolor: "#1a1a1a",
-                    color: "white",
-                    border: "1px solid #00ffff",
-                    minWidth: "150px",
-                    mt: 1,
-                    ml: 5,
-                  },
-                }}>
-                <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
-              </MuiMenu>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="block py-2 hover:text-cyan-400">
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="block py-2 hover:text-cyan-400">
-                Signup
-              </Link>
-            </>
-          )}
+                {user.role === "admin" && (
+                  <Link
+                    to="/admin/dashboard"
+                    className="flex items-center gap-2 text-lg font-bold text-text-primary hover:text-primary transition-colors">
+                    <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                    Admin Panel
+                  </Link>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="flex w-full items-center space-x-2 py-2 text-danger/80 font-bold hover:text-danger transition-colors">
+                  <LogOut size={18} />
+                  <span className="text-sm uppercase tracking-wider">
+                    Logout
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                <Link
+                  to="/login"
+                  className="flex items-center justify-center rounded-card-sm border border-white/10 bg-white/5 py-2.5 text-sm font-bold text-text-primary hover:bg-white/10 transition-all">
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="flex items-center justify-center rounded-card-sm bg-primary py-2.5 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                  Signup
+                </Link>
+              </div>
+            )}
+          </nav>
         </div>
       )}
     </nav>
@@ -265,10 +259,25 @@ function Logo() {
 
       <Link
         to="/"
-        className="logo-link flex-shrink-0 text-2xl font-bold">
-        <span className="logo-code text-cyan-400">Code</span>
-        <span className="logo-verse text-white">Verse</span>
-        <span className="logo-cursor" />
+        className="group relative flex-shrink-0 text-2xl font-bold transition-transform hover:scale-105 active:scale-95">
+        {/* The Text Container */}
+        <div className="flex items-center">
+          <span className="animate-fadeIn text-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.4)]">
+            Code
+          </span>
+          <span className="text-text-primary transition-colors duration-300 group-hover:text-primary-hover">
+            Verse
+          </span>
+
+          {/* Blinking Cursor using your Primary color variable */}
+          <span className="ml-1 inline-block h-[1.2em] w-[3px] animate-[pulse_1s_infinite] rounded-full bg-primary" />
+        </div>
+
+        {/* Animated Underline using your theme variables */}
+        <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-linear-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+
+        {/* Subtle Glow Effect on Hover */}
+        <div className="absolute inset-0 -z-10 bg-primary/0 blur-xl transition-all duration-500 group-hover:bg-primary/10" />
       </Link>
     </>
   );

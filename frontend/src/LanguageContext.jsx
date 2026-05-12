@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const LanguageContext = createContext();
-
 
 export const LanguageProvider = ({ children }) => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -23,6 +22,7 @@ export const LanguageProvider = ({ children }) => {
   const fetchLanguages = async () => {
     try {
       const res = await axios.get(`${backendUrl}/language/all`);
+      console.log(`${backendUrl}/language/all`);
       const rawLanguages = res.data;
 
       // Resolve chapter HTML content
@@ -30,21 +30,20 @@ export const LanguageProvider = ({ children }) => {
         rawLanguages.map(async (lang) => {
           const topicsWithHtml = await Promise.all(
             (lang.topics || []).map(async (chapter) => {
-              if (chapter.content?.startsWith('/uploads/')) {
-                
+              if (chapter.content?.startsWith("/uploads/")) {
                 const htmlContent = await fetchHtmlFromPath(chapter.content);
                 return { ...chapter, content: htmlContent };
               }
               return chapter;
-            })
+            }),
           );
           return { ...lang, topics: topicsWithHtml };
-        })
+        }),
       );
 
       setLanguages(processed);
     } catch (error) {
-      console.error('Failed to fetch languages:', error);
+      console.error("Failed to fetch languages:", error);
     } finally {
       setLoading(false);
     }

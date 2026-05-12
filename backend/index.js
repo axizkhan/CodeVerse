@@ -122,10 +122,10 @@ app.use(
   express.static(path.join(__dirname, "uploads")),
 );
 
-// app.use((req, res, next) => {
-//   console.log(req, "Request");
-//   next();
-// });
+app.use((req, res, next) => {
+  console.log(req, "Request");
+  next();
+});
 
 //  Routes
 app.get("/", (req, res) => {

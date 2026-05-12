@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import LanguageContext from '../LanguageContext.jsx';
-import './TutorialDetail.css';
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, Link, Navigate } from "react-router-dom";
+import LanguageContext from "../LanguageContext.jsx";
+import "./TutorialDetail.css";
 
 const TutorialDetail = () => {
-  const { language, topic = 'introduction' } = useParams();
+  const { language, topic = "introduction" } = useParams();
   const { languages, loading } = useContext(LanguageContext);
-  const [htmlContent, setHtmlContent] = useState('<p>Loading content...</p>');
+  const [htmlContent, setHtmlContent] = useState("<p>Loading content...</p>");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // Scroll to top when topic changes
@@ -16,13 +16,13 @@ const TutorialDetail = () => {
 
   // Find current language and topic
   const currentLang = languages.find(
-    (lang) => lang.name.toLowerCase() === language.toLowerCase()
+    (lang) => lang.name.toLowerCase() === language.toLowerCase(),
   );
 
   const chapters = currentLang?.topics || [];
 
   const topicIndex = chapters.findIndex(
-    (chap) => chap.name?.toLowerCase().trim() === topic.toLowerCase().trim()
+    (chap) => chap.name?.toLowerCase().trim() === topic.toLowerCase().trim(),
   );
 
   const currentChapter = topicIndex !== -1 ? chapters[topicIndex] : null;
@@ -34,15 +34,15 @@ const TutorialDetail = () => {
       try {
         const content = currentChapter.content;
 
-        if (typeof content === 'string' && content.startsWith('/uploads')) {
+        if (typeof content === "string" && content.startsWith("/uploads")) {
           const res = await fetch(`${backendUrl}${content}`);
           const html = await res.text();
           setHtmlContent(html);
         } else {
-          setHtmlContent(content || '<p>No content available.</p>');
+          setHtmlContent(content || "<p>No content available.</p>");
         }
       } catch (err) {
-        setHtmlContent('<p>Failed to load content.</p>');
+        setHtmlContent("<p>Failed to load content.</p>");
         console.error(err);
       }
     };
@@ -65,7 +65,9 @@ const TutorialDetail = () => {
           <p className="no-chapters">No chapters available yet.</p>
         </aside>
         <main className="content-area">
-          <Link to="/tutorials" className="back-button">
+          <Link
+            to="/tutorials"
+            className="back-button">
             ← Back to Tutorials
           </Link>
           <h1>{currentLang.name} Tutorial</h1>
@@ -81,16 +83,15 @@ const TutorialDetail = () => {
   }
 
   return (
-    <div className="tutorial-detail-container">
-      <aside className="sidebar">
+    <div className="tutorial-detail-container mt-5">
+      <aside className="sidebar mt-5">
         <h2>{currentLang.name}</h2>
         <ul>
           {chapters.map((chap, idx) => (
             <li key={chap._id}>
               <Link
                 to={`/tutorials/${language}/${chap.name}`}
-                className={idx === topicIndex ? 'active' : ''}
-              >
+                className={idx === topicIndex ? "active" : ""}>
                 {chap.title}
               </Link>
             </li>
@@ -99,7 +100,9 @@ const TutorialDetail = () => {
       </aside>
 
       <main className="content-area">
-        <Link to="/tutorials" className="back-button">
+        <Link
+          to="/tutorials"
+          className="back-button">
           ← Back to Tutorials
         </Link>
 
@@ -107,23 +110,21 @@ const TutorialDetail = () => {
           {topicIndex > 0 && (
             <Link
               className="nav-button"
-              to={`/tutorials/${language}/${chapters[topicIndex - 1].name}`}
-            >
+              to={`/tutorials/${language}/${chapters[topicIndex - 1].name}`}>
               ← Previous
             </Link>
           )}
           {topicIndex < chapters.length - 1 && (
             <Link
               className="nav-button"
-              to={`/tutorials/${language}/${chapters[topicIndex + 1].name}`}
-            >
+              to={`/tutorials/${language}/${chapters[topicIndex + 1].name}`}>
               Next →
             </Link>
           )}
         </div>
 
         <div
-          className="html-content"
+          className="html-content mt-5"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </main>

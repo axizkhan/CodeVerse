@@ -1,13 +1,12 @@
 .membership-container {
   padding: 40px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   color: white;
   background: #121212;
   min-height: 100vh;
 }
 
 h2 {
-  color: cyan;
   margin-bottom: 20px;
 }
 
@@ -80,7 +79,6 @@ h2 {
   color: white;
   outline: none;
 }
-
 
 .perks-edit input {
   margin-bottom: 8px;

@@ -27,29 +27,36 @@ const VerifyPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-4 overflow-hidden relative">
-      {/* Neon blobs */}
-      <div className="absolute top-[-80px] left-[-80px] w-[320px] h-[320px] rounded-full bg-cyan-500 opacity-10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-80px] right-[-80px] w-[320px] h-[320px] rounded-full bg-fuchsia-500 opacity-10 blur-3xl pointer-events-none" />
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
+      {/* Themed Neon Blobs - Using primary and accent tokens */}
+      <div className="pointer-events-none absolute top-[-100px] left-[-100px] h-[400px] w-[400px] rounded-full bg-primary opacity-10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-[-100px] right-[-100px] h-[400px] w-[400px] rounded-full bg-accent opacity-10 blur-[120px]" />
 
-      <div className="relative z-10 bg-[#121212] border border-[#222] rounded-xl p-10 w-full max-w-md shadow-[0_0_20px_rgba(0,255,255,0.1)] text-center">
-        {/* Logo */}
-        <h1 className="text-cyan-400 text-3xl font-bold tracking-widest mb-8">
+      {/* Main Card - Using your .glass and .card tokens */}
+      <div className="glass card animate-fadeIn relative z-10 w-full max-w-md p-10 text-center shadow-lg">
+        {/* Logo - Matches your branding */}
+        <h1 className="mb-8 text-3xl font-bold tracking-widest text-primary">
           CodeVerse
         </h1>
 
-        {/* Icon */}
-        <div className="w-[72px] h-[72px] rounded-full border-2 border-cyan-400 flex items-center justify-center mx-auto mb-6">
+        {/* Status Icon Circle */}
+        <div
+          className={`mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 transition-colors duration-300 ${
+            status === "success"
+              ? "border-success"
+              : status === "error"
+                ? "border-danger"
+                : "border-primary"
+          }`}>
           {status === "success" ? (
             <svg
               width="34"
               height="34"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#00ffff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round">
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="text-success">
               <polyline points="20,6 9,17 4,12" />
             </svg>
           ) : status === "error" ? (
@@ -58,10 +65,9 @@ const VerifyPage = () => {
               height="34"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#ff4081"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round">
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="text-danger">
               <line
                 x1="18"
                 y1="6"
@@ -81,10 +87,9 @@ const VerifyPage = () => {
               height="34"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#00ffff"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round">
+              stroke="currentColor"
+              strokeWidth="2"
+              className="text-primary">
               <rect
                 x="2"
                 y="4"
@@ -97,9 +102,15 @@ const VerifyPage = () => {
           )}
         </div>
 
-        {/* Heading */}
+        {/* Heading - Dynamic colors based on status tokens */}
         <h2
-          className={`text-2xl font-bold mb-3 ${status === "error" ? "text-[#ff4081]" : "text-cyan-400"}`}>
+          className={`mb-3 text-2xl font-bold ${
+            status === "success"
+              ? "text-success"
+              : status === "error"
+                ? "text-danger"
+                : "text-text-primary"
+          }`}>
           {status === "success"
             ? "You're Verified!"
             : status === "error"
@@ -107,8 +118,8 @@ const VerifyPage = () => {
               : "Verify Your Email"}
         </h2>
 
-        {/* Subtext */}
-        <p className="text-[#cccccc] text-[15px] leading-relaxed mb-2">
+        {/* Subtext - Using text-secondary and text-muted tokens */}
+        <p className="mb-2 text-[15px] leading-relaxed text-text-secondary">
           {status === "success"
             ? "Your account is now active. Redirecting you to login..."
             : status === "error"
@@ -117,28 +128,29 @@ const VerifyPage = () => {
         </p>
 
         {status === "idle" && (
-          <p className="text-[#888] text-[13px] mb-8">
+          <p className="mb-8 text-[13px] text-text-muted">
             This link will expire in{" "}
-            <span className="text-cyan-400 font-bold">48 hours</span>.
+            <span className="font-bold text-primary">48 hours</span>.
           </p>
         )}
 
-        {/* Error message */}
-        {status === "error" && message && (
-          <p className="text-[#ff4081] font-bold text-[14px] mb-6">{message}</p>
+        {/* Inline Messages */}
+        {message && (
+          <p
+            className={`mb-6 text-[14px] font-bold ${status === "error" ? "text-danger" : "text-success"}`}>
+            {message}
+          </p>
         )}
 
-        {/* Success message */}
-        {status === "success" && message && (
-          <p className="text-cyan-400 font-bold text-[14px] mb-6">{message}</p>
-        )}
-
-        {/* Button */}
+        {/* Primary Action Button */}
         {status !== "success" && (
           <button
             onClick={handleVerify}
             disabled={status === "loading"}
-            className="w-full py-3 border border-cyan-400 text-cyan-400 font-bold text-[15px] rounded-lg tracking-wide transition-all duration-200 hover:shadow-[0_0_10px_#00ffff] hover:bg-cyan-400/10 disabled:opacity-50 disabled:cursor-not-allowed">
+            className={`w-full rounded-card-md py-3.5 text-[15px] font-bold tracking-wide transition-all duration-300 
+          ${status === "loading" ? "opacity-50 cursor-not-allowed" : ""}
+          border-2 border-primary text-primary hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(var(--primary),0.3)]
+        `}>
             {status === "loading" ? (
               <span className="flex items-center justify-center gap-2">
                 <svg
@@ -147,9 +159,8 @@ const VerifyPage = () => {
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#00ffff"
-                  strokeWidth="2"
-                  strokeLinecap="round">
+                  stroke="currentColor"
+                  strokeWidth="3">
                   <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                 </svg>
                 Verifying...
@@ -162,24 +173,24 @@ const VerifyPage = () => {
           </button>
         )}
 
-        {/* Redirect hint */}
+        {/* Redirect link for success */}
         {status === "success" && (
-          <p className="text-[#888] text-[13px] mt-4">
+          <p className="mt-4 text-[13px] text-text-muted">
             Not redirected?{" "}
-            <span
+            <button
               onClick={() => navigate("/login")}
-              className="text-cyan-400 font-bold cursor-pointer hover:text-fuchsia-400 transition-colors">
+              className="font-bold text-primary hover:text-accent transition-colors">
               Go to Login
-            </span>
+            </button>
           </p>
         )}
 
-        {/* Footer */}
-        <p className="text-[#555] text-[12px] mt-8 border-t border-[#222] pt-6 leading-relaxed">
+        {/* Footer - Using border-light token */}
+        <footer className="mt-8 border-t border-border-light pt-6 text-[12px] leading-relaxed text-text-muted">
           If you didn't create a CodeVerse account, you can safely ignore this.
           <br />
-          &copy; 2025 CodeVerse. All rights reserved.
-        </p>
+          &copy; {new Date().getFullYear()} CodeVerse.
+        </footer>
       </div>
     </div>
   );

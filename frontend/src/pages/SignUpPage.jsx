@@ -34,50 +34,89 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-container neon-blobs">
+    <div className="relative flex min-h-screen items-center justify-center bg-background px-4 transition-colors duration-300">
+      {/* The neon-blobs background for atmospheric depth */}
+      <div className="neon-blobs pointer-events-none absolute inset-0 z-0 opacity-20" />
+
       <form
-        className="signup-form"
+        className="animate-fadeIn card glass z-10 w-full max-w-md p-8 md:p-10"
         onSubmit={handleSubmit}>
-        <h2 className="signup-title">Create Your Account</h2>
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary">
+            Join <span className="text-primary">CodeVerse</span>
+          </h2>
+          <p className="mt-2 text-sm text-text-muted">
+            Start your coding journey today
+          </p>
+        </div>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          className="signup-input"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="signup-input"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="signup-input"
-          onChange={handleChange}
-          required
-        />
+        <div className="space-y-5">
+          {/* Username Field */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-text-secondary ml-1">
+              Username
+            </label>
+            <input
+              type="text"
+              name="username"
+              placeholder="johndoe"
+              onChange={handleChange}
+              className="input text-black placeholder:text-text-muted"
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="neon-button signup-button">
-          Sign Up
-        </button>
+          {/* Email Field */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-text-secondary ml-1">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="name@example.com"
+              onChange={handleChange}
+              className="input text-black placeholder:text-text-muted"
+              required
+            />
+          </div>
 
-        {message && <p className="signup-message">{message}</p>}
+          {/* Password Field */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-text-secondary ml-1">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              onChange={handleChange}
+              className="input text-black placeholder:text-text-muted"
+              required
+            />
+          </div>
 
-        <p className="login-link">
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full rounded-card-md bg-primary py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-primary-hover hover:shadow-primary/25 active:scale-[0.98] mt-4">
+            Create Account
+          </button>
+        </div>
+
+        {message && (
+          <div className="mt-4 rounded-md bg-danger/10 p-3 animate-fadeIn">
+            <p className="text-center text-sm font-medium text-danger">
+              {message}
+            </p>
+          </div>
+        )}
+
+        <p className="mt-8 text-center text-sm text-text-secondary">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="link-neon">
+            className="font-semibold text-primary transition-colors hover:text-primary-hover underline underline-offset-4">
             Login
           </Link>
         </p>
