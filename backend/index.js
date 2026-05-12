@@ -75,6 +75,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
   "http://codeverse.us-east-1.elasticbeanstalk.com",
+  "https://code-verse-eight-pi.vercel.app",
 ];
 
 app.use(
