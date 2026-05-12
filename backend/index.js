@@ -103,7 +103,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //  Serve Static Uploads with CORS
 app.use(
-  "/api/uploads",
+  "/uploads",
   cors({
     origin: frontendUrl,
     credentials: true,
@@ -121,14 +121,14 @@ app.get("/", (req, res) => {
   res.send(" Welcome to CodeVerse API");
 });
 
-app.use("/api/user", require("./routes/user"));
-app.use("/api/api", require("./routes/contact"));
-app.use("/api/upload", require("./routes/upload"));
-app.use("/api/language", require("./routes/language"));
-app.use("/api/chapter", require("./routes/chapter"));
-app.use("/api/memberships", require("./routes/membership"));
-app.use("/api/order", require("./routes/order"));
-app.use("/api/admin", require("./routes/dashboard"));
+app.use("/user", require("./routes/user"));
+app.use("/api", require("./routes/contact"));
+app.use("/upload", require("./routes/upload"));
+app.use("/language", require("./routes/language"));
+app.use("/chapter", require("./routes/chapter"));
+app.use("/memberships", require("./routes/membership"));
+app.use("/order", require("./routes/order"));
+app.use("/admin", require("./routes/dashboard"));
 
 // Global Error Handler
 const errorHandler = require("./utils/errorHandler");
